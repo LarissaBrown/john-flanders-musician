@@ -59,9 +59,9 @@ export default function Media() {
   });
 
   return (
-    <section id="media" className="py-20 bg-[#FAF8F5]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+    <section id="media" className="py-24 bg-[#FAF8F5]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-20">
           <h2 className="text-5xl font-bold text-[#2C2419] mb-4">Media Gallery</h2>
           <div className="w-24 h-1 bg-[#D97D54] mx-auto mb-6"></div>
           <p className="text-xl text-[#5A4A3A] max-w-3xl mx-auto">
@@ -76,7 +76,7 @@ export default function Media() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab as typeof activeTab)}
-                className={`px-6 py-3 rounded-full font-semibold transition-all capitalize ${
+                className={`px-8 py-4 rounded-full font-semibold transition-all capitalize ${
                   activeTab === tab
                     ? 'bg-[#C67B5C] text-white'
                     : 'text-[#5A4A3A] hover:bg-[#E6B8A5]'
@@ -134,7 +134,7 @@ export default function Media() {
               </div>
 
               {/* Info */}
-              <div className="p-6">
+              <div className="p-8">
                 <h3 className="text-xl font-bold text-[#2C2419] mb-2">
                   {item.title}
                 </h3>

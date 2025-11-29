@@ -47,9 +47,9 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-[#E6B8A5] to-[#FAF8F5]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+    <section id="contact" className="py-24 bg-gradient-to-b from-[#E6B8A5] to-[#FAF8F5]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-20">
           <h2 className="text-5xl font-bold text-[#2C2419] mb-4">Get In Touch</h2>
           <div className="w-24 h-1 bg-[#D97D54] mx-auto mb-6"></div>
           <p className="text-xl text-[#5A4A3A] max-w-3xl mx-auto">

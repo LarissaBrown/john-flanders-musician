@@ -100,7 +100,7 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
         
         <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           {/* Header */}
-          <div className="sticky top-0 bg-white border-b border-[#E6B8A5] p-6 flex items-center justify-between">
+          <div className="sticky top-0 bg-white border-b border-[#E6B8A5] p-8 flex items-center justify-between">
             <h2 className="text-2xl font-bold text-[#2C2419]">Checkout</h2>
             <button
               onClick={onClose}
@@ -110,7 +110,7 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
             </button>
           </div>
 
-          <div className="p-6">
+          <div className="p-8">
             {/* Order Summary */}
             <div className="mb-8">
               <h3 className="text-xl font-bold text-[#2C2419] mb-4">Order Summary</h3>

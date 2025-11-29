@@ -96,9 +96,9 @@ export default function Shop() {
   };
 
   return (
-    <section id="shop" className="py-20 bg-gradient-to-b from-[#FAF8F5] to-[#E6B8A5]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+    <section id="shop" className="py-24 bg-gradient-to-b from-[#FAF8F5] to-[#E6B8A5]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-20">
           <h2 className="text-5xl font-bold text-[#2C2419] mb-4">Music Shop</h2>
           <div className="w-24 h-1 bg-[#D97D54] mx-auto mb-6"></div>
           <p className="text-xl text-[#5A4A3A] max-w-3xl mx-auto">
@@ -113,7 +113,7 @@ export default function Shop() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab as typeof activeTab)}
-                className={`px-6 py-3 rounded-full font-semibold transition-all capitalize ${
+                className={`px-8 py-4 rounded-full font-semibold transition-all capitalize ${
                   activeTab === tab
                     ? 'bg-[#C67B5C] text-white'
                     : 'text-[#5A4A3A] hover:bg-[#E6B8A5]'
@@ -157,7 +157,7 @@ export default function Shop() {
               </div>
 
               {/* Product Info */}
-              <div className="p-6">
+              <div className="p-8">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-[#2C2419] mb-1">

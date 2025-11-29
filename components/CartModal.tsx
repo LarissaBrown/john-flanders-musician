@@ -31,7 +31,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
       {/* Modal */}
       <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-[#E6B8A5]">
+        <div className="flex items-center justify-between p-8 border-b border-[#E6B8A5]">
           <div className="flex items-center space-x-3">
             <ShoppingCart className="w-6 h-6 text-[#C67B5C]" />
             <h2 className="text-2xl font-bold text-[#2C2419]">
@@ -118,7 +118,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
 
         {/* Footer */}
         {cart.length > 0 && (
-          <div className="border-t border-[#E6B8A5] p-6 bg-[#FAF8F5]">
+          <div className="border-t border-[#E6B8A5] p-8 bg-[#FAF8F5]">
             <div className="flex items-center justify-between mb-4">
               <span className="text-lg font-semibold text-[#2C2419]">Total:</span>
               <span className="text-3xl font-bold text-[#C67B5C]">

@@ -22,61 +22,54 @@ export default function Hero() {
           quality={90}
         />
         
-        {/* Lightening overlay - less opacity for more image visibility */}
-        <div className="absolute inset-0 bg-white/25 z-10"></div>
+        {/* Subtle lightening overlay */}
+        <div className="absolute inset-0 bg-white/15 z-10"></div>
         
-        {/* Gradient overlay for text contrast - darker at center */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/30 z-10"></div>
+        {/* Gradient for depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/10 z-10"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
         <div className="animate-fade-in-up space-y-8">
-          <div className="flex justify-center">
-            <span className="inline-flex items-center space-x-2 bg-white/90 backdrop-blur-md px-6 py-3 rounded-full text-[#C67B5C] text-sm font-bold border-2 border-[#C67B5C]/30 shadow-lg hover:shadow-xl transition-all hover:scale-105">
-              <Sparkles className="w-4 h-4" />
-              <span>Multi-Instrumentalist Musician</span>
-            </span>
-          </div>
+          {/* Content Container with Backdrop */}
+          <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-12 sm:p-16 shadow-2xl border border-white/50">
+            <div className="flex justify-center mb-8">
+              <span className="inline-flex items-center space-x-2 bg-[#C67B5C]/10 px-8 py-4 rounded-full text-[#C67B5C] text-sm font-bold border border-[#C67B5C]/20">
+                <Sparkles className="w-4 h-4" />
+                <span>Multi-Instrumentalist Musician</span>
+              </span>
+            </div>
 
-          <h1 className="text-6xl sm:text-7xl lg:text-9xl font-black text-white mb-6 tracking-tight leading-none" 
-              style={{
-                textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3), 0 8px 24px rgba(198,123,92,0.3)'
-              }}>
-            John Flanders
-          </h1>
+            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black text-[#2C2419] mb-8 tracking-tight leading-none">
+              John Flanders
+            </h1>
 
-          <p className="text-2xl sm:text-3xl lg:text-4xl text-white font-bold mb-6 max-w-4xl mx-auto leading-tight"
-             style={{
-               textShadow: '0 2px 8px rgba(0,0,0,0.6), 0 4px 16px rgba(0,0,0,0.4)'
-             }}>
-            Bringing the soulful sounds of the Southwest to life through music
-          </p>
+            <p className="text-2xl sm:text-3xl lg:text-4xl text-[#C67B5C] font-bold mb-6 max-w-4xl mx-auto leading-tight">
+              Bringing the soulful sounds of the Southwest to life through music
+            </p>
 
-          <p className="text-lg sm:text-xl lg:text-2xl text-white/95 max-w-2xl mx-auto font-medium"
-             style={{
-               textShadow: '0 2px 6px rgba(0,0,0,0.5)'
-             }}>
-            Experience authentic performances that blend tradition with innovation.
-            Available for concerts, private events, and special occasions.
-          </p>
+            <p className="text-lg sm:text-xl lg:text-2xl text-[#5A4A3A] max-w-2xl mx-auto font-medium mb-10">
+              Experience authentic performances that blend tradition with innovation.
+              Available for concerts, private events, and special occasions.
+            </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
-            <Link
-              href="#shows"
-              className="group relative bg-gradient-to-r from-[#D97D54] to-[#E67E22] text-white px-10 py-5 rounded-full font-bold text-xl hover:from-[#E67E22] hover:to-[#D97D54] transition-all duration-300 flex items-center space-x-3 shadow-2xl hover:shadow-[0_10px_40px_rgba(217,125,84,0.5)] transform hover:-translate-y-2 hover:scale-105"
-            >
-              <span>View Upcoming Shows</span>
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
-              <div className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </Link>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <Link
+                href="#shows"
+                className="group relative bg-gradient-to-r from-[#D97D54] to-[#E67E22] text-white px-10 py-5 rounded-full font-bold text-xl hover:from-[#E67E22] hover:to-[#D97D54] transition-all duration-300 flex items-center space-x-3 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105"
+              >
+                <span>View Upcoming Shows</span>
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
+              </Link>
 
-            <Link
-              href="#contact"
-              className="group bg-white/95 backdrop-blur-md border-3 border-white text-[#C67B5C] px-10 py-5 rounded-full font-bold text-xl hover:bg-[#C67B5C] hover:text-white transition-all duration-300 flex items-center space-x-2 shadow-2xl hover:shadow-[0_10px_40px_rgba(198,123,92,0.5)] transform hover:-translate-y-2 hover:scale-105"
-            >
-              <span>Book Now</span>
-            </Link>
+              <Link
+                href="#contact"
+                className="group bg-[#C67B5C] text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-[#A85F44] transition-all duration-300 flex items-center space-x-2 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105"
+              >
+                <span>Book Now</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
