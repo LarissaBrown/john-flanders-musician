@@ -53,12 +53,12 @@ const upcomingShows: Show[] = [
 
 export default function Shows() {
   return (
-    <section id="shows" className="py-20 bg-gradient-to-b from-[#FFF8F0] to-[#F4E4C1]">
+    <section id="shows" className="py-20 bg-gradient-to-b from-[#FAF8F5] to-[#E6B8A5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-[#2C1810] mb-4">Upcoming Shows</h2>
-          <div className="w-24 h-1 bg-[#E67E22] mx-auto mb-6"></div>
-          <p className="text-xl text-[#9B4819] max-w-3xl mx-auto">
+          <h2 className="text-5xl font-bold text-[#2C2419] mb-4">Upcoming Shows</h2>
+          <div className="w-24 h-1 bg-[#D97D54] mx-auto mb-6"></div>
+          <p className="text-xl text-[#5A4A3A] max-w-3xl mx-auto">
             Join me for an unforgettable musical experience. Check out where I'll be performing next!
           </p>
         </div>
@@ -68,50 +68,50 @@ export default function Shows() {
             <div
               key={show.id}
               className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 ${
-                show.featured ? 'border-[#E67E22]' : 'border-transparent'
+                show.featured ? 'border-[#D97D54]' : 'border-transparent'
               }`}
             >
               {show.featured && (
-                <div className="bg-[#E67E22] text-white text-center py-2 px-4 text-sm font-semibold">
+                <div className="bg-[#D97D54] text-white text-center py-2 px-4 text-sm font-semibold">
                   Featured Event
                 </div>
               )}
 
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-[#2C1810] mb-4">
+                <h3 className="text-2xl font-bold text-[#2C2419] mb-4">
                   {show.title}
                 </h3>
 
                 <div className="space-y-3 mb-6">
-                  <div className="flex items-start space-x-3 text-[#9B4819]">
-                    <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0 text-[#C1440E]" />
+                  <div className="flex items-start space-x-3 text-[#5A4A3A]">
+                    <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0 text-[#C67B5C]" />
                     <div>
                       <p className="font-semibold">{show.venue}</p>
                       <p className="text-sm">{show.location}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-3 text-[#9B4819]">
-                    <Calendar className="w-5 h-5 flex-shrink-0 text-[#C1440E]" />
+                  <div className="flex items-center space-x-3 text-[#5A4A3A]">
+                    <Calendar className="w-5 h-5 flex-shrink-0 text-[#C67B5C]" />
                     <span className="font-medium">
                       {format(new Date(show.date), 'MMMM dd, yyyy')}
                     </span>
                   </div>
 
-                  <div className="flex items-center space-x-3 text-[#9B4819]">
-                    <Clock className="w-5 h-5 flex-shrink-0 text-[#C1440E]" />
+                  <div className="flex items-center space-x-3 text-[#5A4A3A]">
+                    <Clock className="w-5 h-5 flex-shrink-0 text-[#C67B5C]" />
                     <span className="font-medium">{show.time}</span>
                   </div>
                 </div>
 
                 {show.description && (
-                  <p className="text-[#9B4819] mb-6">{show.description}</p>
+                  <p className="text-[#5A4A3A] mb-6">{show.description}</p>
                 )}
 
                 {show.ticketUrl && (
                   <a
                     href={show.ticketUrl}
-                    className="inline-flex items-center space-x-2 bg-[#C1440E] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#E67E22] transition-colors"
+                    className="inline-flex items-center space-x-2 bg-[#C67B5C] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#D97D54] transition-colors"
                   >
                     <span>Get Tickets</span>
                     <ExternalLink className="w-4 h-4" />
@@ -124,8 +124,8 @@ export default function Shows() {
 
         {upcomingShows.length === 0 && (
           <div className="text-center py-12">
-            <Calendar className="w-16 h-16 text-[#C1440E] mx-auto mb-4" />
-            <p className="text-xl text-[#9B4819]">
+            <Calendar className="w-16 h-16 text-[#C67B5C] mx-auto mb-4" />
+            <p className="text-xl text-[#5A4A3A]">
               No upcoming shows scheduled at the moment. Check back soon!
             </p>
           </div>

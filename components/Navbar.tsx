@@ -33,7 +33,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#2C1810]/95 backdrop-blur-md shadow-lg'
+          ? 'bg-[#2C2419]/95 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
       }`}
     >
@@ -41,8 +41,8 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
-            <Music className="w-8 h-8 text-[#E67E22] group-hover:text-[#C1440E] transition-colors" />
-            <span className="text-2xl font-bold text-[#F4E4C1] group-hover:text-[#E67E22] transition-colors">
+            <Music className="w-8 h-8 text-[#D97D54] group-hover:text-[#C67B5C] transition-colors" />
+            <span className="text-2xl font-bold text-[#E6B8A5] group-hover:text-[#D97D54] transition-colors">
               John Flanders
             </span>
           </Link>
@@ -53,7 +53,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[#F4E4C1] hover:text-[#E67E22] transition-colors duration-200 font-medium text-lg"
+                className="text-[#E6B8A5] hover:text-[#D97D54] transition-colors duration-200 font-medium text-lg"
               >
                 {link.label}
               </Link>
@@ -62,11 +62,11 @@ export default function Navbar() {
             {/* Cart Button */}
             <button
               onClick={() => setShowCart(true)}
-              className="relative text-[#F4E4C1] hover:text-[#E67E22] transition-colors"
+              className="relative text-[#E6B8A5] hover:text-[#D97D54] transition-colors"
             >
               <ShoppingBag className="w-6 h-6" />
               {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-[#E67E22] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-[#D97D54] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                   {totalItems}
                 </span>
               )}
@@ -77,18 +77,18 @@ export default function Navbar() {
           <div className="md:hidden flex items-center space-x-4">
             <button
               onClick={() => setShowCart(true)}
-              className="relative text-[#F4E4C1] hover:text-[#E67E22] transition-colors"
+              className="relative text-[#E6B8A5] hover:text-[#D97D54] transition-colors"
             >
               <ShoppingBag className="w-6 h-6" />
               {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-[#E67E22] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-[#D97D54] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                   {totalItems}
                 </span>
               )}
             </button>
             
             <button
-              className="text-[#F4E4C1] hover:text-[#E67E22] transition-colors"
+              className="text-[#E6B8A5] hover:text-[#D97D54] transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
@@ -102,14 +102,14 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-[#2C1810]/98 backdrop-blur-md rounded-lg mt-2 mb-4 p-4 space-y-4">
+          <div className="md:hidden bg-[#2C2419]/98 backdrop-blur-md rounded-lg mt-2 mb-4 p-4 space-y-4">
             {navLinks.map((link) => {
               const Icon = link.icon;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="flex items-center space-x-3 text-[#F4E4C1] hover:text-[#E67E22] transition-colors duration-200 text-lg py-2"
+                  className="flex items-center space-x-3 text-[#E6B8A5] hover:text-[#D97D54] transition-colors duration-200 text-lg py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {Icon && <Icon className="w-5 h-5" />}

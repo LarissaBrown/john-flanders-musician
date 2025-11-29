@@ -66,25 +66,25 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
             <Check className="w-12 h-12 text-white" />
           </div>
           
-          <h2 className="text-3xl font-bold text-[#2C1810] mb-4">
+          <h2 className="text-3xl font-bold text-[#2C2419] mb-4">
             Order Complete!
           </h2>
           
-          <p className="text-[#9B4819] mb-6">
+          <p className="text-[#5A4A3A] mb-6">
             Thank you for your purchase! Your order number is:
           </p>
           
-          <div className="bg-[#F4E4C1] rounded-lg p-4 mb-6">
-            <p className="text-2xl font-bold text-[#C1440E]">{orderNumber}</p>
+          <div className="bg-[#E6B8A5] rounded-lg p-4 mb-6">
+            <p className="text-2xl font-bold text-[#C67B5C]">{orderNumber}</p>
           </div>
           
-          <p className="text-[#9B4819] mb-8">
+          <p className="text-[#5A4A3A] mb-8">
             Download links have been sent to <strong>{customerInfo.email}</strong>
           </p>
           
           <button
             onClick={onClose}
-            className="w-full bg-[#C1440E] text-white py-3 rounded-full font-semibold hover:bg-[#E67E22] transition-colors"
+            className="w-full bg-[#C67B5C] text-white py-3 rounded-full font-semibold hover:bg-[#D97D54] transition-colors"
           >
             Close
           </button>
@@ -100,11 +100,11 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
         
         <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           {/* Header */}
-          <div className="sticky top-0 bg-white border-b border-[#F4E4C1] p-6 flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-[#2C1810]">Checkout</h2>
+          <div className="sticky top-0 bg-white border-b border-[#E6B8A5] p-6 flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-[#2C2419]">Checkout</h2>
             <button
               onClick={onClose}
-              className="text-[#9B4819] hover:text-[#C1440E] transition-colors"
+              className="text-[#5A4A3A] hover:text-[#C67B5C] transition-colors"
             >
               <X className="w-6 h-6" />
             </button>
@@ -113,21 +113,21 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
           <div className="p-6">
             {/* Order Summary */}
             <div className="mb-8">
-              <h3 className="text-xl font-bold text-[#2C1810] mb-4">Order Summary</h3>
-              <div className="bg-[#FFF8F0] rounded-lg p-4 space-y-3">
+              <h3 className="text-xl font-bold text-[#2C2419] mb-4">Order Summary</h3>
+              <div className="bg-[#FAF8F5] rounded-lg p-4 space-y-3">
                 {cart.map((item) => (
                   <div key={item.productId} className="flex justify-between text-sm">
-                    <span className="text-[#9B4819]">
+                    <span className="text-[#5A4A3A]">
                       {item.title} x{item.quantity}
                     </span>
-                    <span className="font-semibold text-[#2C1810]">
+                    <span className="font-semibold text-[#2C2419]">
                       ${(item.price * item.quantity).toFixed(2)}
                     </span>
                   </div>
                 ))}
-                <div className="border-t border-[#F4E4C1] pt-3 flex justify-between">
-                  <span className="font-bold text-[#2C1810]">Total:</span>
-                  <span className="font-bold text-[#C1440E] text-xl">
+                <div className="border-t border-[#E6B8A5] pt-3 flex justify-between">
+                  <span className="font-bold text-[#2C2419]">Total:</span>
+                  <span className="font-bold text-[#C67B5C] text-xl">
                     ${totalPrice.toFixed(2)}
                   </span>
                 </div>
@@ -136,14 +136,14 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
 
             {/* Customer Information */}
             <div className="mb-8">
-              <h3 className="text-xl font-bold text-[#2C1810] mb-4">Your Information</h3>
+              <h3 className="text-xl font-bold text-[#2C2419] mb-4">Your Information</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-[#2C1810] font-semibold mb-2">
+                  <label className="block text-[#2C2419] font-semibold mb-2">
                     Name *
                   </label>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#9B4819]" />
+                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#5A4A3A]" />
                     <input
                       type="text"
                       value={customerInfo.name}
@@ -151,18 +151,18 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                         setCustomerInfo({ ...customerInfo, name: e.target.value })
                       }
                       required
-                      className="w-full pl-12 pr-4 py-3 border-2 border-[#F4E4C1] rounded-lg focus:border-[#E67E22] focus:outline-none transition-colors"
+                      className="w-full pl-12 pr-4 py-3 border-2 border-[#E6B8A5] rounded-lg focus:border-[#D97D54] focus:outline-none transition-colors"
                       placeholder="Your full name"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-[#2C1810] font-semibold mb-2">
+                  <label className="block text-[#2C2419] font-semibold mb-2">
                     Email *
                   </label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#9B4819]" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#5A4A3A]" />
                     <input
                       type="email"
                       value={customerInfo.email}
@@ -170,11 +170,11 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                         setCustomerInfo({ ...customerInfo, email: e.target.value })
                       }
                       required
-                      className="w-full pl-12 pr-4 py-3 border-2 border-[#F4E4C1] rounded-lg focus:border-[#E67E22] focus:outline-none transition-colors"
+                      className="w-full pl-12 pr-4 py-3 border-2 border-[#E6B8A5] rounded-lg focus:border-[#D97D54] focus:outline-none transition-colors"
                       placeholder="your@email.com"
                     />
                   </div>
-                  <p className="text-sm text-[#9B4819] mt-1">
+                  <p className="text-sm text-[#5A4A3A] mt-1">
                     Download links will be sent to this email
                   </p>
                 </div>
@@ -183,30 +183,30 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
 
             {/* Payment Method Selection */}
             <div className="mb-8">
-              <h3 className="text-xl font-bold text-[#2C1810] mb-4">Payment Method</h3>
+              <h3 className="text-xl font-bold text-[#2C2419] mb-4">Payment Method</h3>
               <div className="grid grid-cols-2 gap-4">
                 <button
                   onClick={() => setPaymentMethod('paypal')}
                   className={`p-4 border-2 rounded-lg transition-all ${
                     paymentMethod === 'paypal'
-                      ? 'border-[#E67E22] bg-[#FFF8F0]'
-                      : 'border-[#F4E4C1] hover:border-[#E67E22]'
+                      ? 'border-[#D97D54] bg-[#FAF8F5]'
+                      : 'border-[#E6B8A5] hover:border-[#D97D54]'
                   }`}
                 >
                   <CreditCard className="w-8 h-8 mx-auto mb-2 text-[#0070BA]" />
-                  <p className="font-semibold text-[#2C1810]">PayPal</p>
+                  <p className="font-semibold text-[#2C2419]">PayPal</p>
                 </button>
 
                 <button
                   onClick={() => setPaymentMethod('venmo')}
                   className={`p-4 border-2 rounded-lg transition-all ${
                     paymentMethod === 'venmo'
-                      ? 'border-[#E67E22] bg-[#FFF8F0]'
-                      : 'border-[#F4E4C1] hover:border-[#E67E22]'
+                      ? 'border-[#D97D54] bg-[#FAF8F5]'
+                      : 'border-[#E6B8A5] hover:border-[#D97D54]'
                   }`}
                 >
                   <CreditCard className="w-8 h-8 mx-auto mb-2 text-[#008CFF]" />
-                  <p className="font-semibold text-[#2C1810]">Venmo</p>
+                  <p className="font-semibold text-[#2C2419]">Venmo</p>
                 </button>
               </div>
             </div>
@@ -252,11 +252,11 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
 
             {/* Venmo Instructions */}
             {paymentMethod === 'venmo' && customerInfo.name && customerInfo.email && (
-              <div className="bg-[#FFF8F0] border-2 border-[#E67E22] rounded-lg p-6">
-                <h4 className="font-bold text-[#2C1810] mb-3">
+              <div className="bg-[#FAF8F5] border-2 border-[#D97D54] rounded-lg p-6">
+                <h4 className="font-bold text-[#2C2419] mb-3">
                   Complete Payment via Venmo
                 </h4>
-                <ol className="list-decimal list-inside space-y-2 text-[#9B4819] mb-4">
+                <ol className="list-decimal list-inside space-y-2 text-[#5A4A3A] mb-4">
                   <li>Send ${totalPrice.toFixed(2)} to <strong>@JohnFlanders-Music</strong></li>
                   <li>Include your order email in the note</li>
                   <li>Click the button below after payment</li>
@@ -267,18 +267,18 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                 >
                   I've Sent Payment via Venmo
                 </button>
-                <p className="text-xs text-[#9B4819] mt-3 text-center">
+                <p className="text-xs text-[#5A4A3A] mt-3 text-center">
                   Your download links will be sent after payment verification (usually within 1 hour)
                 </p>
               </div>
             )}
 
             {!customerInfo.name || !customerInfo.email ? (
-              <p className="text-center text-[#9B4819] italic">
+              <p className="text-center text-[#5A4A3A] italic">
                 Please fill in your information to continue
               </p>
             ) : !paymentMethod ? (
-              <p className="text-center text-[#9B4819] italic">
+              <p className="text-center text-[#5A4A3A] italic">
                 Please select a payment method
               </p>
             ) : null}

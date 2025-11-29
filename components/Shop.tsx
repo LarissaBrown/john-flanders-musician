@@ -96,12 +96,12 @@ export default function Shop() {
   };
 
   return (
-    <section id="shop" className="py-20 bg-gradient-to-b from-[#FFF8F0] to-[#F4E4C1]">
+    <section id="shop" className="py-20 bg-gradient-to-b from-[#FAF8F5] to-[#E6B8A5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-[#2C1810] mb-4">Music Shop</h2>
-          <div className="w-24 h-1 bg-[#E67E22] mx-auto mb-6"></div>
-          <p className="text-xl text-[#9B4819] max-w-3xl mx-auto">
+          <h2 className="text-5xl font-bold text-[#2C2419] mb-4">Music Shop</h2>
+          <div className="w-24 h-1 bg-[#D97D54] mx-auto mb-6"></div>
+          <p className="text-xl text-[#5A4A3A] max-w-3xl mx-auto">
             Purchase and download high-quality recordings to enjoy anywhere
           </p>
         </div>
@@ -115,8 +115,8 @@ export default function Shop() {
                 onClick={() => setActiveTab(tab as typeof activeTab)}
                 className={`px-6 py-3 rounded-full font-semibold transition-all capitalize ${
                   activeTab === tab
-                    ? 'bg-[#C1440E] text-white'
-                    : 'text-[#9B4819] hover:bg-[#F4E4C1]'
+                    ? 'bg-[#C67B5C] text-white'
+                    : 'text-[#5A4A3A] hover:bg-[#E6B8A5]'
                 }`}
               >
                 {tab}s
@@ -131,11 +131,11 @@ export default function Shop() {
             <div
               key={product._id}
               className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden ${
-                product.featured ? 'border-2 border-[#E67E22]' : ''
+                product.featured ? 'border-2 border-[#D97D54]' : ''
               }`}
             >
               {/* Product Image/Icon */}
-              <div className="relative bg-gradient-to-br from-[#E67E22] to-[#C1440E] aspect-square flex items-center justify-center">
+              <div className="relative bg-gradient-to-br from-[#D97D54] to-[#C67B5C] aspect-square flex items-center justify-center">
                 <div className="absolute inset-0 bg-black/10"></div>
                 {product.type === 'album' ? (
                   <Disc className="w-24 h-24 text-white/90 relative z-10" />
@@ -144,14 +144,14 @@ export default function Shop() {
                 )}
                 
                 {product.featured && (
-                  <div className="absolute top-4 left-4 bg-[#2C1810] text-[#F4E4C1] px-3 py-1 rounded-full text-sm font-semibold">
+                  <div className="absolute top-4 left-4 bg-[#2C2419] text-[#E6B8A5] px-3 py-1 rounded-full text-sm font-semibold">
                     Featured
                   </div>
                 )}
 
                 {product.audioPreviewUrl && (
                   <button className="absolute bottom-4 right-4 bg-white/90 hover:bg-white rounded-full p-3 transition-all z-10">
-                    <Play className="w-5 h-5 text-[#C1440E] ml-0.5" />
+                    <Play className="w-5 h-5 text-[#C67B5C] ml-0.5" />
                   </button>
                 )}
               </div>
@@ -160,10 +160,10 @@ export default function Shop() {
               <div className="p-6">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-[#2C1810] mb-1">
+                    <h3 className="text-xl font-bold text-[#2C2419] mb-1">
                       {product.title}
                     </h3>
-                    <div className="flex items-center space-x-2 text-sm text-[#9B4819]">
+                    <div className="flex items-center space-x-2 text-sm text-[#5A4A3A]">
                       <span className="capitalize">{product.type}</span>
                       {product.genre && (
                         <>
@@ -174,24 +174,24 @@ export default function Shop() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-bold text-[#C1440E]">
+                    <p className="text-2xl font-bold text-[#C67B5C]">
                       ${product.price.toFixed(2)}
                     </p>
                   </div>
                 </div>
 
                 {product.description && (
-                  <p className="text-[#9B4819] mb-4 text-sm">
+                  <p className="text-[#5A4A3A] mb-4 text-sm">
                     {product.description}
                   </p>
                 )}
 
                 {product.trackListing && product.trackListing.length > 0 && (
                   <div className="mb-4">
-                    <p className="text-sm font-semibold text-[#2C1810] mb-2">
+                    <p className="text-sm font-semibold text-[#2C2419] mb-2">
                       Track Listing ({product.trackListing.length} tracks):
                     </p>
-                    <ul className="text-xs text-[#9B4819] space-y-1">
+                    <ul className="text-xs text-[#5A4A3A] space-y-1">
                       {product.trackListing.slice(0, 3).map((track, idx) => (
                         <li key={idx}>
                           {idx + 1}. {track}
@@ -207,7 +207,7 @@ export default function Shop() {
                 )}
 
                 {product.duration && (
-                  <p className="text-sm text-[#9B4819] mb-4">
+                  <p className="text-sm text-[#5A4A3A] mb-4">
                     Duration: {product.duration}
                   </p>
                 )}
@@ -218,7 +218,7 @@ export default function Shop() {
                   className={`w-full py-3 rounded-full font-semibold transition-all flex items-center justify-center space-x-2 ${
                     addedToCart === product._id
                       ? 'bg-green-500 text-white'
-                      : 'bg-[#C1440E] text-white hover:bg-[#E67E22]'
+                      : 'bg-[#C67B5C] text-white hover:bg-[#D97D54]'
                   }`}
                 >
                   {addedToCart === product._id ? (
@@ -240,8 +240,8 @@ export default function Shop() {
 
         {filteredProducts.length === 0 && (
           <div className="text-center py-12">
-            <ShoppingBag className="w-16 h-16 text-[#C1440E] mx-auto mb-4 opacity-50" />
-            <p className="text-xl text-[#9B4819]">
+            <ShoppingBag className="w-16 h-16 text-[#C67B5C] mx-auto mb-4 opacity-50" />
+            <p className="text-xl text-[#5A4A3A]">
               No {activeTab !== 'all' ? activeTab + 's' : 'products'} available yet.
             </p>
           </div>
@@ -249,24 +249,24 @@ export default function Shop() {
 
         {/* Info Box */}
         <div className="mt-12 bg-white rounded-2xl shadow-lg p-8 max-w-3xl mx-auto">
-          <h3 className="text-2xl font-bold text-[#2C1810] mb-4">
+          <h3 className="text-2xl font-bold text-[#2C2419] mb-4">
             About Digital Downloads
           </h3>
-          <ul className="space-y-3 text-[#9B4819]">
+          <ul className="space-y-3 text-[#5A4A3A]">
             <li className="flex items-start space-x-3">
-              <Check className="w-5 h-5 text-[#E67E22] mt-0.5 flex-shrink-0" />
+              <Check className="w-5 h-5 text-[#D97D54] mt-0.5 flex-shrink-0" />
               <span>High-quality MP3 files (320kbps)</span>
             </li>
             <li className="flex items-start space-x-3">
-              <Check className="w-5 h-5 text-[#E67E22] mt-0.5 flex-shrink-0" />
+              <Check className="w-5 h-5 text-[#D97D54] mt-0.5 flex-shrink-0" />
               <span>Instant download after purchase</span>
             </li>
             <li className="flex items-start space-x-3">
-              <Check className="w-5 h-5 text-[#E67E22] mt-0.5 flex-shrink-0" />
+              <Check className="w-5 h-5 text-[#D97D54] mt-0.5 flex-shrink-0" />
               <span>No DRM - play on any device</span>
             </li>
             <li className="flex items-start space-x-3">
-              <Check className="w-5 h-5 text-[#E67E22] mt-0.5 flex-shrink-0" />
+              <Check className="w-5 h-5 text-[#D97D54] mt-0.5 flex-shrink-0" />
               <span>Secure payment via PayPal or Venmo</span>
             </li>
           </ul>

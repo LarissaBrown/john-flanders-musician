@@ -7,18 +7,18 @@ export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<'events' | 'media' | 'contacts'>('events');
 
   return (
-    <div className="min-h-screen bg-[#FFF8F0]">
+    <div className="min-h-screen bg-[#FAF8F5]">
       {/* Header */}
-      <header className="bg-[#2C1810] text-[#F4E4C1] py-6 shadow-lg">
+      <header className="bg-[#2C2419] text-[#E6B8A5] py-6 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <Music className="w-8 h-8 text-[#E67E22]" />
+              <Music className="w-8 h-8 text-[#D97D54]" />
               <h1 className="text-3xl font-bold">Admin Dashboard</h1>
             </div>
             <a
               href="/"
-              className="text-[#E67E22] hover:text-[#F4E4C1] transition-colors"
+              className="text-[#D97D54] hover:text-[#E6B8A5] transition-colors"
             >
               ← Back to Site
             </a>
@@ -34,8 +34,8 @@ export default function AdminPage() {
               onClick={() => setActiveTab('events')}
               className={`flex items-center space-x-2 px-6 py-4 font-semibold transition-colors ${
                 activeTab === 'events'
-                  ? 'border-b-4 border-[#E67E22] text-[#C1440E]'
-                  : 'text-[#9B4819] hover:text-[#C1440E]'
+                  ? 'border-b-4 border-[#D97D54] text-[#C67B5C]'
+                  : 'text-[#5A4A3A] hover:text-[#C67B5C]'
               }`}
             >
               <Calendar className="w-5 h-5" />
@@ -45,8 +45,8 @@ export default function AdminPage() {
               onClick={() => setActiveTab('media')}
               className={`flex items-center space-x-2 px-6 py-4 font-semibold transition-colors ${
                 activeTab === 'media'
-                  ? 'border-b-4 border-[#E67E22] text-[#C1440E]'
-                  : 'text-[#9B4819] hover:text-[#C1440E]'
+                  ? 'border-b-4 border-[#D97D54] text-[#C67B5C]'
+                  : 'text-[#5A4A3A] hover:text-[#C67B5C]'
               }`}
             >
               <Film className="w-5 h-5" />
@@ -56,8 +56,8 @@ export default function AdminPage() {
               onClick={() => setActiveTab('contacts')}
               className={`flex items-center space-x-2 px-6 py-4 font-semibold transition-colors ${
                 activeTab === 'contacts'
-                  ? 'border-b-4 border-[#E67E22] text-[#C1440E]'
-                  : 'text-[#9B4819] hover:text-[#C1440E]'
+                  ? 'border-b-4 border-[#D97D54] text-[#C67B5C]'
+                  : 'text-[#5A4A3A] hover:text-[#C67B5C]'
               }`}
             >
               <MessageSquare className="w-5 h-5" />
@@ -69,15 +69,15 @@ export default function AdminPage() {
             {activeTab === 'events' && (
               <div>
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-2xl font-bold text-[#2C1810]">
+                  <h2 className="text-2xl font-bold text-[#2C2419]">
                     Manage Events
                   </h2>
-                  <button className="bg-[#C1440E] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#E67E22] transition-colors flex items-center space-x-2">
+                  <button className="bg-[#C67B5C] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#D97D54] transition-colors flex items-center space-x-2">
                     <Plus className="w-5 h-5" />
                     <span>Add Event</span>
                   </button>
                 </div>
-                <div className="text-center py-12 text-[#9B4819]">
+                <div className="text-center py-12 text-[#5A4A3A]">
                   <Calendar className="w-16 h-16 mx-auto mb-4 opacity-50" />
                   <p className="text-lg">
                     Event management interface will be implemented here.
@@ -92,15 +92,15 @@ export default function AdminPage() {
             {activeTab === 'media' && (
               <div>
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-2xl font-bold text-[#2C1810]">
+                  <h2 className="text-2xl font-bold text-[#2C2419]">
                     Manage Media
                   </h2>
-                  <button className="bg-[#C1440E] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#E67E22] transition-colors flex items-center space-x-2">
+                  <button className="bg-[#C67B5C] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#D97D54] transition-colors flex items-center space-x-2">
                     <Plus className="w-5 h-5" />
                     <span>Add Media</span>
                   </button>
                 </div>
-                <div className="text-center py-12 text-[#9B4819]">
+                <div className="text-center py-12 text-[#5A4A3A]">
                   <Film className="w-16 h-16 mx-auto mb-4 opacity-50" />
                   <p className="text-lg">
                     Media management interface will be implemented here.
@@ -114,10 +114,10 @@ export default function AdminPage() {
 
             {activeTab === 'contacts' && (
               <div>
-                <h2 className="text-2xl font-bold text-[#2C1810] mb-6">
+                <h2 className="text-2xl font-bold text-[#2C2419] mb-6">
                   Contact Inquiries
                 </h2>
-                <div className="text-center py-12 text-[#9B4819]">
+                <div className="text-center py-12 text-[#5A4A3A]">
                   <MessageSquare className="w-16 h-16 mx-auto mb-4 opacity-50" />
                   <p className="text-lg">
                     Contact management interface will be implemented here.
@@ -136,30 +136,30 @@ export default function AdminPage() {
           <div className="bg-white rounded-lg shadow-lg p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-[#9B4819] text-sm font-medium">Total Events</p>
-                <p className="text-3xl font-bold text-[#2C1810] mt-2">0</p>
+                <p className="text-[#5A4A3A] text-sm font-medium">Total Events</p>
+                <p className="text-3xl font-bold text-[#2C2419] mt-2">0</p>
               </div>
-              <Calendar className="w-12 h-12 text-[#E67E22] opacity-50" />
+              <Calendar className="w-12 h-12 text-[#D97D54] opacity-50" />
             </div>
           </div>
 
           <div className="bg-white rounded-lg shadow-lg p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-[#9B4819] text-sm font-medium">Media Items</p>
-                <p className="text-3xl font-bold text-[#2C1810] mt-2">0</p>
+                <p className="text-[#5A4A3A] text-sm font-medium">Media Items</p>
+                <p className="text-3xl font-bold text-[#2C2419] mt-2">0</p>
               </div>
-              <Film className="w-12 h-12 text-[#E67E22] opacity-50" />
+              <Film className="w-12 h-12 text-[#D97D54] opacity-50" />
             </div>
           </div>
 
           <div className="bg-white rounded-lg shadow-lg p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-[#9B4819] text-sm font-medium">New Contacts</p>
-                <p className="text-3xl font-bold text-[#2C1810] mt-2">0</p>
+                <p className="text-[#5A4A3A] text-sm font-medium">New Contacts</p>
+                <p className="text-3xl font-bold text-[#2C2419] mt-2">0</p>
               </div>
-              <MessageSquare className="w-12 h-12 text-[#E67E22] opacity-50" />
+              <MessageSquare className="w-12 h-12 text-[#D97D54] opacity-50" />
             </div>
           </div>
         </div>

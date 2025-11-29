@@ -1,30 +1,76 @@
 @import "tailwindcss";
 
 :root {
-  /* Southwest Canyon Color Palette */
-  --canyon-red: #C1440E;
-  --canyon-orange: #E67E22;
-  --canyon-terracotta: #D35400;
-  --canyon-sand: #F4E4C1;
-  --canyon-clay: #9B4819;
-  --canyon-stone: #8B7355;
-  --canyon-sky: #87CEEB;
-  --canyon-sage: #9CAF88;
-  --background: #FFF8F0;
-  --foreground: #2C1810;
+  /* 
+    REFINED SOUTHWEST COLOR PALETTE
+    Based on Color Theory Best Practices:
+    - 60-30-10 Rule: Dominant (neutrals), Secondary (warm tones), Accent (terracotta)
+    - WCAG AA Compliant: All text meets 4.5:1 contrast ratio
+    - Analogous Color Harmony: Warm earth tones with strategic accents
+  */
+  
+  /* PRIMARY PALETTE - 60% (Dominant Neutrals) */
+  --background: #FAF8F5;           /* Warm Off-White - soft, welcoming */
+  --surface: #FFFFFF;              /* Pure White - clean cards/surfaces */
+  --foreground: #2C2419;           /* Rich Dark Brown - excellent readability */
+  --foreground-light: #5A4A3A;    /* Medium Brown - secondary text */
+  
+  /* SECONDARY PALETTE - 30% (Warm Southwest Tones) */
+  --primary: #C67B5C;              /* Soft Terracotta - warm, inviting */
+  --primary-dark: #A85F44;         /* Deep Terracotta - hover states */
+  --primary-light: #E6B8A5;        /* Light Terracotta - backgrounds */
+  
+  --secondary: #8B6F47;            /* Warm Tan - earthy, grounded */
+  --secondary-light: #C4A574;      /* Golden Tan - highlights */
+  
+  /* ACCENT PALETTE - 10% (Strategic Highlights) */
+  --accent: #D97D54;               /* Sunset Coral - call-to-action */
+  --accent-warm: #E09B7C;          /* Warm Peach - gentle accents */
+  
+  /* NEUTRAL SPECTRUM */
+  --gray-50: #F9F7F4;
+  --gray-100: #EBE7E0;
+  --gray-200: #D6CEC1;
+  --gray-300: #B8ADA0;
+  --gray-400: #968978;
+  --gray-500: #6D5F4E;
+  
+  /* SEMANTIC COLORS */
+  --success: #7BA05B;              /* Sage Green - success states */
+  --error: #C84C40;                /* Muted Red - errors */
+  --warning: #D99A4A;              /* Golden - warnings */
+  --info: #6B8CAE;                 /* Soft Blue - information */
+  
+  /* SHADOWS & OVERLAYS */
+  --shadow-sm: 0 1px 2px rgba(44, 36, 25, 0.05);
+  --shadow-md: 0 4px 6px rgba(44, 36, 25, 0.07);
+  --shadow-lg: 0 10px 15px rgba(44, 36, 25, 0.1);
+  --shadow-xl: 0 20px 25px rgba(44, 36, 25, 0.15);
+  
+  --overlay-light: rgba(255, 255, 255, 0.95);
+  --overlay-dark: rgba(44, 36, 25, 0.75);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
-  --color-canyon-red: var(--canyon-red);
-  --color-canyon-orange: var(--canyon-orange);
-  --color-canyon-terracotta: var(--canyon-terracotta);
-  --color-canyon-sand: var(--canyon-sand);
-  --color-canyon-clay: var(--canyon-clay);
-  --color-canyon-stone: var(--canyon-stone);
-  --color-canyon-sky: var(--canyon-sky);
-  --color-canyon-sage: var(--canyon-sage);
+  --color-foreground-light: var(--foreground-light);
+  
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+  
+  --color-accent: var(--accent);
+  --color-accent-warm: var(--accent-warm);
+  
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
 }
 
 * {
@@ -42,6 +88,8 @@ body {
   color: var(--foreground);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom scrollbar */
@@ -50,16 +98,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--canyon-sand);
+  background: var(--gray-100);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--canyon-terracotta);
+  background: var(--primary);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--canyon-red);
+  background: var(--primary-dark);
 }
 
 /* Animations */
@@ -78,11 +126,23 @@ body {
   animation: fadeInUp 0.8s ease-out;
 }
 
-/* Background texture overlay */
-.canyon-texture {
+/* Subtle background texture */
+.subtle-texture {
   position: relative;
   background-image: 
-    linear-gradient(90deg, rgba(193, 68, 14, 0.05) 1px, transparent 1px),
-    linear-gradient(rgba(193, 68, 14, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
+    linear-gradient(90deg, rgba(198, 123, 92, 0.02) 1px, transparent 1px),
+    linear-gradient(rgba(198, 123, 92, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--primary-light);
+  color: var(--foreground);
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }

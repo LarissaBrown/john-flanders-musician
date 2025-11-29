@@ -27,12 +27,12 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-[#FFF8F0]">
+    <section id="about" className="py-20 bg-[#FAF8F5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-[#2C1810] mb-4">About John</h2>
-          <div className="w-24 h-1 bg-[#E67E22] mx-auto mb-6"></div>
-          <p className="text-xl text-[#9B4819] max-w-3xl mx-auto">
+          <h2 className="text-5xl font-bold text-[#2C2419] mb-4">About John</h2>
+          <div className="w-24 h-1 bg-[#D97D54] mx-auto mb-6"></div>
+          <p className="text-xl text-[#5A4A3A] max-w-3xl mx-auto">
             A passionate musician dedicated to creating unforgettable experiences through sound
           </p>
         </div>
@@ -40,23 +40,23 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           {/* Image Placeholder */}
           <div className="relative">
-            <div className="aspect-[4/5] bg-gradient-to-br from-[#E67E22] to-[#C1440E] rounded-2xl shadow-2xl overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center text-[#F4E4C1]">
+            <div className="aspect-[4/5] bg-gradient-to-br from-[#D97D54] to-[#C67B5C] rounded-2xl shadow-2xl overflow-hidden">
+              <div className="absolute inset-0 flex items-center justify-center text-[#E6B8A5]">
                 <div className="text-center">
                   <Music2 className="w-24 h-24 mx-auto mb-4 opacity-50" />
                   <p className="text-lg">Photo Coming Soon</p>
                 </div>
               </div>
             </div>
-            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-[#9B4819] rounded-full -z-10 opacity-20"></div>
+            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-[#5A4A3A] rounded-full -z-10 opacity-20"></div>
           </div>
 
           {/* Bio */}
           <div>
-            <h3 className="text-3xl font-bold text-[#2C1810] mb-6">
+            <h3 className="text-3xl font-bold text-[#2C2419] mb-6">
               Musician • Performer • Artist
             </h3>
-            <div className="space-y-4 text-[#9B4819] text-lg leading-relaxed">
+            <div className="space-y-4 text-[#5A4A3A] text-lg leading-relaxed">
               <p>
                 John Flanders is a seasoned multi-instrumentalist whose music captures
                 the essence of the American Southwest. With over 15 years of professional
@@ -84,13 +84,13 @@ export default function About() {
             return (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-[#E67E22]"
+                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-[#D97D54]"
               >
-                <Icon className="w-12 h-12 text-[#C1440E] mb-4" />
-                <h4 className="text-xl font-semibold text-[#2C1810] mb-2">
+                <Icon className="w-12 h-12 text-[#C67B5C] mb-4" />
+                <h4 className="text-xl font-semibold text-[#2C2419] mb-2">
                   {item.title}
                 </h4>
-                <p className="text-[#9B4819]">{item.description}</p>
+                <p className="text-[#5A4A3A]">{item.description}</p>
               </div>
             );
           })}

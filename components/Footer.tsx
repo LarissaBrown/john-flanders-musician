@@ -7,16 +7,16 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#2C1810] text-[#F4E4C1] pt-12 pb-6">
+    <footer className="bg-[#2C2419] text-[#E6B8A5] pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <Music className="w-8 h-8 text-[#E67E22]" />
+              <Music className="w-8 h-8 text-[#D97D54]" />
               <span className="text-2xl font-bold">John Flanders</span>
             </div>
-            <p className="text-[#D35400] text-sm leading-relaxed">
+            <p className="text-[#C4A574] text-sm leading-relaxed">
               Multi-instrumentalist musician bringing the spirit of the Southwest
               to every performance. Available for bookings and private events.
             </p>
@@ -24,25 +24,25 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-[#E67E22]">Quick Links</h3>
+            <h3 className="text-xl font-semibold mb-4 text-[#D97D54]">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="#about" className="hover:text-[#E67E22] transition-colors">
+                <Link href="#about" className="hover:text-[#D97D54] transition-colors">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="#shows" className="hover:text-[#E67E22] transition-colors">
+                <Link href="#shows" className="hover:text-[#D97D54] transition-colors">
                   Upcoming Shows
                 </Link>
               </li>
               <li>
-                <Link href="#media" className="hover:text-[#E67E22] transition-colors">
+                <Link href="#media" className="hover:text-[#D97D54] transition-colors">
                   Media Gallery
                 </Link>
               </li>
               <li>
-                <Link href="#contact" className="hover:text-[#E67E22] transition-colors">
+                <Link href="#contact" className="hover:text-[#D97D54] transition-colors">
                   Book Now
                 </Link>
               </li>
@@ -51,13 +51,13 @@ export default function Footer() {
 
           {/* Connect */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-[#E67E22]">Connect</h3>
+            <h3 className="text-xl font-semibold mb-4 text-[#D97D54]">Connect</h3>
             <div className="flex space-x-4 mb-4">
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#C1440E] hover:bg-[#E67E22] p-2 rounded-full transition-colors"
+                className="bg-[#C67B5C] hover:bg-[#D97D54] p-2 rounded-full transition-colors"
               >
                 <Facebook className="w-5 h-5" />
               </a>
@@ -65,7 +65,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#C1440E] hover:bg-[#E67E22] p-2 rounded-full transition-colors"
+                className="bg-[#C67B5C] hover:bg-[#D97D54] p-2 rounded-full transition-colors"
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -73,25 +73,25 @@ export default function Footer() {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#C1440E] hover:bg-[#E67E22] p-2 rounded-full transition-colors"
+                className="bg-[#C67B5C] hover:bg-[#D97D54] p-2 rounded-full transition-colors"
               >
                 <Youtube className="w-5 h-5" />
               </a>
               <a
                 href="mailto:info@johnflanders.com"
-                className="bg-[#C1440E] hover:bg-[#E67E22] p-2 rounded-full transition-colors"
+                className="bg-[#C67B5C] hover:bg-[#D97D54] p-2 rounded-full transition-colors"
               >
                 <Mail className="w-5 h-5" />
               </a>
             </div>
-            <p className="text-sm text-[#D35400]">
+            <p className="text-sm text-[#C4A574]">
               Email: info@johnflanders.com
             </p>
           </div>
         </div>
 
-        <div className="border-t border-[#C1440E] pt-6 text-center">
-          <p className="text-[#D35400] text-sm">
+        <div className="border-t border-[#C67B5C] pt-6 text-center">
+          <p className="text-[#A85F44] text-sm">
             © {currentYear} John Flanders. All rights reserved. | Website designed with passion for music.
           </p>
         </div>
