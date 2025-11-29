@@ -2,70 +2,63 @@
 
 :root {
   /* 
-    REFINED SOUTHWEST COLOR PALETTE
-    Based on Color Theory Best Practices:
-    - 60-30-10 Rule: Dominant (neutrals), Secondary (warm tones), Accent (terracotta)
-    - WCAG AA Compliant: All text meets 4.5:1 contrast ratio
-    - Analogous Color Harmony: Warm earth tones with strategic accents
+    MUBI-INSPIRED SOPHISTICATED PALETTE
+    Dark + Gold Premium Aesthetic
   */
   
-  /* PRIMARY PALETTE - 60% (Dominant Neutrals) */
-  --background: #FAF8F5;           /* Warm Off-White - soft, welcoming */
-  --surface: #FFFFFF;              /* Pure White - clean cards/surfaces */
-  --foreground: #2C2419;           /* Rich Dark Brown - excellent readability */
-  --foreground-light: #5A4A3A;    /* Medium Brown - secondary text */
+  /* PRIMARY COLORS - Dark Sophistication */
+  --background: #1C1612;           /* Deep Charcoal Brown - main bg */
+  --surface: #2D241E;              /* Rich Dark Brown - cards/surfaces */
+  --surface-elevated: #3A2F28;     /* Elevated elements */
   
-  /* SECONDARY PALETTE - 30% (Warm Southwest Tones) */
-  --primary: #C67B5C;              /* Soft Terracotta - warm, inviting */
-  --primary-dark: #A85F44;         /* Deep Terracotta - hover states */
-  --primary-light: #E6B8A5;        /* Light Terracotta - backgrounds */
+  /* GOLDEN ACCENTS - Premium Highlight */
+  --gold: #F6B800;                 /* Vibrant Gold - primary CTA */
+  --gold-dark: #D9A300;            /* Deep Gold - hover states */
+  --gold-light: #FFCA28;           /* Light Gold - highlights */
+  --gold-muted: #C9A55C;           /* Muted Gold - subtle accents */
   
-  --secondary: #8B6F47;            /* Warm Tan - earthy, grounded */
-  --secondary-light: #C4A574;      /* Golden Tan - highlights */
+  /* TEXT COLORS */
+  --foreground: #F5F0E8;           /* Warm Off-White - primary text */
+  --foreground-muted: #B8AFA3;     /* Muted Tan - secondary text */
+  --foreground-subtle: #8A8078;    /* Subtle Brown - tertiary text */
   
-  /* ACCENT PALETTE - 10% (Strategic Highlights) */
-  --accent: #D97D54;               /* Sunset Coral - call-to-action */
-  --accent-warm: #E09B7C;          /* Warm Peach - gentle accents */
-  
-  /* NEUTRAL SPECTRUM */
-  --gray-50: #F9F7F4;
-  --gray-100: #EBE7E0;
-  --gray-200: #D6CEC1;
-  --gray-300: #B8ADA0;
-  --gray-400: #968978;
-  --gray-500: #6D5F4E;
+  /* SOUTHWEST ACCENT (Subtle) */
+  --terracotta: #C67B5C;           /* Soft Terracotta - optional accent */
+  --terracotta-muted: #A8664B;     /* Muted Terracotta */
   
   /* SEMANTIC COLORS */
-  --success: #7BA05B;              /* Sage Green - success states */
-  --error: #C84C40;                /* Muted Red - errors */
-  --warning: #D99A4A;              /* Golden - warnings */
-  --info: #6B8CAE;                 /* Soft Blue - information */
+  --success: #7BA05B;
+  --error: #C84C40;
+  --warning: #F6B800;              /* Uses gold */
+  --info: #6B8CAE;
   
   /* SHADOWS & OVERLAYS */
-  --shadow-sm: 0 1px 2px rgba(44, 36, 25, 0.05);
-  --shadow-md: 0 4px 6px rgba(44, 36, 25, 0.07);
-  --shadow-lg: 0 10px 15px rgba(44, 36, 25, 0.1);
-  --shadow-xl: 0 20px 25px rgba(44, 36, 25, 0.15);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.6);
+  --shadow-gold: 0 8px 24px rgba(246, 184, 0, 0.3);
   
-  --overlay-light: rgba(255, 255, 255, 0.95);
-  --overlay-dark: rgba(44, 36, 25, 0.75);
+  --overlay-dark: rgba(28, 22, 18, 0.9);
+  --overlay-darker: rgba(28, 22, 18, 0.95);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  
+  --color-gold: var(--gold);
+  --color-gold-dark: var(--gold-dark);
+  --color-gold-light: var(--gold-light);
+  --color-gold-muted: var(--gold-muted);
+  
   --color-foreground: var(--foreground);
-  --color-foreground-light: var(--foreground-light);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
   
-  --color-primary: var(--primary);
-  --color-primary-dark: var(--primary-dark);
-  --color-primary-light: var(--primary-light);
-  
-  --color-secondary: var(--secondary);
-  --color-secondary-light: var(--secondary-light);
-  
-  --color-accent: var(--accent);
-  --color-accent-warm: var(--accent-warm);
+  --color-terracotta: var(--terracotta);
+  --color-terracotta-muted: var(--terracotta-muted);
   
   --color-success: var(--success);
   --color-error: var(--error);
@@ -92,22 +85,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Dark + Gold */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--gray-100);
+  background: var(--surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 5px;
+  background: var(--gold-muted);
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark);
+  background: var(--gold);
 }
 
 /* Animations */
@@ -122,27 +115,55 @@ body {
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out;
 }
 
-/* Subtle background texture */
-.subtle-texture {
-  position: relative;
-  background-image: 
-    linear-gradient(90deg, rgba(198, 123, 92, 0.02) 1px, transparent 1px),
-    linear-gradient(rgba(198, 123, 92, 0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
+.animate-shimmer {
+  animation: shimmer 3s infinite linear;
+  background: linear-gradient(
+    90deg,
+    var(--gold-dark) 0%,
+    var(--gold) 50%,
+    var(--gold-dark) 100%
+  );
+  background-size: 1000px 100%;
 }
 
 /* Selection */
 ::selection {
-  background-color: var(--primary-light);
-  color: var(--foreground);
+  background-color: var(--gold);
+  color: var(--background);
 }
 
 /* Focus visible for accessibility */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
+}
+
+/* Premium gradient backgrounds */
+.gradient-dark {
+  background: linear-gradient(180deg, var(--background) 0%, var(--surface) 100%);
+}
+
+.gradient-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+}
+
+/* Text styles */
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

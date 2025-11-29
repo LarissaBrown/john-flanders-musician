@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className="antialiased" suppressHydrationWarning>
         <CartProvider>
-          {children}
+        {children}
         </CartProvider>
       </body>
     </html>

@@ -18,6 +18,6 @@ export default function Home() {
       <Media />
       <Contact />
       <Footer />
-    </main>
+      </main>
   );
 }
