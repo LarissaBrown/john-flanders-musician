@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  /* Southwest Canyon Color Palette */
+  --canyon-red: #C1440E;
+  --canyon-orange: #E67E22;
+  --canyon-terracotta: #D35400;
+  --canyon-sand: #F4E4C1;
+  --canyon-clay: #9B4819;
+  --canyon-stone: #8B7355;
+  --canyon-sky: #87CEEB;
+  --canyon-sage: #9CAF88;
+  --background: #FFF8F0;
+  --foreground: #2C1810;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-canyon-red: var(--canyon-red);
+  --color-canyon-orange: var(--canyon-orange);
+  --color-canyon-terracotta: var(--canyon-terracotta);
+  --color-canyon-sand: var(--canyon-sand);
+  --color-canyon-clay: var(--canyon-clay);
+  --color-canyon-stone: var(--canyon-stone);
+  --color-canyon-sky: var(--canyon-sky);
+  --color-canyon-sage: var(--canyon-sage);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--canyon-sand);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--canyon-terracotta);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--canyon-red);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Background texture overlay */
+.canyon-texture {
+  position: relative;
+  background-image: 
+    linear-gradient(90deg, rgba(193, 68, 14, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(193, 68, 14, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
