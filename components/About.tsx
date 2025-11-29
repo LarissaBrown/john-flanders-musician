@@ -27,17 +27,17 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-[#FAF8F5]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-[#2C2419] mb-4">About John</h2>
-          <div className="w-24 h-1 bg-[#D97D54] mx-auto mb-6"></div>
-          <p className="text-xl text-[#5A4A3A] max-w-3xl mx-auto">
+    <section id="about" className="py-24 bg-gradient-to-b from-[#FAF8F5] to-white">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl sm:text-6xl font-black text-[#2C2419] mb-6">About John</h2>
+          <div className="w-32 h-1.5 bg-gradient-to-r from-[#C67B5C] to-[#D97D54] mx-auto mb-8 rounded-full"></div>
+          <p className="text-xl sm:text-2xl text-[#5A4A3A] max-w-3xl mx-auto leading-relaxed">
             A passionate musician dedicated to creating unforgettable experiences through sound
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
           {/* Image Placeholder */}
           <div className="relative">
             <div className="aspect-[4/5] bg-gradient-to-br from-[#D97D54] to-[#C67B5C] rounded-2xl shadow-2xl overflow-hidden">
@@ -52,11 +52,11 @@ export default function About() {
           </div>
 
           {/* Bio */}
-          <div>
-            <h3 className="text-3xl font-bold text-[#2C2419] mb-6">
+          <div className="space-y-6">
+            <h3 className="text-4xl font-black text-[#2C2419] mb-8 leading-tight">
               Musician • Performer • Artist
             </h3>
-            <div className="space-y-4 text-[#5A4A3A] text-lg leading-relaxed">
+            <div className="space-y-6 text-[#5A4A3A] text-lg leading-relaxed">
               <p>
                 John Flanders is a seasoned multi-instrumentalist whose music captures
                 the essence of the American Southwest. With over 15 years of professional
@@ -84,13 +84,13 @@ export default function About() {
             return (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-[#D97D54]"
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-[#D97D54] transform hover:-translate-y-2 group"
               >
-                <Icon className="w-12 h-12 text-[#C67B5C] mb-4" />
-                <h4 className="text-xl font-semibold text-[#2C2419] mb-2">
+                <Icon className="w-14 h-14 text-[#C67B5C] mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <h4 className="text-xl font-bold text-[#2C2419] mb-3">
                   {item.title}
                 </h4>
-                <p className="text-[#5A4A3A]">{item.description}</p>
+                <p className="text-[#5A4A3A] leading-relaxed">{item.description}</p>
               </div>
             );
           })}
