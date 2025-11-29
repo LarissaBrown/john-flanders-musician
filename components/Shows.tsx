@@ -53,69 +53,87 @@ const upcomingShows: Show[] = [
 
 export default function Shows() {
   return (
-    <section id="shows" className="py-24 bg-gradient-to-b from-[#FAF8F5] to-[#E6B8A5]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="shows" className="py-32 bg-[#1C1612]">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="text-center mb-20">
-          <h2 className="text-5xl sm:text-6xl font-black text-[#2C2419] mb-6">Upcoming Shows</h2>
-          <div className="w-32 h-1.5 bg-gradient-to-r from-[#C67B5C] to-[#D97D54] mx-auto mb-8 rounded-full"></div>
-          <p className="text-xl sm:text-2xl text-[#5A4A3A] max-w-3xl mx-auto leading-relaxed">
-            Join me for an unforgettable musical experience. Check out where I'll be performing next!
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
+            Upcoming Shows
+          </h2>
+          <p className="text-xl text-[#F5F0E8] max-w-2xl mx-auto leading-relaxed">
+            Join me for an unforgettable musical experience.
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="space-y-8 max-w-3xl mx-auto">
           {upcomingShows.map((show) => (
             <div
               key={show.id}
-              className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 ${
-                show.featured ? 'border-[#D97D54]' : 'border-transparent'
-              }`}
+              className={`${
+                show.featured 
+                  ? 'bg-[#F6B800] text-[#1C1612]' 
+                  : 'bg-[#2D241E] text-[#F5F0E8]'
+              } rounded-2xl shadow-2xl hover:shadow-[0_12px_40px_rgba(246,184,0,0.3)] transition-all duration-300 overflow-hidden transform hover:-translate-y-2`}
             >
-                {show.featured && (
-                  <div className="bg-[#D97D54] text-white text-center py-3 px-6 text-sm font-bold">
-                    Featured Event
-                  </div>
-                )}
+              {show.featured && (
+                <div className="bg-[#1C1612] text-[#F6B800] text-center py-3 px-6 text-xs font-bold uppercase tracking-widest">
+                  Featured Event
+                </div>
+              )}
 
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-[#2C2419] mb-6">
-                  {show.title}
-                </h3>
+              <div className="p-10">
+                <div className="mb-8">
+                  <p className={`text-sm font-bold uppercase tracking-widest mb-3 ${
+                    show.featured ? 'text-[#1C1612]/60' : 'text-[#F6B800]'
+                  }`}>
+                    Show
+                  </p>
+                  <h3 className="text-3xl font-black mb-2 uppercase tracking-tight">
+                    {show.title}
+                  </h3>
+                </div>
 
                 <div className="space-y-4 mb-8">
-                  <div className="flex items-start space-x-4 text-[#5A4A3A]">
-                    <MapPin className="w-6 h-6 mt-0.5 flex-shrink-0 text-[#C67B5C]" />
-                    <div>
-                      <p className="font-semibold text-base">{show.venue}</p>
-                      <p className="text-sm mt-1">{show.location}</p>
-                    </div>
+                  <div>
+                    <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${
+                      show.featured ? 'text-[#1C1612]/60' : 'text-[#F6B800]'
+                    }`}>
+                      Theater
+                    </p>
+                    <p className="text-xl font-bold">{show.venue}</p>
+                    <p className="text-base opacity-80">{show.location}</p>
                   </div>
 
-                  <div className="flex items-center space-x-4 text-[#5A4A3A]">
-                    <Calendar className="w-6 h-6 flex-shrink-0 text-[#C67B5C]" />
-                    <span className="font-medium text-base">
-                      {format(new Date(show.date), 'MMMM dd, yyyy')}
-                    </span>
+                  <div>
+                    <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${
+                      show.featured ? 'text-[#1C1612]/60' : 'text-[#F6B800]'
+                    }`}>
+                      Time
+                    </p>
+                    <p className="text-xl font-bold">{show.time}</p>
                   </div>
 
-                  <div className="flex items-center space-x-4 text-[#5A4A3A]">
-                    <Clock className="w-6 h-6 flex-shrink-0 text-[#C67B5C]" />
-                    <span className="font-medium text-base">{show.time}</span>
+                  <div>
+                    <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${
+                      show.featured ? 'text-[#1C1612]/60' : 'text-[#F6B800]'
+                    }`}>
+                      Date
+                    </p>
+                    <p className="text-xl font-bold uppercase">
+                      {format(new Date(show.date), 'MMM dd, yyyy')}
+                    </p>
                   </div>
                 </div>
 
-                {show.description && (
-                  <p className="text-[#5A4A3A] mb-8 leading-relaxed">{show.description}</p>
-                )}
-
                 {show.ticketUrl && (
-                  <a
-                    href={show.ticketUrl}
-                    className="inline-flex items-center space-x-3 bg-gradient-to-r from-[#D97D54] to-[#E67E22] text-white px-8 py-4 rounded-full font-bold hover:from-[#E67E22] hover:to-[#D97D54] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  <button
+                    className={`w-full ${
+                      show.featured
+                        ? 'bg-[#1C1612] text-[#F6B800]'
+                        : 'bg-[#F6B800] text-[#1C1612]'
+                    } py-5 rounded-xl font-black text-base uppercase tracking-wide hover:opacity-90 transition-all duration-300 shadow-lg`}
                   >
-                    <span>Get Tickets</span>
-                    <ExternalLink className="w-5 h-5" />
-                  </a>
+                    Let's Go
+                  </button>
                 )}
               </div>
             </div>
@@ -123,15 +141,27 @@ export default function Shows() {
         </div>
 
         {upcomingShows.length === 0 && (
-          <div className="text-center py-12">
-            <Calendar className="w-16 h-16 text-[#C67B5C] mx-auto mb-4" />
-            <p className="text-xl text-[#5A4A3A]">
-              No upcoming shows scheduled at the moment. Check back soon!
+          <div className="text-center py-20">
+            <Calendar className="w-16 h-16 text-[#F6B800] mx-auto mb-6 opacity-50" />
+            <p className="text-xl text-[#F5F0E8]">
+              No upcoming shows scheduled. Check back soon!
             </p>
           </div>
         )}
+        
+        {/* Bottom text */}
+        <div className="text-center mt-16">
+          <p className="text-[#B8AFA3] text-sm uppercase tracking-widest">
+            Available in selected venues.
+          </p>
+          <Link 
+            href="#contact" 
+            className="text-[#F6B800] hover:text-[#FFCA28] text-sm uppercase tracking-widest mt-2 inline-block font-semibold transition-colors"
+          >
+            See all participating venues
+          </Link>
+        </div>
       </div>
     </section>
   );
 }
-

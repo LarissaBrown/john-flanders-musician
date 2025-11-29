@@ -96,11 +96,11 @@ export default function Shop() {
   };
 
   return (
-    <section id="shop" className="py-24 bg-gradient-to-b from-[#FAF8F5] to-[#E6B8A5]">
+    <section id="shop" className="py-24 bg-gradient-to-b from-[#FAF8F5] to-[#C9A55C]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="text-center mb-20">
           <h2 className="text-5xl font-bold text-[#2C2419] mb-4">Music Shop</h2>
-          <div className="w-24 h-1 bg-[#D97D54] mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-[#F6B800] mx-auto mb-6"></div>
           <p className="text-xl text-[#5A4A3A] max-w-3xl mx-auto">
             Purchase and download high-quality recordings to enjoy anywhere
           </p>
@@ -115,8 +115,8 @@ export default function Shop() {
                 onClick={() => setActiveTab(tab as typeof activeTab)}
                 className={`px-8 py-4 rounded-full font-semibold transition-all capitalize ${
                   activeTab === tab
-                    ? 'bg-[#C67B5C] text-white'
-                    : 'text-[#5A4A3A] hover:bg-[#E6B8A5]'
+                    ? 'bg-[#F6B800] text-white'
+                    : 'text-[#5A4A3A] hover:bg-[#C9A55C]'
                 }`}
               >
                 {tab}s
@@ -131,11 +131,11 @@ export default function Shop() {
             <div
               key={product._id}
               className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden ${
-                product.featured ? 'border-2 border-[#D97D54]' : ''
+                product.featured ? 'border-2 border-[#F6B800]' : ''
               }`}
             >
               {/* Product Image/Icon */}
-              <div className="relative bg-gradient-to-br from-[#D97D54] to-[#C67B5C] aspect-square flex items-center justify-center">
+              <div className="relative bg-gradient-to-br from-[#F6B800] to-[#F6B800] aspect-square flex items-center justify-center">
                 <div className="absolute inset-0 bg-black/10"></div>
                 {product.type === 'album' ? (
                   <Disc className="w-24 h-24 text-white/90 relative z-10" />
@@ -144,14 +144,14 @@ export default function Shop() {
                 )}
                 
                 {product.featured && (
-                  <div className="absolute top-4 left-4 bg-[#2C2419] text-[#E6B8A5] px-3 py-1 rounded-full text-sm font-semibold">
+                  <div className="absolute top-4 left-4 bg-[#2C2419] text-[#C9A55C] px-3 py-1 rounded-full text-sm font-semibold">
                     Featured
                   </div>
                 )}
 
                 {product.audioPreviewUrl && (
                   <button className="absolute bottom-4 right-4 bg-white/90 hover:bg-white rounded-full p-3 transition-all z-10">
-                    <Play className="w-5 h-5 text-[#C67B5C] ml-0.5" />
+                    <Play className="w-5 h-5 text-[#F6B800] ml-0.5" />
                   </button>
                 )}
               </div>
@@ -174,7 +174,7 @@ export default function Shop() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-bold text-[#C67B5C]">
+                    <p className="text-2xl font-bold text-[#F6B800]">
                       ${product.price.toFixed(2)}
                     </p>
                   </div>
@@ -218,7 +218,7 @@ export default function Shop() {
                   className={`w-full py-3 rounded-full font-semibold transition-all flex items-center justify-center space-x-2 ${
                     addedToCart === product._id
                       ? 'bg-green-500 text-white'
-                      : 'bg-[#C67B5C] text-white hover:bg-[#D97D54]'
+                      : 'bg-[#F6B800] text-white hover:bg-[#F6B800]'
                   }`}
                 >
                   {addedToCart === product._id ? (
@@ -240,7 +240,7 @@ export default function Shop() {
 
         {filteredProducts.length === 0 && (
           <div className="text-center py-12">
-            <ShoppingBag className="w-16 h-16 text-[#C67B5C] mx-auto mb-4 opacity-50" />
+            <ShoppingBag className="w-16 h-16 text-[#F6B800] mx-auto mb-4 opacity-50" />
             <p className="text-xl text-[#5A4A3A]">
               No {activeTab !== 'all' ? activeTab + 's' : 'products'} available yet.
             </p>
@@ -254,19 +254,19 @@ export default function Shop() {
           </h3>
           <ul className="space-y-3 text-[#5A4A3A]">
             <li className="flex items-start space-x-3">
-              <Check className="w-5 h-5 text-[#D97D54] mt-0.5 flex-shrink-0" />
+              <Check className="w-5 h-5 text-[#F6B800] mt-0.5 flex-shrink-0" />
               <span>High-quality MP3 files (320kbps)</span>
             </li>
             <li className="flex items-start space-x-3">
-              <Check className="w-5 h-5 text-[#D97D54] mt-0.5 flex-shrink-0" />
+              <Check className="w-5 h-5 text-[#F6B800] mt-0.5 flex-shrink-0" />
               <span>Instant download after purchase</span>
             </li>
             <li className="flex items-start space-x-3">
-              <Check className="w-5 h-5 text-[#D97D54] mt-0.5 flex-shrink-0" />
+              <Check className="w-5 h-5 text-[#F6B800] mt-0.5 flex-shrink-0" />
               <span>No DRM - play on any device</span>
             </li>
             <li className="flex items-start space-x-3">
-              <Check className="w-5 h-5 text-[#D97D54] mt-0.5 flex-shrink-0" />
+              <Check className="w-5 h-5 text-[#F6B800] mt-0.5 flex-shrink-0" />
               <span>Secure payment via PayPal or Venmo</span>
             </li>
           </ul>

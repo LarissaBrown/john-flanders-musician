@@ -47,11 +47,11 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-b from-[#E6B8A5] to-[#FAF8F5]">
+    <section id="contact" className="py-24 bg-gradient-to-b from-[#C9A55C] to-[#FAF8F5]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="text-center mb-20">
           <h2 className="text-5xl font-bold text-[#2C2419] mb-4">Get In Touch</h2>
-          <div className="w-24 h-1 bg-[#D97D54] mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-[#F6B800] mx-auto mb-6"></div>
           <p className="text-xl text-[#5A4A3A] max-w-3xl mx-auto">
             Interested in booking for your event? Let's make it happen!
           </p>
@@ -67,14 +67,14 @@ export default function Contact() {
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="bg-[#D97D54] p-3 rounded-lg">
+                  <div className="bg-[#F6B800] p-3 rounded-lg">
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <p className="font-semibold text-[#2C2419]">Email</p>
                     <a
                       href="mailto:info@johnflanders.com"
-                      className="text-[#C67B5C] hover:text-[#D97D54] transition-colors"
+                      className="text-[#F6B800] hover:text-[#F6B800] transition-colors"
                     >
                       info@johnflanders.com
                     </a>
@@ -82,14 +82,14 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="bg-[#D97D54] p-3 rounded-lg">
+                  <div className="bg-[#F6B800] p-3 rounded-lg">
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <p className="font-semibold text-[#2C2419]">Phone</p>
                     <a
                       href="tel:+1234567890"
-                      className="text-[#C67B5C] hover:text-[#D97D54] transition-colors"
+                      className="text-[#F6B800] hover:text-[#F6B800] transition-colors"
                     >
                       (123) 456-7890
                     </a>
@@ -99,7 +99,7 @@ export default function Contact() {
             </div>
 
             {/* Event Types */}
-            <div className="bg-gradient-to-br from-[#C67B5C] to-[#D97D54] rounded-2xl shadow-xl p-8 text-white">
+            <div className="bg-gradient-to-br from-[#F6B800] to-[#F6B800] rounded-2xl shadow-xl p-8 text-white">
               <h3 className="text-2xl font-bold mb-6">Available For</h3>
               <ul className="space-y-3">
                 {[
@@ -138,7 +138,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full pl-12 pr-4 py-3 border-2 border-[#E6B8A5] rounded-lg focus:border-[#D97D54] focus:outline-none transition-colors"
+                    className="w-full pl-12 pr-4 py-3 border-2 border-[#C9A55C] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors"
                     placeholder="Your full name"
                   />
                 </div>
@@ -156,7 +156,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full pl-12 pr-4 py-3 border-2 border-[#E6B8A5] rounded-lg focus:border-[#D97D54] focus:outline-none transition-colors"
+                    className="w-full pl-12 pr-4 py-3 border-2 border-[#C9A55C] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -173,7 +173,7 @@ export default function Contact() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full pl-12 pr-4 py-3 border-2 border-[#E6B8A5] rounded-lg focus:border-[#D97D54] focus:outline-none transition-colors"
+                    className="w-full pl-12 pr-4 py-3 border-2 border-[#C9A55C] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors"
                     placeholder="(123) 456-7890"
                   />
                 </div>
@@ -188,7 +188,7 @@ export default function Contact() {
                   value={formData.eventType}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border-2 border-[#E6B8A5] rounded-lg focus:border-[#D97D54] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 border-2 border-[#C9A55C] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors"
                 >
                   <option value="">Select event type</option>
                   <option value="concert">Concert/Festival</option>
@@ -211,7 +211,7 @@ export default function Contact() {
                     name="eventDate"
                     value={formData.eventDate}
                     onChange={handleChange}
-                    className="w-full pl-12 pr-4 py-3 border-2 border-[#E6B8A5] rounded-lg focus:border-[#D97D54] focus:outline-none transition-colors"
+                    className="w-full pl-12 pr-4 py-3 border-2 border-[#C9A55C] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -226,7 +226,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border-2 border-[#E6B8A5] rounded-lg focus:border-[#D97D54] focus:outline-none transition-colors resize-none"
+                  className="w-full px-4 py-3 border-2 border-[#C9A55C] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors resize-none"
                   placeholder="Tell me about your event..."
                 ></textarea>
               </div>
@@ -240,7 +240,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#C67B5C] text-white py-4 rounded-lg font-semibold text-lg hover:bg-[#D97D54] transition-colors flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-[#F6B800] text-white py-4 rounded-lg font-semibold text-lg hover:bg-[#F6B800] transition-colors flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
                 <Send className="w-5 h-5" />

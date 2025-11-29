@@ -31,16 +31,16 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
       {/* Modal */}
       <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between p-8 border-b border-[#E6B8A5]">
+        <div className="flex items-center justify-between p-8 border-b border-[#C9A55C]">
           <div className="flex items-center space-x-3">
-            <ShoppingCart className="w-6 h-6 text-[#C67B5C]" />
+            <ShoppingCart className="w-6 h-6 text-[#F6B800]" />
             <h2 className="text-2xl font-bold text-[#2C2419]">
               Shopping Cart ({totalItems})
             </h2>
           </div>
           <button
             onClick={onClose}
-            className="text-[#5A4A3A] hover:text-[#C67B5C] transition-colors"
+            className="text-[#5A4A3A] hover:text-[#F6B800] transition-colors"
           >
             <X className="w-6 h-6" />
           </button>
@@ -50,11 +50,11 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
         <div className="flex-1 overflow-y-auto p-6">
           {cart.length === 0 ? (
             <div className="text-center py-12">
-              <ShoppingCart className="w-16 h-16 text-[#C67B5C] mx-auto mb-4 opacity-50" />
+              <ShoppingCart className="w-16 h-16 text-[#F6B800] mx-auto mb-4 opacity-50" />
               <p className="text-lg text-[#5A4A3A]">Your cart is empty</p>
               <button
                 onClick={onClose}
-                className="mt-4 text-[#C67B5C] hover:text-[#D97D54] font-semibold"
+                className="mt-4 text-[#F6B800] hover:text-[#F6B800] font-semibold"
               >
                 Continue Shopping
               </button>
@@ -64,7 +64,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
               {cart.map((item) => (
                 <div
                   key={item.productId}
-                  className="bg-[#FAF8F5] rounded-lg p-4 border-2 border-[#E6B8A5]"
+                  className="bg-[#FAF8F5] rounded-lg p-4 border-2 border-[#C9A55C]"
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
@@ -89,7 +89,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                         onClick={() =>
                           updateQuantity(item.productId, item.quantity - 1)
                         }
-                        className="bg-white border-2 border-[#E6B8A5] rounded-full p-1 hover:border-[#C67B5C] transition-colors"
+                        className="bg-white border-2 border-[#C9A55C] rounded-full p-1 hover:border-[#F6B800] transition-colors"
                       >
                         <Minus className="w-4 h-4 text-[#5A4A3A]" />
                       </button>
@@ -100,13 +100,13 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                         onClick={() =>
                           updateQuantity(item.productId, item.quantity + 1)
                         }
-                        className="bg-white border-2 border-[#E6B8A5] rounded-full p-1 hover:border-[#C67B5C] transition-colors"
+                        className="bg-white border-2 border-[#C9A55C] rounded-full p-1 hover:border-[#F6B800] transition-colors"
                       >
                         <Plus className="w-4 h-4 text-[#5A4A3A]" />
                       </button>
                     </div>
 
-                    <p className="text-lg font-bold text-[#C67B5C]">
+                    <p className="text-lg font-bold text-[#F6B800]">
                       ${(item.price * item.quantity).toFixed(2)}
                     </p>
                   </div>
@@ -118,24 +118,24 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
 
         {/* Footer */}
         {cart.length > 0 && (
-          <div className="border-t border-[#E6B8A5] p-8 bg-[#FAF8F5]">
+          <div className="border-t border-[#C9A55C] p-8 bg-[#FAF8F5]">
             <div className="flex items-center justify-between mb-4">
               <span className="text-lg font-semibold text-[#2C2419]">Total:</span>
-              <span className="text-3xl font-bold text-[#C67B5C]">
+              <span className="text-3xl font-bold text-[#F6B800]">
                 ${totalPrice.toFixed(2)}
               </span>
             </div>
 
             <button
               onClick={() => setShowCheckout(true)}
-              className="w-full bg-[#C67B5C] text-white py-4 rounded-full font-semibold text-lg hover:bg-[#D97D54] transition-all shadow-lg hover:shadow-xl"
+              className="w-full bg-[#F6B800] text-white py-4 rounded-full font-semibold text-lg hover:bg-[#F6B800] transition-all shadow-lg hover:shadow-xl"
             >
               Proceed to Checkout
             </button>
 
             <button
               onClick={onClose}
-              className="w-full mt-3 text-[#5A4A3A] hover:text-[#C67B5C] font-semibold"
+              className="w-full mt-3 text-[#5A4A3A] hover:text-[#F6B800] font-semibold"
             >
               Continue Shopping
             </button>

@@ -7,16 +7,20 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#2C2419] text-[#E6B8A5] pt-12 pb-6">
+    <footer className="bg-[#1C1612] text-[#F5F0E8] pt-20 pb-8 border-t border-[#F6B800]/20">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           {/* Brand */}
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <Music className="w-8 h-8 text-[#D97D54]" />
-              <span className="text-2xl font-bold">John Flanders</span>
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="flex space-x-1">
+                <div className="w-3 h-3 rounded-full bg-[#F6B800]"></div>
+                <div className="w-3 h-3 rounded-full bg-[#F6B800] opacity-80"></div>
+                <div className="w-3 h-3 rounded-full bg-[#F6B800] opacity-60"></div>
+              </div>
+              <span className="text-xl font-black text-[#F6B800] uppercase tracking-wide">John Flanders</span>
             </div>
-            <p className="text-[#C4A574] text-sm leading-relaxed">
+            <p className="text-[#B8AFA3] text-sm leading-relaxed">
               Multi-instrumentalist musician bringing the spirit of the Southwest
               to every performance. Available for bookings and private events.
             </p>
@@ -24,25 +28,30 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-[#D97D54]">Quick Links</h3>
-            <ul className="space-y-2">
+            <h3 className="text-base font-bold mb-6 text-[#F6B800] uppercase tracking-widest">Quick Links</h3>
+            <ul className="space-y-3">
               <li>
-                <Link href="#about" className="hover:text-[#D97D54] transition-colors">
+                <Link href="#about" className="text-[#F5F0E8] hover:text-[#F6B800] transition-colors text-sm">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="#shows" className="hover:text-[#D97D54] transition-colors">
+                <Link href="#shows" className="text-[#F5F0E8] hover:text-[#F6B800] transition-colors text-sm">
                   Upcoming Shows
                 </Link>
               </li>
               <li>
-                <Link href="#media" className="hover:text-[#D97D54] transition-colors">
+                <Link href="#shop" className="text-[#F5F0E8] hover:text-[#F6B800] transition-colors text-sm">
+                  Music Shop
+                </Link>
+              </li>
+              <li>
+                <Link href="#media" className="text-[#F5F0E8] hover:text-[#F6B800] transition-colors text-sm">
                   Media Gallery
                 </Link>
               </li>
               <li>
-                <Link href="#contact" className="hover:text-[#D97D54] transition-colors">
+                <Link href="#contact" className="text-[#F5F0E8] hover:text-[#F6B800] transition-colors text-sm">
                   Book Now
                 </Link>
               </li>
@@ -51,52 +60,51 @@ export default function Footer() {
 
           {/* Connect */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-[#D97D54]">Connect</h3>
-            <div className="flex space-x-4 mb-4">
+            <h3 className="text-base font-bold mb-6 text-[#F6B800] uppercase tracking-widest">Connect</h3>
+            <div className="flex space-x-4 mb-6">
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#C67B5C] hover:bg-[#D97D54] p-2 rounded-full transition-colors"
+                className="bg-[#F6B800] hover:bg-[#FFCA28] p-3 rounded-full transition-colors"
               >
-                <Facebook className="w-5 h-5" />
+                <Facebook className="w-5 h-5 text-[#1C1612]" />
               </a>
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#C67B5C] hover:bg-[#D97D54] p-2 rounded-full transition-colors"
+                className="bg-[#F6B800] hover:bg-[#FFCA28] p-3 rounded-full transition-colors"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-5 h-5 text-[#1C1612]" />
               </a>
               <a
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#C67B5C] hover:bg-[#D97D54] p-2 rounded-full transition-colors"
+                className="bg-[#F6B800] hover:bg-[#FFCA28] p-3 rounded-full transition-colors"
               >
-                <Youtube className="w-5 h-5" />
+                <Youtube className="w-5 h-5 text-[#1C1612]" />
               </a>
               <a
                 href="mailto:info@johnflanders.com"
-                className="bg-[#C67B5C] hover:bg-[#D97D54] p-2 rounded-full transition-colors"
+                className="bg-[#F6B800] hover:bg-[#FFCA28] p-3 rounded-full transition-colors"
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="w-5 h-5 text-[#1C1612]" />
               </a>
             </div>
-            <p className="text-sm text-[#C4A574]">
+            <p className="text-sm text-[#B8AFA3]">
               Email: info@johnflanders.com
             </p>
           </div>
         </div>
 
-        <div className="border-t border-[#C67B5C] pt-6 text-center">
-          <p className="text-[#A85F44] text-sm">
-            © {currentYear} John Flanders. All rights reserved. | Website designed with passion for music.
+        <div className="border-t border-[#F6B800]/20 pt-8 text-center">
+          <p className="text-[#8A8078] text-sm">
+            © {currentYear} John Flanders. All rights reserved.
           </p>
         </div>
       </div>
     </footer>
   );
 }
-

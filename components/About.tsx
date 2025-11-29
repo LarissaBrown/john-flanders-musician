@@ -27,70 +27,52 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 bg-gradient-to-b from-[#FAF8F5] to-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="about" className="py-32 bg-[#2D241E]">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="text-center mb-20">
-          <h2 className="text-5xl sm:text-6xl font-black text-[#2C2419] mb-6">About John</h2>
-          <div className="w-32 h-1.5 bg-gradient-to-r from-[#C67B5C] to-[#D97D54] mx-auto mb-8 rounded-full"></div>
-          <p className="text-xl sm:text-2xl text-[#5A4A3A] max-w-3xl mx-auto leading-relaxed">
-            A passionate musician dedicated to creating unforgettable experiences through sound
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
+            About
+          </h2>
+          <p className="text-xl text-[#F5F0E8] max-w-2xl mx-auto leading-relaxed">
+            A passionate musician dedicated to creating unforgettable experiences
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
-          {/* Image Placeholder */}
-          <div className="relative">
-            <div className="aspect-[4/5] bg-gradient-to-br from-[#D97D54] to-[#C67B5C] rounded-2xl shadow-2xl overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center text-[#E6B8A5]">
-                <div className="text-center">
-                  <Music2 className="w-24 h-24 mx-auto mb-4 opacity-50" />
-                  <p className="text-lg">Photo Coming Soon</p>
-                </div>
-              </div>
-            </div>
-            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-[#5A4A3A] rounded-full -z-10 opacity-20"></div>
-          </div>
-
-          {/* Bio */}
-          <div className="space-y-6">
-            <h3 className="text-4xl font-black text-[#2C2419] mb-8 leading-tight">
-              Musician • Performer • Artist
-            </h3>
-            <div className="space-y-6 text-[#5A4A3A] text-lg leading-relaxed">
-              <p>
-                John Flanders is a seasoned multi-instrumentalist whose music captures
-                the essence of the American Southwest. With over 15 years of professional
-                experience, John has performed at venues ranging from intimate gatherings
-                to large festival stages.
-              </p>
-              <p>
-                His unique style blends traditional folk, contemporary rock, and blues,
-                creating a sound that resonates with audiences of all ages. Whether
-                performing solo or with a band, John brings energy, authenticity, and
-                passion to every show.
-              </p>
-              <p>
-                Available for concerts, private events, weddings, corporate functions,
-                and more. Let's create something memorable together.
-              </p>
-            </div>
+        <div className="max-w-3xl mx-auto mb-20">
+          <div className="space-y-6 text-[#F5F0E8] text-lg leading-relaxed">
+            <p>
+              John Flanders is a seasoned multi-instrumentalist whose music captures
+              the essence of the American Southwest. With over 15 years of professional
+              experience, John has performed at venues ranging from intimate gatherings
+              to large festival stages.
+            </p>
+            <p>
+              His unique style blends traditional folk, contemporary rock, and blues,
+              creating a sound that resonates with audiences of all ages. Whether
+              performing solo or with a band, John brings energy, authenticity, and
+              passion to every show.
+            </p>
+            <p className="text-[#F6B800] font-semibold">
+              Available for concerts, private events, weddings, corporate functions,
+              and more. Let's create something memorable together.
+            </p>
           </div>
         </div>
 
         {/* Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {highlights.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-[#D97D54] transform hover:-translate-y-2 group"
+                className="bg-[#1C1612] rounded-xl p-8 border border-[#F6B800]/10 hover:border-[#F6B800]/30 transition-all duration-300 transform hover:-translate-y-1"
               >
-                <Icon className="w-14 h-14 text-[#C67B5C] mb-6 group-hover:scale-110 transition-transform duration-300" />
-                <h4 className="text-xl font-bold text-[#2C2419] mb-3">
+                <Icon className="w-12 h-12 text-[#F6B800] mb-4" />
+                <h4 className="text-lg font-bold text-[#F6B800] mb-2 uppercase tracking-wide">
                   {item.title}
                 </h4>
-                <p className="text-[#5A4A3A] leading-relaxed">{item.description}</p>
+                <p className="text-[#B8AFA3] leading-relaxed">{item.description}</p>
               </div>
             );
           })}
@@ -99,4 +81,3 @@ export default function About() {
     </section>
   );
 }
-

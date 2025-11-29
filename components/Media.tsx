@@ -63,7 +63,7 @@ export default function Media() {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="text-center mb-20">
           <h2 className="text-5xl font-bold text-[#2C2419] mb-4">Media Gallery</h2>
-          <div className="w-24 h-1 bg-[#D97D54] mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-[#F6B800] mx-auto mb-6"></div>
           <p className="text-xl text-[#5A4A3A] max-w-3xl mx-auto">
             Listen to recordings and watch performances
           </p>
@@ -78,8 +78,8 @@ export default function Media() {
                 onClick={() => setActiveTab(tab as typeof activeTab)}
                 className={`px-8 py-4 rounded-full font-semibold transition-all capitalize ${
                   activeTab === tab
-                    ? 'bg-[#C67B5C] text-white'
-                    : 'text-[#5A4A3A] hover:bg-[#E6B8A5]'
+                    ? 'bg-[#F6B800] text-white'
+                    : 'text-[#5A4A3A] hover:bg-[#C9A55C]'
                 }`}
               >
                 {tab}
@@ -96,7 +96,7 @@ export default function Media() {
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
             >
               {/* Thumbnail/Player */}
-              <div className="relative bg-gradient-to-br from-[#D97D54] to-[#C67B5C] aspect-video flex items-center justify-center group cursor-pointer">
+              <div className="relative bg-gradient-to-br from-[#F6B800] to-[#F6B800] aspect-video flex items-center justify-center group cursor-pointer">
                 <div className="absolute inset-0 bg-black/20"></div>
                 <button
                   className="relative z-10 bg-white/90 hover:bg-white rounded-full p-4 transition-all group-hover:scale-110"
@@ -105,18 +105,18 @@ export default function Media() {
                   }
                 >
                   {playingId === item.id ? (
-                    <Pause className="w-8 h-8 text-[#C67B5C]" />
+                    <Pause className="w-8 h-8 text-[#F6B800]" />
                   ) : (
-                    <Play className="w-8 h-8 text-[#C67B5C] ml-1" />
+                    <Play className="w-8 h-8 text-[#F6B800] ml-1" />
                   )}
                 </button>
 
                 {/* Type indicator */}
                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center space-x-2">
                   {item.type === 'audio' ? (
-                    <Volume2 className="w-4 h-4 text-[#C67B5C]" />
+                    <Volume2 className="w-4 h-4 text-[#F6B800]" />
                   ) : (
-                    <Video className="w-4 h-4 text-[#C67B5C]" />
+                    <Video className="w-4 h-4 text-[#F6B800]" />
                   )}
                   <span className="text-sm font-semibold text-[#2C2419] capitalize">
                     {item.type}
@@ -148,7 +148,7 @@ export default function Media() {
 
         {filteredMedia.length === 0 && (
           <div className="text-center py-12">
-            <Music className="w-16 h-16 text-[#C67B5C] mx-auto mb-4" />
+            <Music className="w-16 h-16 text-[#F6B800] mx-auto mb-4" />
             <p className="text-xl text-[#5A4A3A]">
               No {activeTab !== 'all' ? activeTab : ''} media available yet.
             </p>

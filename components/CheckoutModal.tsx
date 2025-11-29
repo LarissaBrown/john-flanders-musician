@@ -74,8 +74,8 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
             Thank you for your purchase! Your order number is:
           </p>
           
-          <div className="bg-[#E6B8A5] rounded-lg p-4 mb-6">
-            <p className="text-2xl font-bold text-[#C67B5C]">{orderNumber}</p>
+          <div className="bg-[#C9A55C] rounded-lg p-4 mb-6">
+            <p className="text-2xl font-bold text-[#F6B800]">{orderNumber}</p>
           </div>
           
           <p className="text-[#5A4A3A] mb-8">
@@ -84,7 +84,7 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
           
           <button
             onClick={onClose}
-            className="w-full bg-[#C67B5C] text-white py-3 rounded-full font-semibold hover:bg-[#D97D54] transition-colors"
+            className="w-full bg-[#F6B800] text-white py-3 rounded-full font-semibold hover:bg-[#F6B800] transition-colors"
           >
             Close
           </button>
@@ -100,11 +100,11 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
         
         <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           {/* Header */}
-          <div className="sticky top-0 bg-white border-b border-[#E6B8A5] p-8 flex items-center justify-between">
+          <div className="sticky top-0 bg-white border-b border-[#C9A55C] p-8 flex items-center justify-between">
             <h2 className="text-2xl font-bold text-[#2C2419]">Checkout</h2>
             <button
               onClick={onClose}
-              className="text-[#5A4A3A] hover:text-[#C67B5C] transition-colors"
+              className="text-[#5A4A3A] hover:text-[#F6B800] transition-colors"
             >
               <X className="w-6 h-6" />
             </button>
@@ -125,9 +125,9 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                     </span>
                   </div>
                 ))}
-                <div className="border-t border-[#E6B8A5] pt-3 flex justify-between">
+                <div className="border-t border-[#C9A55C] pt-3 flex justify-between">
                   <span className="font-bold text-[#2C2419]">Total:</span>
-                  <span className="font-bold text-[#C67B5C] text-xl">
+                  <span className="font-bold text-[#F6B800] text-xl">
                     ${totalPrice.toFixed(2)}
                   </span>
                 </div>
@@ -151,7 +151,7 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                         setCustomerInfo({ ...customerInfo, name: e.target.value })
                       }
                       required
-                      className="w-full pl-12 pr-4 py-3 border-2 border-[#E6B8A5] rounded-lg focus:border-[#D97D54] focus:outline-none transition-colors"
+                      className="w-full pl-12 pr-4 py-3 border-2 border-[#C9A55C] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors"
                       placeholder="Your full name"
                     />
                   </div>
@@ -170,7 +170,7 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                         setCustomerInfo({ ...customerInfo, email: e.target.value })
                       }
                       required
-                      className="w-full pl-12 pr-4 py-3 border-2 border-[#E6B8A5] rounded-lg focus:border-[#D97D54] focus:outline-none transition-colors"
+                      className="w-full pl-12 pr-4 py-3 border-2 border-[#C9A55C] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -189,8 +189,8 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                   onClick={() => setPaymentMethod('paypal')}
                   className={`p-4 border-2 rounded-lg transition-all ${
                     paymentMethod === 'paypal'
-                      ? 'border-[#D97D54] bg-[#FAF8F5]'
-                      : 'border-[#E6B8A5] hover:border-[#D97D54]'
+                      ? 'border-[#F6B800] bg-[#FAF8F5]'
+                      : 'border-[#C9A55C] hover:border-[#F6B800]'
                   }`}
                 >
                   <CreditCard className="w-8 h-8 mx-auto mb-2 text-[#0070BA]" />
@@ -201,8 +201,8 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                   onClick={() => setPaymentMethod('venmo')}
                   className={`p-4 border-2 rounded-lg transition-all ${
                     paymentMethod === 'venmo'
-                      ? 'border-[#D97D54] bg-[#FAF8F5]'
-                      : 'border-[#E6B8A5] hover:border-[#D97D54]'
+                      ? 'border-[#F6B800] bg-[#FAF8F5]'
+                      : 'border-[#C9A55C] hover:border-[#F6B800]'
                   }`}
                 >
                   <CreditCard className="w-8 h-8 mx-auto mb-2 text-[#008CFF]" />
@@ -252,7 +252,7 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
 
             {/* Venmo Instructions */}
             {paymentMethod === 'venmo' && customerInfo.name && customerInfo.email && (
-              <div className="bg-[#FAF8F5] border-2 border-[#D97D54] rounded-lg p-6">
+              <div className="bg-[#FAF8F5] border-2 border-[#F6B800] rounded-lg p-6">
                 <h4 className="font-bold text-[#2C2419] mb-3">
                   Complete Payment via Venmo
                 </h4>

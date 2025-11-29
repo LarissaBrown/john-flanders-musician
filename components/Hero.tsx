@@ -10,26 +10,14 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1C1612]"
     >
-      {/* Warm Glow Bokeh Background */}
+      {/* Warm Dark Spots Background */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/warm-glow-background.png"
-          alt="Warm bokeh lights"
+          src="/images/warm-dark-spots-background.png"
+          alt="Warm ambient background"
           fill
           priority
-          className="object-cover opacity-40"
-          sizes="100vw"
-          quality={90}
-        />
-      </div>
-
-      {/* Sedona Background - Very Subtle Overlay */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <Image
-          src="/images/red-rocks-background.jpg"
-          alt="Sedona Red Rock Formation"
-          fill
-          className="object-cover mix-blend-overlay"
+          className="object-cover opacity-50"
           sizes="100vw"
           quality={90}
         />
@@ -38,25 +26,22 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-20 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center py-32">
         <div className="animate-fade-in-up space-y-12">
-          {/* JOFLA Logo/Brand */}
+          {/* John Flanders Brand */}
           <div className="flex justify-center">
             <div className="inline-flex flex-col items-center">
               {/* Geometric Logo inspired by MUBI */}
-              <div className="flex items-center space-x-3 mb-4">
+              <div className="flex items-center space-x-3 mb-6">
                 <div className="flex space-x-1.5">
-                  <div className="w-7 h-7 rounded-full bg-[#F6B800]"></div>
-                  <div className="w-7 h-7 rounded-full bg-[#F6B800] opacity-80"></div>
-                  <div className="w-7 h-7 rounded-full bg-[#F6B800] opacity-60"></div>
+                  <div className="w-8 h-8 rounded-full bg-[#F6B800]"></div>
+                  <div className="w-8 h-8 rounded-full bg-[#F6B800] opacity-80"></div>
+                  <div className="w-8 h-8 rounded-full bg-[#F6B800] opacity-60"></div>
                 </div>
               </div>
               
               {/* Brand Name */}
-              <h1 className="text-7xl sm:text-8xl lg:text-9xl font-black tracking-tight text-[#F6B800] mb-2" style={{letterSpacing: '0.02em'}}>
-                JOFLA
+              <h1 className="text-7xl sm:text-8xl lg:text-9xl font-black tracking-tight text-[#F6B800] mb-6" style={{letterSpacing: '0.02em'}}>
+                JOHN FLANDERS
               </h1>
-              <p className="text-xl sm:text-2xl font-light tracking-widest text-[#F6B800] uppercase opacity-90" style={{letterSpacing: '0.25em'}}>
-                John Flanders
-              </p>
             </div>
           </div>
 
