@@ -10,18 +10,29 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1C1612]"
     >
-      {/* Sedona Background - Subtle */}
-      <div className="absolute inset-0 z-0 opacity-20">
+      {/* Warm Glow Bokeh Background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/warm-glow-background.png"
+          alt="Warm bokeh lights"
+          fill
+          priority
+          className="object-cover opacity-40"
+          sizes="100vw"
+          quality={90}
+        />
+      </div>
+
+      {/* Sedona Background - Very Subtle Overlay */}
+      <div className="absolute inset-0 z-0 opacity-10">
         <Image
           src="/images/red-rocks-background.jpg"
           alt="Sedona Red Rock Formation"
           fill
-          priority
-          className="object-cover"
+          className="object-cover mix-blend-overlay"
           sizes="100vw"
           quality={90}
         />
-        <div className="absolute inset-0 bg-[#1C1612]/70"></div>
       </div>
 
       {/* Content */}
