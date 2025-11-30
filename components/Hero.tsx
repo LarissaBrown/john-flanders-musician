@@ -26,8 +26,8 @@ export default function Hero() {
       {/* Content - Centered and balanced, pushed down with less bottom padding */}
       <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-8 sm:py-10 md:py-12 lg:py-16 mt-32 sm:mt-36 md:mt-40 lg:mt-48">
 
-        {/* Saxophone Illustration - Fixed position to overlap navbar */}
-        <div className="fixed top-24 sm:top-28 md:top-32 lg:top-36 left-1/2 transform -translate-x-1/2 z-[60] w-48 h-64 sm:w-56 sm:h-72 md:w-64 md:h-84 lg:w-72 lg:h-96" style={{rotate: '15deg', opacity: '0.7'}}>
+        {/* Saxophone Illustration - Absolute position to scroll with page, above container */}
+        <div className="absolute -top-72 sm:-top-80 md:-top-88 lg:-top-96 left-1/2 transform -translate-x-1/2 z-30 w-48 h-64 sm:w-56 sm:h-72 md:w-64 md:h-84 lg:w-72 lg:h-96" style={{rotate: '15deg', opacity: '0.7'}}>
           <Image
             src="/images/saxophone.png"
             alt="Saxophone illustration"
