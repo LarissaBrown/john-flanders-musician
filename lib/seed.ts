@@ -1,9 +1,9 @@
 // Sample data seeding script for John Flanders website
 // Run this after setting up MongoDB to populate initial data
 
-import connectDB from './lib/mongodb';
-import Event from './models/Event';
-import Media from './models/Media';
+import connectDB from './mongodb';
+import Event from '../models/Event';
+import Media from '../models/Media';
 
 const sampleEvents = [
   {
