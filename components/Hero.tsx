@@ -33,6 +33,7 @@ export default function Hero() {
             alt="Saxophone illustration"
             fill
             className="object-contain"
+            style={{objectPosition: 'center', scale: '1.5'}}
             sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, 288px"
             unoptimized
           />
