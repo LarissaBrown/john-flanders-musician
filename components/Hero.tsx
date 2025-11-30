@@ -26,6 +26,18 @@ export default function Hero() {
       {/* Content - Centered and balanced */}
       <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-16 sm:py-20 md:py-24 lg:py-32">
 
+        {/* Saxophone Illustration - Above hero container, centered and tilted */}
+        <div className="absolute -top-16 sm:-top-20 md:-top-24 left-1/2 transform -translate-x-1/2 z-30 w-40 h-52 sm:w-48 sm:h-64 md:w-56 md:h-72" style={{rotate: '15deg', opacity: '0.7'}}>
+          <Image
+            src="/images/saxophone.png"
+            alt="Saxophone illustration"
+            fill
+            className="object-contain"
+            sizes="(max-width: 640px) 160px, (max-width: 768px) 192px, 224px"
+            unoptimized
+          />
+        </div>
+
         <div className="animate-fade-in-up space-y-8 sm:space-y-10 md:space-y-12">
           {/* Warm backdrop for text readability */}
           <div className="relative mx-auto max-w-5xl">
@@ -57,18 +69,6 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Saxophone Illustration - Below hero container, centered and tilted */}
-      <div className="absolute bottom-32 sm:bottom-24 md:bottom-20 left-1/2 transform -translate-x-1/2 z-10 w-48 h-64 sm:w-56 sm:h-72 md:w-64 md:h-80" style={{rotate: '15deg', opacity: '0.7'}}>
-        <Image
-          src="/images/saxophone.png"
-          alt="Saxophone illustration"
-          fill
-          className="object-contain"
-          sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, 256px"
-          unoptimized
-        />
       </div>
 
       {/* Available for bookings - Responsive positioning */}
