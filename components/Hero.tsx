@@ -41,7 +41,7 @@ export default function Hero() {
               </h1>
 
               {/* Tagline - Responsive sizing */}
-              <div className="space-y-5 sm:space-y-6 md:space-y-7 mx-auto max-w-3xl">
+              <div className="space-y-5 sm:space-y-6 md:space-y-7 mx-auto">
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#FFE4B5] uppercase tracking-wide leading-tight" style={{
                   textShadow: '0 2px 8px rgba(0,0,0,0.4)'
                 }}>
@@ -57,6 +57,17 @@ export default function Hero() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Saxophone Illustration - Below hero container, centered and tilted */}
+      <div className="absolute bottom-32 sm:bottom-24 md:bottom-20 left-1/2 transform -translate-x-1/2 z-10 w-48 h-64 sm:w-56 sm:h-72 md:w-64 md:h-80" style={{rotate: '15deg', opacity: '0.7'}}>
+        <Image
+          src={`/images/saxophone.png?v=${Date.now()}`}
+          alt="Saxophone illustration"
+          fill
+          className="object-contain"
+          sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, 256px"
+        />
       </div>
 
       {/* Available for bookings - Responsive positioning */}
