@@ -23,17 +23,17 @@ export default function Hero() {
         />
       </div>
 
-      {/* Content - Responsive positioning */}
-      <div className="relative z-20 w-full max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-16 sm:py-20 md:py-24 lg:py-32">
+      {/* Content - Centered and balanced */}
+      <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-16 sm:py-20 md:py-24 lg:py-32">
 
         <div className="animate-fade-in-up space-y-8 sm:space-y-10 md:space-y-12">
           {/* Warm backdrop for text readability */}
-          <div className="relative mt-4 sm:mt-6 md:mt-8 lg:mt-10 mb-8 sm:mb-10 md:mb-12">
+          <div className="relative mx-auto max-w-5xl">
             <div className="absolute inset-0 bg-gradient-to-b from-[#8B2E3E]/40 via-[#5B4260]/30 to-[#8B2E3E]/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl"></div>
             
-            <div className="relative z-10 px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-10 md:py-12 lg:py-16">
+            <div className="relative z-10 px-6 sm:px-8 md:px-12 lg:px-16 py-10 sm:py-12 md:py-16 lg:py-20">
               {/* Brand Name - Responsive sizing */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight text-[#FFD700] mb-4 sm:mb-6 md:mb-8" style={{
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tight text-[#FFD700] mb-6 sm:mb-8 md:mb-10" style={{
                 letterSpacing: '0.02em',
                 textShadow: '0 4px 12px rgba(0,0,0,0.4), 0 0 30px rgba(255, 215, 0, 0.5)'
               }}>
@@ -41,14 +41,14 @@ export default function Hero() {
               </h1>
 
               {/* Tagline - Responsive sizing */}
-              <div className="space-y-4 sm:space-y-5 md:space-y-6 mx-auto max-w-4xl">
-                <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#FFE4B5] uppercase tracking-wide leading-tight px-4" style={{
+              <div className="space-y-5 sm:space-y-6 md:space-y-7 mx-auto max-w-3xl">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#FFE4B5] uppercase tracking-wide leading-tight" style={{
                   textShadow: '0 2px 8px rgba(0,0,0,0.4)'
                 }}>
                   Live music from the heart of Utah.
                 </h2>
                 
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#FFFAF0] font-light leading-relaxed px-4" style={{
+                <p className="text-lg sm:text-xl md:text-2xl text-[#FFFAF0] font-light leading-relaxed" style={{
                   textShadow: '0 2px 6px rgba(0,0,0,0.3)'
                 }}>
                   Multi-instrumentalist. Performer. Available for all occasions.
