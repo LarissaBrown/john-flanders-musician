@@ -27,7 +27,7 @@ export default function Hero() {
       <div className="relative z-20 w-full mx-auto text-center py-8 sm:py-10 md:py-12 lg:py-16 mt-32 sm:mt-36 md:mt-40 lg:mt-48" style={{paddingLeft: '32px', paddingRight: '32px'}}>
 
         {/* Saxophone Illustration - Positioned above the warm backdrop, centered, bigger and transparent */}
-        <div className="flex justify-center mb-3">
+        <div className="flex justify-center" style={{marginBottom: '-20px'}}>
           <div className="relative w-24 h-32 sm:w-32 sm:h-40 md:w-40 md:h-52 lg:w-48 lg:h-60 z-30" style={{transform: 'rotate(15deg)', opacity: '0.75'}}>
             <Image
               src="/images/saxophone.png"
