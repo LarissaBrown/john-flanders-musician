@@ -27,14 +27,14 @@ export default function Hero() {
       <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-8 sm:py-10 md:py-12 lg:py-16 mt-32 sm:mt-36 md:mt-40 lg:mt-48">
 
         {/* Saxophone Illustration - 10px above hero container, no transparency */}
-        <div className="absolute -top-24 sm:-top-28 md:-top-32 lg:-top-36 left-1/2 transform -translate-x-1/2 z-30 w-16 h-20 sm:w-20 sm:h-24 md:w-24 md:h-28 lg:w-28 lg:h-32" style={{rotate: '15deg', opacity: '1'}}>
+        <div className="absolute" style={{top: '-10px', left: '50%', transform: 'translateX(-50%) rotate(15deg)', opacity: '1', width: '64px', height: '80px', zIndex: 30}}>
           <Image
             src="/images/saxophone.png"
             alt="Saxophone illustration"
             fill
             className="object-contain"
             style={{objectPosition: 'center', scale: '1.5'}}
-            sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, (max-width: 1024px) 96px, 112px"
+            sizes="64px"
             unoptimized
           />
         </div>
@@ -44,9 +44,10 @@ export default function Hero() {
           <div className="relative mx-auto max-w-5xl z-20">
             <div className="absolute inset-0 bg-gradient-to-b from-[#8B2E3E]/40 via-[#5B4260]/30 to-[#8B2E3E]/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl"></div>
             
-            <div className="relative z-40 px-4 sm:px-6 md:px-8 lg:px-12 py-10 sm:py-12 md:py-16 lg:py-20">
-              {/* Brand Name - Responsive sizing */}
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tight text-[#FFD700] mb-6 sm:mb-8 md:mb-10 whitespace-nowrap overflow-visible" style={{
+            <div className="relative z-40 py-10 sm:py-12 md:py-16 lg:py-20" style={{paddingLeft: '24px', paddingRight: '24px'}}>
+              {/* Brand Name - Responsive sizing with scale down on large screens */}
+              <h1 className="font-black tracking-tight text-[#FFD700] mb-6 sm:mb-8 md:mb-10" style={{
+                fontSize: 'clamp(3rem, 8vw, 6rem)',
                 letterSpacing: '0.02em',
                 textShadow: '0 4px 12px rgba(0,0,0,0.4), 0 0 30px rgba(255, 215, 0, 0.5)'
               }}>
