@@ -23,17 +23,17 @@ export default function Hero() {
         />
       </div>
 
-      {/* Content - Centered and balanced */}
-      <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-16 sm:py-20 md:py-24 lg:py-32">
+      {/* Content - Centered and balanced, pushed down */}
+      <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-16 sm:py-20 md:py-24 lg:py-32 mt-32 sm:mt-40 md:mt-48 lg:mt-56">
 
-        {/* Saxophone Illustration - Above hero container, centered and tilted */}
-        <div className="absolute -top-28 sm:-top-36 md:-top-44 lg:-top-52 left-1/2 transform -translate-x-1/2 z-30 w-44 h-56 sm:w-52 sm:h-64 md:w-60 md:h-80 lg:w-64 lg:h-84" style={{rotate: '15deg', opacity: '0.7'}}>
+        {/* Saxophone Illustration - In the space above container, below navbar */}
+        <div className="absolute -top-56 sm:-top-64 md:-top-72 lg:-top-80 left-1/2 transform -translate-x-1/2 z-30 w-48 h-64 sm:w-56 sm:h-72 md:w-64 md:h-84 lg:w-72 lg:h-96" style={{rotate: '15deg', opacity: '0.7'}}>
           <Image
             src="/images/saxophone.png"
             alt="Saxophone illustration"
             fill
             className="object-contain"
-            sizes="(max-width: 640px) 176px, (max-width: 768px) 208px, (max-width: 1024px) 240px, 256px"
+            sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, 288px"
             unoptimized
           />
         </div>
