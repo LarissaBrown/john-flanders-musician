@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 sm:pt-40 md:pt-48 lg:pt-56"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-48 sm:pt-56 md:pt-64 lg:pt-72"
     >
       {/* Warm Dark Spots Background */}
       <div className="absolute inset-0 z-0">
@@ -24,10 +24,10 @@ export default function Hero() {
       </div>
 
       {/* Content - Centered and balanced, pushed down with less bottom padding */}
-      <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-8 sm:py-10 md:py-12 lg:py-16 mt-40 sm:mt-48 md:mt-56 lg:mt-64">
+      <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-8 sm:py-10 md:py-12 lg:py-16 mt-32 sm:mt-36 md:mt-40 lg:mt-48">
 
-        {/* Saxophone Illustration - In the space above container, below navbar */}
-        <div className="absolute -top-52 sm:-top-60 md:-top-68 lg:-top-76 left-1/2 transform -translate-x-1/2 z-30 w-48 h-64 sm:w-56 sm:h-72 md:w-64 md:h-84 lg:w-72 lg:h-96" style={{rotate: '15deg', opacity: '0.7'}}>
+        {/* Saxophone Illustration - In the space above container, well below navbar */}
+        <div className="absolute -top-44 sm:-top-48 md:-top-56 lg:-top-64 left-1/2 transform -translate-x-1/2 z-30 w-48 h-64 sm:w-56 sm:h-72 md:w-64 md:h-84 lg:w-72 lg:h-96" style={{rotate: '15deg', opacity: '0.7'}}>
           <Image
             src="/images/saxophone.png"
             alt="Saxophone illustration"
