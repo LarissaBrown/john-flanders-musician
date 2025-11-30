@@ -27,13 +27,13 @@ export default function Hero() {
       <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-16 sm:py-20 md:py-24 lg:py-32">
 
         {/* Saxophone Illustration - Above hero container, centered and tilted */}
-        <div className="absolute -top-16 sm:-top-20 md:-top-24 left-1/2 transform -translate-x-1/2 z-30 w-40 h-52 sm:w-48 sm:h-64 md:w-56 md:h-72" style={{rotate: '15deg', opacity: '0.7'}}>
+        <div className="absolute -top-24 sm:-top-32 md:-top-40 left-1/2 transform -translate-x-1/2 z-30 w-32 h-40 sm:w-36 sm:h-48 md:w-40 md:h-52" style={{rotate: '15deg', opacity: '0.7'}}>
           <Image
             src="/images/saxophone.png"
             alt="Saxophone illustration"
             fill
             className="object-contain"
-            sizes="(max-width: 640px) 160px, (max-width: 768px) 192px, 224px"
+            sizes="(max-width: 640px) 128px, (max-width: 768px) 144px, 160px"
             unoptimized
           />
         </div>
