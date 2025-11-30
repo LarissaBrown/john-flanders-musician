@@ -24,30 +24,32 @@ export default function Hero() {
       </div>
 
       {/* Content - Centered and balanced, pushed down with less bottom padding */}
-      <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-8 sm:py-10 md:py-12 lg:py-16 mt-32 sm:mt-36 md:mt-40 lg:mt-48">
+      <div className="relative z-20 w-full mx-auto text-center py-8 sm:py-10 md:py-12 lg:py-16 mt-32 sm:mt-36 md:mt-40 lg:mt-48" style={{paddingLeft: '32px', paddingRight: '32px'}}>
 
-        {/* Saxophone Illustration - Positioned above the warm backdrop */}
-        <div className="relative mx-auto w-16 h-20 sm:w-20 sm:h-24 md:w-24 md:h-28 lg:w-28 lg:h-32 mb-3 z-30" style={{transform: 'rotate(15deg)', opacity: '1'}}>
-          <Image
-            src="/images/saxophone.png"
-            alt="Saxophone illustration"
-            fill
-            className="object-contain"
-            style={{objectPosition: 'center', scale: '1.5'}}
-            sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, (max-width: 1024px) 96px, 112px"
-            unoptimized
-          />
+        {/* Saxophone Illustration - Positioned above the warm backdrop, centered */}
+        <div className="flex justify-center mb-3">
+          <div className="relative w-16 h-20 sm:w-20 sm:h-24 md:w-24 md:h-28 lg:w-28 lg:h-32 z-30" style={{transform: 'rotate(15deg)', opacity: '1'}}>
+            <Image
+              src="/images/saxophone.png"
+              alt="Saxophone illustration"
+              fill
+              className="object-contain"
+              style={{objectPosition: 'center', scale: '1.5'}}
+              sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, (max-width: 1024px) 96px, 112px"
+              unoptimized
+            />
+          </div>
         </div>
 
         <div className="animate-fade-in-up space-y-8 sm:space-y-10 md:space-y-12">
           {/* Warm backdrop for text readability - centered with equal margins */}
-          <div className="relative mx-auto w-full max-w-5xl z-20" style={{paddingLeft: '32px', paddingRight: '32px'}}>
-            <div className="absolute inset-0 bg-gradient-to-b from-[#8B2E3E]/40 via-[#5B4260]/30 to-[#8B2E3E]/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl" style={{left: '-32px', right: '-32px'}}></div>
+          <div className="relative mx-auto max-w-5xl z-20">
+            <div className="absolute inset-0 bg-gradient-to-b from-[#8B2E3E]/40 via-[#5B4260]/30 to-[#8B2E3E]/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl"></div>
             
             <div className="relative z-40 py-10 sm:py-12 md:py-16 lg:py-20" style={{paddingLeft: '48px', paddingRight: '48px'}}>
-              {/* Brand Name - Responsive sizing with scale down on large screens */}
-              <h1 className="font-black tracking-tight text-[#FFD700] mb-6 sm:mb-8 md:mb-10" style={{
-                fontSize: 'clamp(3rem, 8vw, 7rem)',
+              {/* Brand Name - Always on one line with adjusted sizing */}
+              <h1 className="font-black tracking-tight text-[#FFD700] mb-6 sm:mb-8 md:mb-10 whitespace-nowrap" style={{
+                fontSize: 'clamp(2.5rem, 6vw, 5.5rem)',
                 letterSpacing: '0.02em',
                 textShadow: '0 4px 12px rgba(0,0,0,0.4), 0 0 30px rgba(255, 215, 0, 0.5)'
               }}>
