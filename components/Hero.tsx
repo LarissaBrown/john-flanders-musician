@@ -26,26 +26,24 @@ export default function Hero() {
       {/* Content - Centered and balanced, pushed down with less bottom padding */}
       <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-8 sm:py-10 md:py-12 lg:py-16 mt-32 sm:mt-36 md:mt-40 lg:mt-48">
 
-        {/* Saxophone Illustration - In the space above container, overlapping navbar */}
-        <div className="absolute -top-44 sm:-top-48 md:-top-56 lg:-top-64 left-1/2 transform -translate-x-1/2 z-[60] w-48 h-64 sm:w-56 sm:h-72 md:w-64 md:h-84 lg:w-72 lg:h-96" style={{rotate: '15deg', opacity: '0.7'}}>
-          <Image
-            src="/images/saxophone.png"
-            alt="Saxophone illustration"
-            fill
-            className="object-contain"
-            sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, 288px"
-            unoptimized
-          />
-        </div>
-
-        <div className="animate-fade-in-up space-y-8 sm:space-y-10 md:space-y-12">
+      {/* Saxophone Illustration - Fixed position to overlap navbar */}
+      <div className="fixed top-24 sm:top-28 md:top-32 lg:top-36 left-1/2 transform -translate-x-1/2 z-[60] w-48 h-64 sm:w-56 sm:h-72 md:w-64 md:h-84 lg:w-72 lg:h-96" style={{rotate: '15deg', opacity: '0.7'}}>
+        <Image
+          src="/images/saxophone.png"
+          alt="Saxophone illustration"
+          fill
+          className="object-contain"
+          sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, 288px"
+          unoptimized
+        />
+      </div>
           {/* Warm backdrop for text readability */}
           <div className="relative mx-auto max-w-5xl z-20">
             <div className="absolute inset-0 bg-gradient-to-b from-[#8B2E3E]/40 via-[#5B4260]/30 to-[#8B2E3E]/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl"></div>
             
-            <div className="relative z-40 px-6 sm:px-8 md:px-12 lg:px-16 py-10 sm:py-12 md:py-16 lg:py-20">
+            <div className="relative z-40 px-4 sm:px-6 md:px-8 lg:px-12 py-10 sm:py-12 md:py-16 lg:py-20">
               {/* Brand Name - Responsive sizing */}
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tight text-[#FFD700] mb-6 sm:mb-8 md:mb-10 whitespace-nowrap" style={{
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tight text-[#FFD700] mb-6 sm:mb-8 md:mb-10 whitespace-nowrap overflow-visible" style={{
                 letterSpacing: '0.02em',
                 textShadow: '0 4px 12px rgba(0,0,0,0.4), 0 0 30px rgba(255, 215, 0, 0.5)'
               }}>
