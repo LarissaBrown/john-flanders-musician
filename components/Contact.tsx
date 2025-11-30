@@ -66,7 +66,7 @@ export default function Contact() {
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-6" suppressHydrationWarning>
-              <div>
+              <div suppressHydrationWarning>
                 <label className="block text-[#F5F0E8] font-semibold mb-3 text-sm uppercase tracking-wide">
                   Name *
                 </label>
@@ -81,7 +81,7 @@ export default function Contact() {
                 />
               </div>
 
-              <div>
+              <div suppressHydrationWarning>
                 <label className="block text-[#F5F0E8] font-semibold mb-3 text-sm uppercase tracking-wide">
                   Email *
                 </label>
@@ -96,7 +96,7 @@ export default function Contact() {
                 />
               </div>
 
-              <div>
+              <div suppressHydrationWarning>
                 <label className="block text-[#F5F0E8] font-semibold mb-3 text-sm uppercase tracking-wide">
                   Phone
                 </label>
