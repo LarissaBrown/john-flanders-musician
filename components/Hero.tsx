@@ -23,11 +23,11 @@ export default function Hero() {
         />
       </div>
 
-      {/* Content - Centered and balanced, pushed down */}
-      <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-16 sm:py-20 md:py-24 lg:py-32 mt-32 sm:mt-40 md:mt-48 lg:mt-56">
+      {/* Content - Centered and balanced, pushed down with less bottom padding */}
+      <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-8 sm:py-10 md:py-12 lg:py-16 mt-40 sm:mt-48 md:mt-56 lg:mt-64">
 
         {/* Saxophone Illustration - In the space above container, below navbar */}
-        <div className="absolute -top-56 sm:-top-64 md:-top-72 lg:-top-80 left-1/2 transform -translate-x-1/2 z-30 w-48 h-64 sm:w-56 sm:h-72 md:w-64 md:h-84 lg:w-72 lg:h-96" style={{rotate: '15deg', opacity: '0.7'}}>
+        <div className="absolute -top-64 sm:-top-72 md:-top-80 lg:-top-88 left-1/2 transform -translate-x-1/2 z-30 w-48 h-64 sm:w-56 sm:h-72 md:w-64 md:h-84 lg:w-72 lg:h-96" style={{rotate: '15deg', opacity: '0.7'}}>
           <Image
             src="/images/saxophone.png"
             alt="Saxophone illustration"
