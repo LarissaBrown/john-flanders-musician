@@ -40,10 +40,10 @@ export default function Hero() {
 
         <div className="animate-fade-in-up space-y-8 sm:space-y-10 md:space-y-12">
           {/* Warm backdrop for text readability */}
-          <div className="relative mx-auto max-w-5xl">
+          <div className="relative mx-auto max-w-5xl z-40">
             <div className="absolute inset-0 bg-gradient-to-b from-[#8B2E3E]/40 via-[#5B4260]/30 to-[#8B2E3E]/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl"></div>
             
-            <div className="relative z-10 px-6 sm:px-8 md:px-12 lg:px-16 py-10 sm:py-12 md:py-16 lg:py-20">
+            <div className="relative z-50 px-6 sm:px-8 md:px-12 lg:px-16 py-10 sm:py-12 md:py-16 lg:py-20">
               {/* Brand Name - Responsive sizing */}
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tight text-[#FFD700] mb-6 sm:mb-8 md:mb-10 whitespace-nowrap" style={{
                 letterSpacing: '0.02em',
