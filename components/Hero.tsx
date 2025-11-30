@@ -41,14 +41,14 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="animate-fade-in-up space-y-8 sm:space-y-10 md:space-y-12">
+        <div className="animate-fade-in-up space-y-8 sm:space-y-10 md:space-y-12 flex justify-center">
           {/* Warm backdrop for text readability - centered with equal margins */}
-          <div className="relative mx-auto max-w-5xl z-20">
+          <div className="relative w-full max-w-5xl z-20" style={{marginLeft: 'auto', marginRight: 'auto'}}>
             <div className="absolute inset-0 bg-gradient-to-b from-[#8B2E3E]/40 via-[#5B4260]/30 to-[#8B2E3E]/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl"></div>
             
-            <div className="relative z-40 py-10 sm:py-12 md:py-16 lg:py-20" style={{paddingLeft: '48px', paddingRight: '48px'}}>
+            <div className="relative z-40 py-10 sm:py-12 md:py-16 lg:py-20 px-8 sm:px-12 md:px-16 lg:px-20">
               {/* Brand Name - Always on one line with adjusted sizing */}
-              <h1 className="font-black tracking-tight text-[#FFD700] mb-6 sm:mb-8 md:mb-10 whitespace-nowrap" style={{
+              <h1 className="font-black tracking-tight text-[#FFD700] mb-6 sm:mb-8 md:mb-10 whitespace-nowrap text-center" style={{
                 fontSize: 'clamp(2.5rem, 6vw, 5.5rem)',
                 letterSpacing: '0.02em',
                 textShadow: '0 4px 12px rgba(0,0,0,0.4), 0 0 30px rgba(255, 215, 0, 0.5)'
@@ -57,14 +57,14 @@ export default function Hero() {
               </h1>
 
               {/* Tagline - Responsive sizing */}
-              <div className="space-y-5 sm:space-y-6 md:space-y-7 mx-auto">
-                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#FFE4B5] uppercase tracking-wide leading-tight" style={{
+              <div className="space-y-5 sm:space-y-6 md:space-y-7">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#FFE4B5] uppercase tracking-wide leading-tight text-center" style={{
                   textShadow: '0 2px 8px rgba(0,0,0,0.4)'
                 }}>
                   Live music from the heart of Utah.
                 </h2>
                 
-                <p className="text-lg sm:text-xl md:text-2xl text-[#FFFAF0] font-light leading-relaxed" style={{
+                <p className="text-lg sm:text-xl md:text-2xl text-[#FFFAF0] font-light leading-relaxed text-center" style={{
                   textShadow: '0 2px 6px rgba(0,0,0,0.3)'
                 }}>
                   Multi-instrumentalist. Performer. Available for all occasions.
