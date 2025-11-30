@@ -62,11 +62,12 @@ export default function Hero() {
       {/* Saxophone Illustration - Below hero container, centered and tilted */}
       <div className="absolute bottom-32 sm:bottom-24 md:bottom-20 left-1/2 transform -translate-x-1/2 z-10 w-48 h-64 sm:w-56 sm:h-72 md:w-64 md:h-80" style={{rotate: '15deg', opacity: '0.7'}}>
         <Image
-          src={`/images/saxophone.png?v=${Date.now()}`}
+          src="/images/saxophone.png"
           alt="Saxophone illustration"
           fill
           className="object-contain"
           sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, 256px"
+          unoptimized
         />
       </div>
 
