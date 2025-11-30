@@ -8,11 +8,11 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#1C1612] text-[#F5F0E8] pt-20 pb-8 border-t border-[#F6B800]/20">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="mx-auto px-8 sm:px-16 lg:px-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           {/* Brand */}
-          <div>
-            <div className="flex items-center space-x-3 mb-6">
+          <div className="text-center md:text-left">
+            <div className="flex items-center space-x-3 mb-6 justify-center md:justify-start">
               <div className="flex space-x-1">
                 <div className="w-3 h-3 rounded-full bg-[#F6B800]"></div>
                 <div className="w-3 h-3 rounded-full bg-[#F6B800] opacity-80"></div>
@@ -27,7 +27,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="text-center md:text-left">
             <h3 className="text-base font-bold mb-6 text-[#F6B800] uppercase tracking-widest">Quick Links</h3>
             <ul className="space-y-3">
               <li>
@@ -59,9 +59,9 @@ export default function Footer() {
           </div>
 
           {/* Connect */}
-          <div>
+          <div className="text-center md:text-left">
             <h3 className="text-base font-bold mb-6 text-[#F6B800] uppercase tracking-widest">Connect</h3>
-            <div className="flex space-x-4 mb-6">
+            <div className="flex space-x-4 mb-6 justify-center md:justify-start">
               <a
                 href="https://facebook.com"
                 target="_blank"

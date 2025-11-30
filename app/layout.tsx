@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { CartProvider } from "@/lib/CartContext";
+import { CartProvider } from "@/contexts/CartContext";
 
 export const metadata: Metadata = {
   title: "John Flanders - Multi-Instrumentalist Musician",

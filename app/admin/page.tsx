@@ -1,170 +1,100 @@
 'use client';
 
 import { useState } from 'react';
-import { Music, Calendar, Film, MessageSquare, Plus } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
-export default function AdminPage() {
-  const [activeTab, setActiveTab] = useState<'events' | 'media' | 'contacts'>('events');
+export default function AdminLogin() {
+  const router = useRouter();
+  const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setIsLoading(true);
+
+    // Simple authentication (replace with NextAuth.js in production)
+    if (credentials.email === 'admin@johnflanders.com' && credentials.password === 'admin123') {
+      // Set session (using localStorage for now - use secure session in production)
+      localStorage.setItem('adminAuth', 'true');
+      router.push('/admin/dashboard');
+    } else {
+      setError('Invalid credentials');
+    }
+    
+    setIsLoading(false);
+  };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5]">
-      {/* Header */}
-      <header className="bg-[#2C2419] text-[#E6B8A5] py-6 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <Music className="w-8 h-8 text-[#D97D54]" />
-              <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-            </div>
-            <a
-              href="/"
-              className="text-[#D97D54] hover:text-[#E6B8A5] transition-colors"
-            >
-              ← Back to Site
-            </a>
+    <div className="min-h-screen bg-[#1C1612] flex items-center justify-center px-4">
+      <div className="max-w-md w-full">
+        {/* Logo */}
+        <div className="text-center mb-8">
+          <div className="flex justify-center space-x-2 mb-4">
+            <div className="w-4 h-4 rounded-full bg-[#F6B800]"></div>
+            <div className="w-4 h-4 rounded-full bg-[#F6B800] opacity-80"></div>
+            <div className="w-4 h-4 rounded-full bg-[#F6B800] opacity-60"></div>
           </div>
-        </div>
-      </header>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Tabs */}
-        <div className="bg-white rounded-lg shadow-lg mb-8">
-          <div className="flex border-b border-gray-200">
-            <button
-              onClick={() => setActiveTab('events')}
-              className={`flex items-center space-x-2 px-6 py-4 font-semibold transition-colors ${
-                activeTab === 'events'
-                  ? 'border-b-4 border-[#D97D54] text-[#C67B5C]'
-                  : 'text-[#5A4A3A] hover:text-[#C67B5C]'
-              }`}
-            >
-              <Calendar className="w-5 h-5" />
-              <span>Events</span>
-            </button>
-            <button
-              onClick={() => setActiveTab('media')}
-              className={`flex items-center space-x-2 px-6 py-4 font-semibold transition-colors ${
-                activeTab === 'media'
-                  ? 'border-b-4 border-[#D97D54] text-[#C67B5C]'
-                  : 'text-[#5A4A3A] hover:text-[#C67B5C]'
-              }`}
-            >
-              <Film className="w-5 h-5" />
-              <span>Media</span>
-            </button>
-            <button
-              onClick={() => setActiveTab('contacts')}
-              className={`flex items-center space-x-2 px-6 py-4 font-semibold transition-colors ${
-                activeTab === 'contacts'
-                  ? 'border-b-4 border-[#D97D54] text-[#C67B5C]'
-                  : 'text-[#5A4A3A] hover:text-[#C67B5C]'
-              }`}
-            >
-              <MessageSquare className="w-5 h-5" />
-              <span>Contacts</span>
-            </button>
-          </div>
-
-          <div className="p-8">
-            {activeTab === 'events' && (
-              <div>
-                <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-2xl font-bold text-[#2C2419]">
-                    Manage Events
-                  </h2>
-                  <button className="bg-[#C67B5C] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#D97D54] transition-colors flex items-center space-x-2">
-                    <Plus className="w-5 h-5" />
-                    <span>Add Event</span>
-                  </button>
-                </div>
-                <div className="text-center py-12 text-[#5A4A3A]">
-                  <Calendar className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                  <p className="text-lg">
-                    Event management interface will be implemented here.
-                  </p>
-                  <p className="text-sm mt-2">
-                    For now, use the API endpoints or database directly.
-                  </p>
-                </div>
-              </div>
-            )}
-
-            {activeTab === 'media' && (
-              <div>
-                <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-2xl font-bold text-[#2C2419]">
-                    Manage Media
-                  </h2>
-                  <button className="bg-[#C67B5C] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#D97D54] transition-colors flex items-center space-x-2">
-                    <Plus className="w-5 h-5" />
-                    <span>Add Media</span>
-                  </button>
-                </div>
-                <div className="text-center py-12 text-[#5A4A3A]">
-                  <Film className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                  <p className="text-lg">
-                    Media management interface will be implemented here.
-                  </p>
-                  <p className="text-sm mt-2">
-                    For now, use the API endpoints or database directly.
-                  </p>
-                </div>
-              </div>
-            )}
-
-            {activeTab === 'contacts' && (
-              <div>
-                <h2 className="text-2xl font-bold text-[#2C2419] mb-6">
-                  Contact Inquiries
-                </h2>
-                <div className="text-center py-12 text-[#5A4A3A]">
-                  <MessageSquare className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                  <p className="text-lg">
-                    Contact management interface will be implemented here.
-                  </p>
-                  <p className="text-sm mt-2">
-                    For now, use the API endpoints or database directly.
-                  </p>
-                </div>
-              </div>
-            )}
-          </div>
+          <h1 className="text-3xl font-black text-[#F6B800] uppercase tracking-wide">
+            Admin Login
+          </h1>
+          <p className="text-[#B8AFA3] mt-2">John Flanders Music</p>
         </div>
 
-        {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-[#5A4A3A] text-sm font-medium">Total Events</p>
-                <p className="text-3xl font-bold text-[#2C2419] mt-2">0</p>
-              </div>
-              <Calendar className="w-12 h-12 text-[#D97D54] opacity-50" />
+        {/* Login Form */}
+        <div className="bg-[#2D241E] rounded-2xl shadow-2xl p-8 border border-[#F6B800]/10">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label className="block text-[#F5F0E8] font-semibold mb-2 text-sm uppercase tracking-wide">
+                Email
+              </label>
+              <input
+                type="email"
+                value={credentials.email}
+                onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
+                required
+                className="w-full px-4 py-3 bg-[#1C1612] border-2 border-[#3A2F28] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors text-[#F5F0E8]"
+                placeholder="admin@johnflanders.com"
+              />
             </div>
-          </div>
 
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-[#5A4A3A] text-sm font-medium">Media Items</p>
-                <p className="text-3xl font-bold text-[#2C2419] mt-2">0</p>
-              </div>
-              <Film className="w-12 h-12 text-[#D97D54] opacity-50" />
+            <div>
+              <label className="block text-[#F5F0E8] font-semibold mb-2 text-sm uppercase tracking-wide">
+                Password
+              </label>
+              <input
+                type="password"
+                value={credentials.password}
+                onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+                required
+                className="w-full px-4 py-3 bg-[#1C1612] border-2 border-[#3A2F28] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors text-[#F5F0E8]"
+                placeholder="••••••••"
+              />
             </div>
-          </div>
 
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-[#5A4A3A] text-sm font-medium">New Contacts</p>
-                <p className="text-3xl font-bold text-[#2C2419] mt-2">0</p>
+            {error && (
+              <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-4 py-3 rounded-lg text-sm">
+                {error}
               </div>
-              <MessageSquare className="w-12 h-12 text-[#D97D54] opacity-50" />
-            </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-[#F6B800] hover:bg-[#FFCA28] text-[#1C1612] py-4 rounded-xl font-black text-base uppercase tracking-wide transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-1"
+            >
+              {isLoading ? 'Logging in...' : 'Login'}
+            </button>
+          </form>
+
+          <div className="mt-6 text-center">
+            <p className="text-[#8A8078] text-sm">
+              Demo credentials: admin@johnflanders.com / admin123
+            </p>
           </div>
         </div>
       </div>
     </div>
   );
 }
-

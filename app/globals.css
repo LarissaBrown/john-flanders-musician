@@ -2,68 +2,73 @@
 
 :root {
   /* 
-    MUBI-INSPIRED SOPHISTICATED PALETTE
-    Dark + Gold Premium Aesthetic
+    RED ROCKS SOUTHWEST PALETTE
+    Primary: Natural Sky & Rock Tones
+    Accents: Sunset Drama
   */
   
-  /* PRIMARY COLORS - Dark Sophistication */
-  --background: #1C1612;           /* Deep Charcoal Brown - main bg */
-  --surface: #2D241E;              /* Rich Dark Brown - cards/surfaces */
-  --surface-elevated: #3A2F28;     /* Elevated elements */
+  /* PRIMARY COLORS - Red Rocks Natural */
+  --cream: #F5EDD4;              /* Light sand/cream - light backgrounds */
+  --sky-blue: #6B9CC3;           /* Bright sky blue - primary accent */
+  --olive-green: #6B7037;        /* Sage green - secondary accent */
+  --rich-brown: #5C3639;         /* Deep red-brown - dark elements */
+  --terracotta: #D49A7B;         /* Warm terracotta - warm accent */
   
-  /* GOLDEN ACCENTS - Premium Highlight */
-  --gold: #F6B800;                 /* Vibrant Gold - primary CTA */
-  --gold-dark: #D9A300;            /* Deep Gold - hover states */
-  --gold-light: #FFCA28;           /* Light Gold - highlights */
-  --gold-muted: #C9A55C;           /* Muted Gold - subtle accents */
+  /* SUNSET ACCENTS - Dramatic Highlights */
+  --sunset-coral: #E9756D;       /* Coral/salmon - CTA highlights */
+  --sunset-orange: #F19456;      /* Bright orange - hover states */
+  --sunset-wine: #8B2E3E;        /* Deep wine red - featured elements */
+  --sunset-purple: #5B4260;      /* Muted purple - depth/shadows */
+  --sunset-peach: #F4B48A;       /* Light peach - soft highlights */
+  
+  /* GOLD - Kept for Premium Feel */
+  --gold: #F6B800;               /* Vibrant gold - premium CTAs */
+  --gold-light: #FFCA28;         /* Light gold - hover */
+  
+  /* BACKGROUND SYSTEM */
+  --background-dark: #2A2220;    /* Rich dark brown base */
+  --background-light: #F5EDD4;   /* Cream for light sections */
+  --surface-dark: #3D3230;       /* Elevated dark surfaces */
+  --surface-light: #E8DCC5;      /* Elevated light surfaces */
   
   /* TEXT COLORS */
-  --foreground: #F5F0E8;           /* Warm Off-White - primary text */
-  --foreground-muted: #B8AFA3;     /* Muted Tan - secondary text */
-  --foreground-subtle: #8A8078;    /* Subtle Brown - tertiary text */
-  
-  /* SOUTHWEST ACCENT (Subtle) */
-  --terracotta: #C67B5C;           /* Soft Terracotta - optional accent */
-  --terracotta-muted: #A8664B;     /* Muted Terracotta */
+  --text-primary-dark: #2A2220;  /* Dark text on light bg */
+  --text-primary-light: #F5EDD4; /* Light text on dark bg */
+  --text-muted: #8A7B6F;         /* Muted brown text */
   
   /* SEMANTIC COLORS */
-  --success: #7BA05B;
-  --error: #C84C40;
-  --warning: #F6B800;              /* Uses gold */
-  --info: #6B8CAE;
+  --success: #6B7037;            /* Olive green */
+  --error: #8B2E3E;              /* Sunset wine */
+  --warning: #F19456;            /* Sunset orange */
+  --info: #6B9CC3;               /* Sky blue */
   
-  /* SHADOWS & OVERLAYS */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.6);
-  --shadow-gold: 0 8px 24px rgba(246, 184, 0, 0.3);
-  
-  --overlay-dark: rgba(28, 22, 18, 0.9);
-  --overlay-darker: rgba(28, 22, 18, 0.95);
+  /* SHADOWS */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-surface: var(--surface);
-  --color-surface-elevated: var(--surface-elevated);
+  --color-cream: var(--cream);
+  --color-sky-blue: var(--sky-blue);
+  --color-olive-green: var(--olive-green);
+  --color-rich-brown: var(--rich-brown);
+  --color-terracotta: var(--terracotta);
+  
+  --color-sunset-coral: var(--sunset-coral);
+  --color-sunset-orange: var(--sunset-orange);
+  --color-sunset-wine: var(--sunset-wine);
+  --color-sunset-purple: var(--sunset-purple);
+  --color-sunset-peach: var(--sunset-peach);
   
   --color-gold: var(--gold);
-  --color-gold-dark: var(--gold-dark);
   --color-gold-light: var(--gold-light);
-  --color-gold-muted: var(--gold-muted);
   
-  --color-foreground: var(--foreground);
-  --color-foreground-muted: var(--foreground-muted);
-  --color-foreground-subtle: var(--foreground-subtle);
-  
-  --color-terracotta: var(--terracotta);
-  --color-terracotta-muted: var(--terracotta-muted);
-  
-  --color-success: var(--success);
-  --color-error: var(--error);
-  --color-warning: var(--warning);
-  --color-info: var(--info);
+  --color-background-dark: var(--background-dark);
+  --color-background-light: var(--background-light);
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-light: var(--surface-light);
 }
 
 * {
@@ -77,30 +82,30 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--background-light);
+  color: var(--text-primary-dark);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar - Dark + Gold */
+/* Custom scrollbar - Southwest Inspired */
 ::-webkit-scrollbar {
   width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--surface);
+  background: var(--surface-light);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gold-muted);
+  background: var(--sky-blue);
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold);
+  background: var(--sunset-coral);
 }
 
 /* Animations */
@@ -112,6 +117,17 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -128,41 +144,56 @@ body {
   animation: fadeInUp 0.8s ease-out;
 }
 
+.animate-fade-in-right {
+  animation: fadeInRight 1s ease-out;
+}
+
 .animate-shimmer {
   animation: shimmer 3s infinite linear;
   background: linear-gradient(
     90deg,
-    var(--gold-dark) 0%,
-    var(--gold) 50%,
-    var(--gold-dark) 100%
+    var(--sunset-coral) 0%,
+    var(--sunset-orange) 50%,
+    var(--sunset-coral) 100%
   );
   background-size: 1000px 100%;
 }
 
 /* Selection */
 ::selection {
-  background-color: var(--gold);
-  color: var(--background);
+  background-color: var(--sky-blue);
+  color: var(--cream);
 }
 
 /* Focus visible for accessibility */
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--sky-blue);
   outline-offset: 2px;
 }
 
 /* Premium gradient backgrounds */
-.gradient-dark {
-  background: linear-gradient(180deg, var(--background) 0%, var(--surface) 100%);
+.gradient-sky {
+  background: linear-gradient(180deg, var(--sky-blue) 0%, var(--sunset-purple) 100%);
 }
 
-.gradient-gold {
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+.gradient-sunset {
+  background: linear-gradient(135deg, var(--sunset-coral) 0%, var(--sunset-orange) 100%);
+}
+
+.gradient-earth {
+  background: linear-gradient(180deg, var(--terracotta) 0%, var(--rich-brown) 100%);
 }
 
 /* Text styles */
-.text-gold-gradient {
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+.text-gradient-sunset {
+  background: linear-gradient(135deg, var(--sunset-coral) 0%, var(--sunset-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-sky {
+  background: linear-gradient(135deg, var(--sky-blue) 0%, var(--sunset-purple) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
