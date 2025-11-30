@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24 md:pt-28 lg:pt-32"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 sm:pt-40 md:pt-48 lg:pt-56"
     >
       {/* Warm Dark Spots Background */}
       <div className="absolute inset-0 z-0">
@@ -27,13 +27,13 @@ export default function Hero() {
       <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-16 sm:py-20 md:py-24 lg:py-32">
 
         {/* Saxophone Illustration - Above hero container, centered and tilted */}
-        <div className="absolute -top-24 sm:-top-32 md:-top-40 left-1/2 transform -translate-x-1/2 z-30 w-32 h-40 sm:w-36 sm:h-48 md:w-40 md:h-52" style={{rotate: '15deg', opacity: '0.7'}}>
+        <div className="absolute -top-28 sm:-top-36 md:-top-44 lg:-top-52 left-1/2 transform -translate-x-1/2 z-30 w-44 h-56 sm:w-52 sm:h-64 md:w-60 md:h-80 lg:w-64 lg:h-84" style={{rotate: '15deg', opacity: '0.7'}}>
           <Image
             src="/images/saxophone.png"
             alt="Saxophone illustration"
             fill
             className="object-contain"
-            sizes="(max-width: 640px) 128px, (max-width: 768px) 144px, 160px"
+            sizes="(max-width: 640px) 176px, (max-width: 768px) 208px, (max-width: 1024px) 240px, 256px"
             unoptimized
           />
         </div>
