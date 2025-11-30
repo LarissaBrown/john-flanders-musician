@@ -26,16 +26,16 @@ export default function Hero() {
       {/* Content - Centered and balanced, pushed down with less bottom padding */}
       <div className="relative z-20 w-full mx-auto text-center py-8 sm:py-10 md:py-12 lg:py-16 mt-32 sm:mt-36 md:mt-40 lg:mt-48" style={{paddingLeft: '32px', paddingRight: '32px'}}>
 
-        {/* Saxophone Illustration - Positioned above the warm backdrop, centered */}
+        {/* Saxophone Illustration - Positioned above the warm backdrop, centered, bigger and transparent */}
         <div className="flex justify-center mb-3">
-          <div className="relative w-16 h-20 sm:w-20 sm:h-24 md:w-24 md:h-28 lg:w-28 lg:h-32 z-30" style={{transform: 'rotate(15deg)', opacity: '1'}}>
+          <div className="relative w-24 h-32 sm:w-32 sm:h-40 md:w-40 md:h-52 lg:w-48 lg:h-60 z-30" style={{transform: 'rotate(15deg)', opacity: '0.75'}}>
             <Image
               src="/images/saxophone.png"
               alt="Saxophone illustration"
               fill
               className="object-contain"
               style={{objectPosition: 'center', scale: '1.5'}}
-              sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, (max-width: 1024px) 96px, 112px"
+              sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, (max-width: 1024px) 160px, 192px"
               unoptimized
             />
           </div>
