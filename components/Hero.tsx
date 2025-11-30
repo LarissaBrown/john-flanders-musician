@@ -25,24 +25,6 @@ export default function Hero() {
 
       {/* Content - Responsive positioning */}
       <div className="relative z-20 w-full max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center py-16 sm:py-20 md:py-24 lg:py-32">
-        
-        {/* Saxophone Illustration - Responsive positioning */}
-        <div className="hidden md:block absolute z-30" style={{
-          top: '40px',
-          left: '75%',
-          opacity: '0.8',
-          width: '150px',
-          height: '196px'
-        }}>
-          <Image
-            src="/images/saxophone.png"
-            alt="Saxophone illustration"
-            fill
-            className="object-contain object-center"
-            style={{transform: 'scaleX(-1) scale(1.33)', transformOrigin: 'center'}}
-            sizes="150px"
-          />
-        </div>
 
         <div className="animate-fade-in-up space-y-8 sm:space-y-10 md:space-y-12">
           {/* Warm backdrop for text readability */}
