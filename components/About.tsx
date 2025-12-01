@@ -7,22 +7,22 @@ export default function About() {
     {
       icon: Music2,
       title: 'Multi-Instrumentalist',
-      description: 'Proficient in guitar, piano, drums, and more',
+      description: 'Saxophone, flute, clarinet, and keyboards',
     },
     {
       icon: Award,
-      title: 'Professional Experience',
-      description: '15+ years performing across the Southwest',
+      title: 'Award-Winning Artist',
+      description: 'Multi-time City Weekly Best of Utah winner',
     },
     {
       icon: Users,
-      title: 'Versatile Performer',
-      description: 'Solo acts, bands, and collaborative projects',
+      title: 'Session Musician',
+      description: 'TV, radio, film soundtracks, and live performances',
     },
     {
       icon: Wind,
-      title: 'Diverse Repertoire',
-      description: 'From folk to rock, blues to contemporary',
+      title: 'Jazz & Beyond',
+      description: 'From classic jazz to fusion-swing and NPR features',
     },
   ];
 
@@ -45,23 +45,30 @@ export default function About() {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto mb-20">
-          <div className="space-y-8 text-[#F5F0E8] text-base sm:text-lg leading-relaxed">
+        <div className="max-w-5xl mx-auto mb-20">
+          <div className="space-y-6 text-[#F5F0E8] text-base sm:text-lg leading-relaxed">
             <p className="px-4">
-              John Flanders is a seasoned multi-instrumentalist whose music captures
-              the essence of the American Southwest. With over 15 years of professional
-              experience, John has performed at venues ranging from intimate gatherings
-              to large festival stages.
+              For more than a decade, <strong className="text-[#F6B800]">John Flanders</strong> has been one of the most in-demand saxophone and woodwind players in Salt Lake City and across the Intermountain West. His sound is heard everywhere—from TV and radio commercials to popular television shows and major film soundtracks. Known as both a standout bandleader and a trusted session musician, John's recordings have earned widespread praise and solidified his reputation as a skilled composer and arranger.
             </p>
+            
             <p className="px-4">
-              His unique style blends traditional folk, contemporary rock, and blues,
-              creating a sound that resonates with audiences of all ages. Whether
-              performing solo or with a band, John brings energy, authenticity, and
-              passion to every show.
+              John is a multi-time City Weekly <em>Best of Utah</em> award winner, recognized both for his instrumental work and for his classic jazz groups. He has performed the National Anthem at NBA games, appeared with the Utah Symphony, and toured extensively throughout Europe, including Italy, France, Germany, Switzerland, and more. His freelance career has paired him with iconic artists such as The Temptations, Billy Preston, Solomon Burke, Wayne Newton, Frankie Avalon, Rodney Dangerfield, Don Rickles, Patty Andrews, Sam Moore, Ben Folds, and many others.
             </p>
-            <p className="text-[#F6B800] font-semibold text-center mt-12 px-4">
-              Available for concerts, private events, weddings, corporate functions,
-              and more. Let's create something memorable together.
+            
+            <p className="px-4">
+              John leads several acclaimed projects, including the long-running jazz quartet <strong className="text-[#F6B800]">Bias Sphere</strong>, featuring Linke Hebrew (bass), Wayne Coons (drums), and Chris Hough (guitar). His fusion-swing group, <strong className="text-[#F6B800]">Double Helix</strong>, was named Best Jazz Group shortly after its debut and has released three albums, including the audience favorite <em>Natural Selection</em>. The group has also been featured nationally on NPR's <em>Marketplace</em>, and John has contributed original compositions to NPR's <em>To The Best of Our Knowledge</em>.
+            </p>
+            
+            <p className="px-4">
+              A versatile multi-instrumentalist, John performs primarily on tenor and alto saxophones and flute, while also playing clarinet, bass clarinet, piccolo, baritone and soprano saxophones, and keyboards. Beyond performing, he remains active as an arranger, composer, conductor, producer, and recording artist.
+            </p>
+            
+            <p className="px-4">
+              Originally from Canton, Ohio, John studied at The Ohio State University and the University of Connecticut, learning from jazz greats such as Ted Nash, Lou Donaldson, Ernie Krivda, and Eddie Daniels. His career has taken him from New York to Los Angeles to international stages—and even the open seas during his years performing in cruise-ship orchestras backing top Vegas entertainers. With more than 15 years of teaching experience and guest lectures on jazz history, John brings both expertise and passion to every musical endeavor.
+            </p>
+            
+            <p className="text-[#F6B800] font-semibold text-center mt-12 px-4 text-lg">
+              Available for concerts, private events, weddings, corporate functions, and more. Let's create something memorable together.
             </p>
           </div>
         </div>
