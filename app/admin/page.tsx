@@ -90,7 +90,7 @@ export default function AdminLogin() {
 
           <div className="mt-6 text-center">
             <p className="text-[#8A8078] text-sm">
-              Demo credentials: admin@johnflanders.com / admin123
+              Demo credentials: admin@johnflanders.com / TestPassword123
             </p>
           </div>
         </div>

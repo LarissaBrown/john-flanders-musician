@@ -65,6 +65,14 @@ export default function Navbar() {
               </Link>
             ))}
             
+            {/* Admin Link */}
+            <Link
+              href="/admin/login"
+              className="text-[#F5EDD4] hover:text-[#E9756D] transition-colors duration-200 font-semibold text-sm uppercase tracking-wider"
+            >
+              Admin
+            </Link>
+            
             {/* Cart Button with proper spacing */}
             <button
               onClick={() => setShowCart(true)}
@@ -119,6 +127,15 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            
+            {/* Admin Link in Mobile Menu */}
+            <Link
+              href="/admin/login"
+              className="block text-[#F5EDD4] hover:text-[#E9756D] transition-colors duration-200 text-base py-3 px-4 uppercase tracking-wider font-semibold rounded-lg hover:bg-[#4A332F]/50"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Admin
+            </Link>
           </div>
         )}
       </div>
