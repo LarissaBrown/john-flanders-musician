@@ -10,14 +10,14 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-start justify-center overflow-hidden pt-20 px-6 sm:px-8 lg:px-12"
     >
-      {/* Warm Dark Spots Background */}
-      <div className="absolute inset-0 z-0">
+      {/* Background Image */}
+      <div className="absolute top-20 left-0 right-0 bottom-0 z-0">
         <Image
-          src="/images/sunset-red-rocks.webp"
+          src="/images/john_flanders_goldner_hirsch_inn.jpg"
           alt="Warm ambient background"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-top"
           sizes="100vw"
           quality={90}
         />
@@ -27,17 +27,8 @@ export default function Hero() {
       <div className="relative z-20 w-full max-w-7xl mx-auto text-center py-12 sm:py-16 md:py-20">
 
         {/* Saxophone Illustration - Positioned above the warm backdrop */}
-        <div className="flex justify-center mb-8">
-          <div className="relative w-24 h-32 sm:w-32 sm:h-40 md:w-40 md:h-52 lg:w-48 lg:h-60 z-30 rotate-[15deg] opacity-75 scale-150">
-            <Image
-              src="/images/saxophone.png"
-              alt="Saxophone illustration"
-              fill
-              className="object-contain"
-              sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, (max-width: 1024px) 160px, 192px"
-              unoptimized
-            />
-          </div>
+        <div className="flex justify-center style={{marginTop: '-40px'}} mb-8">
+
         </div>
 
         <div className="animate-fade-in-up space-y-8 sm:space-y-10 md:space-y-12 flex justify-center">
