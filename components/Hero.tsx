@@ -11,7 +11,7 @@ export default function Hero() {
       className="relative min-h-screen flex items-start justify-center overflow-hidden pt-20 px-6 sm:px-8 lg:px-12"
     >
       {/* Background Image */}
-      <div className="absolute top-20 left-0 right-0 bottom-0 z-0">
+      <div className="absolute top-16 left-0 right-0 bottom-0 z-0">
         <Image
           src="/images/john_flanders_goldner_hirsch_inn.jpg"
           alt="Warm ambient background"
@@ -23,20 +23,15 @@ export default function Hero() {
         />
       </div>
 
-      {/* Content - Centered and balanced */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto text-center py-12 sm:py-16 md:py-20">
-
-        {/* Saxophone Illustration - Positioned above the warm backdrop */}
-        <div className="flex justify-center style={{marginTop: '-40px'}} mb-8">
-
-        </div>
+      {/* Content - Positioned lower on page */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto text-center pt-[40vh] sm:pt-[45vh] md:pt-[50vh]">
 
         <div className="animate-fade-in-up space-y-8 sm:space-y-10 md:space-y-12 flex justify-center">
           {/* Warm backdrop for text readability */}
           <div className="relative w-full max-w-5xl mx-auto z-20">
-            <div className="absolute inset-0 bg-gradient-to-b from-[#8B2E3E]/40 via-[#5B4260]/30 to-[#8B2E3E]/40 backdrop-blur-sm rounded-2xl sm:rounded-3xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-[#8B2E3E]/25 via-[#5B4260]/20 to-[#8B2E3E]/25 backdrop-blur-sm rounded-2xl sm:rounded-3xl"></div>
             
-            <div className="relative z-40 py-10 sm:py-12 md:py-16 lg:py-20 px-8 sm:px-12 md:px-16 lg:px-20 space-y-8">
+            <div className="relative z-40 py-8 sm:py-10 md:py-12 lg:py-14 px-6 sm:px-10 md:px-12 lg:px-16 space-y-6">
               {/* Brand Name */}
               <h1 className="font-black tracking-tight text-[#FFD700] whitespace-nowrap text-center text-[clamp(2.5rem,6vw,5.5rem)] [text-shadow:0_4px_12px_rgba(0,0,0,0.4),0_0_30px_rgba(255,215,0,0.5)]">
                 JOHN FLANDERS
