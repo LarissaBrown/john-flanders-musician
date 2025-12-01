@@ -61,7 +61,7 @@ export default function Hero() {
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#FFE4B5] uppercase tracking-wide leading-tight text-center" style={{
                   textShadow: '0 2px 8px rgba(0,0,0,0.4)'
                 }}>
-                  Live music from the heart of Utah.
+                  Live music from the heart of the Southwest.
                 </h2>
                 
                 <p className="text-lg sm:text-xl md:text-2xl text-[#FFFAF0] font-light leading-relaxed text-center" style={{
