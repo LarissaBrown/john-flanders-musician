@@ -221,15 +221,20 @@ export default function ImagesManagement() {
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {[
-            'saxophone.png',
+            // Performance Photos
+            'john_flanders_goldner_hirsch_inn.jpg',
+            'john_flanders_brick_sax.jpg',
+            'John_Flanders_SB_Trio.jpg',
+            'john-flanders-trio-by-windows.jpeg',
+            'john_flanders_tux.jpeg',
+            // Album Covers
+            'double_helix_albumn_cover.jpg',
+            // Background Images
             'sunset-red-rocks.webp',
             'blue-sky-canyon.webp',
             'pink-red-rocks.webp',
-            'john_flanders_tux.jpeg',
-            'John_Flanders_SB_Trio.jpg',
-            'john-flanders-trio-by-windows.jpeg',
-            'double_helix_albumn_cover.jpg',
-            'john_flanders_goldner_hirsch_inn.jpg',
+            // Icons
+            'saxophone.png',
           ].map((image) => (
             <div
               key={image}

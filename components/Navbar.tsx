@@ -27,6 +27,7 @@ export default function Navbar() {
     { href: '#discography', label: 'Discography' },
     { href: '#shop', label: 'Shop' },
     { href: '#media', label: 'Media' },
+    { href: '#photos', label: 'Photos' },
     { href: '#contact', label: 'Contact' },
   ];
 

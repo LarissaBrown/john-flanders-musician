@@ -51,6 +51,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="#photos" className="text-[#F5F0E8] hover:text-[#F6B800] transition-colors text-sm block py-1">
+                  Photos
+                </Link>
+              </li>
+              <li>
                 <Link href="#contact" className="text-[#F5F0E8] hover:text-[#F6B800] transition-colors text-sm block py-1">
                   Book Now
                 </Link>
