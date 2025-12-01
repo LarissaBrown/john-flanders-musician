@@ -59,27 +59,27 @@ export default function Media() {
   });
 
   return (
-    <section id="media" className="py-32 bg-[#2D241E]">
-      <div className="mx-auto px-8 sm:px-16 lg:px-24">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
+    <section id="media" className="py-20 sm:py-24 lg:py-32 bg-[#2D241E]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-16 sm:mb-20">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
             Media Gallery
           </h2>
-          <p className="text-xl text-[#F5F0E8] mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-[#F5F0E8] max-w-3xl mx-auto leading-relaxed">
             Listen to recordings and watch performances
           </p>
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex justify-center mb-16">
-          <div className="bg-[#1C1612] rounded-full p-2 inline-flex space-x-2 border border-[#F6B800]/20">
+        <div className="flex justify-center mb-12 sm:mb-16 px-4">
+          <div className="bg-[#1C1612] rounded-full p-1.5 inline-flex gap-2 border border-[#F6B800]/20 shadow-lg">
             {['all', 'audio', 'video'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab as typeof activeTab)}
-                className={`px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wide transition-all ${
+                className={`px-6 sm:px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wide transition-all ${
                   activeTab === tab
-                    ? 'bg-[#F6B800] text-[#1C1612]'
+                    ? 'bg-[#F6B800] text-[#1C1612] shadow-md'
                     : 'text-[#F5F0E8] hover:text-[#F6B800]'
                 }`}
               >
@@ -90,7 +90,7 @@ export default function Media() {
         </div>
 
         {/* Media Grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredMedia.map((item) => (
             <div
               key={item.id}
@@ -122,15 +122,15 @@ export default function Media() {
               </div>
 
               {/* Info */}
-              <div className="p-6 text-center">
-                <p className="text-xs font-bold uppercase tracking-widest text-[#F6B800] mb-2">
+              <div className="p-6 sm:p-8 text-center">
+                <p className="text-xs font-bold uppercase tracking-widest text-[#F6B800] mb-3">
                   {item.type}
                 </p>
-                <h3 className="text-xl font-bold text-[#F5F0E8] mb-2">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#F5F0E8] mb-3">
                   {item.title}
                 </h3>
                 {item.description && (
-                  <p className="text-[#B8AFA3] text-sm">{item.description}</p>
+                  <p className="text-[#B8AFA3] text-sm px-2">{item.description}</p>
                 )}
               </div>
             </div>
@@ -138,9 +138,9 @@ export default function Media() {
         </div>
 
         {filteredMedia.length === 0 && (
-          <div className="text-center py-20">
+          <div className="text-center py-20 px-6">
             <Music className="w-16 h-16 text-[#F6B800] mx-auto mb-6 opacity-50" />
-            <p className="text-xl text-[#F5F0E8]">
+            <p className="text-lg sm:text-xl text-[#F5F0E8]">
               No {activeTab !== 'all' ? activeTab : ''} media available yet.
             </p>
           </div>

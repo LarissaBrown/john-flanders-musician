@@ -37,23 +37,14 @@ export default function Navbar() {
           : 'bg-[#4A332F]/90 backdrop-blur-sm'
       }`}
     >
-      <div className="mx-auto px-8 sm:px-16 lg:px-24">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo with proper spacing */}
-          <Link href="/" className="flex items-center group" style={{marginLeft: '24px'}}>
-            <div className="flex" style={{gap: '10px', marginRight: '16px'}}>
-              <div 
-                className="rounded-full bg-[#6B9CC3]"
-                style={{width: '16px', height: '16px', boxShadow: '0 0 8px rgba(107, 156, 195, 0.6)'}}
-              ></div>
-              <div 
-                className="rounded-full bg-[#6B9CC3]"
-                style={{width: '16px', height: '16px', boxShadow: '0 0 8px rgba(107, 156, 195, 0.6)'}}
-              ></div>
-              <div 
-                className="rounded-full bg-[#6B9CC3]"
-                style={{width: '16px', height: '16px', boxShadow: '0 0 8px rgba(107, 156, 195, 0.6)'}}
-              ></div>
+          <Link href="/" className="flex items-center gap-4 group">
+            <div className="flex gap-2.5">
+              <div className="w-4 h-4 rounded-full bg-[#6B9CC3] shadow-[0_0_8px_rgba(107,156,195,0.6)]"></div>
+              <div className="w-4 h-4 rounded-full bg-[#6B9CC3] shadow-[0_0_8px_rgba(107,156,195,0.6)]"></div>
+              <div className="w-4 h-4 rounded-full bg-[#6B9CC3] shadow-[0_0_8px_rgba(107,156,195,0.6)]"></div>
             </div>
             <span className="text-lg font-black text-[#F5EDD4] group-hover:text-[#E9756D] transition-colors uppercase tracking-wider">
               John Flanders
@@ -61,7 +52,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation with proper spacing */}
-          <div className="hidden md:flex items-center" style={{marginRight: '24px', gap: '32px'}}>
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -72,11 +63,10 @@ export default function Navbar() {
               </Link>
             ))}
             
-            {/* Cart Button with extra margin */}
+            {/* Cart Button with proper spacing */}
             <button
               onClick={() => setShowCart(true)}
-              className="relative text-[#F5EDD4] hover:text-[#E9756D] transition-colors"
-              style={{marginLeft: '16px'}}
+              className="relative text-[#F5EDD4] hover:text-[#E9756D] transition-colors ml-4"
             >
               <ShoppingBag className="w-6 h-6" />
               {itemCount > 0 && (
@@ -88,7 +78,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Cart & Menu with proper spacing */}
-          <div className="md:hidden flex items-center" style={{gap: '16px', marginRight: '24px'}}>
+          <div className="md:hidden flex items-center gap-4">
             <button
               onClick={() => setShowCart(true)}
               className="relative text-[#F5EDD4] hover:text-[#E9756D] transition-colors"
@@ -102,13 +92,13 @@ export default function Navbar() {
             </button>
             
             <button
-              className="text-[#F5EDD4] hover:text-[#6B9CC3] transition-colors"
+              className="text-[#F5EDD4] hover:text-[#6B9CC3] transition-colors p-1"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
-                <X className="w-8 h-8" />
+                <X className="w-7 h-7" />
               ) : (
-                <Menu className="w-8 h-8" />
+                <Menu className="w-7 h-7" />
               )}
             </button>
           </div>
@@ -116,12 +106,12 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-[#3D3230]/98 backdrop-blur-lg rounded-lg mt-2 mb-4 p-6 space-y-4 border border-[#6B9CC3]/20">
+          <div className="md:hidden bg-[#3D3230]/98 backdrop-blur-lg rounded-xl my-4 p-6 space-y-3 border border-[#6B9CC3]/20 shadow-xl">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block text-[#F5EDD4] hover:text-[#6B9CC3] transition-colors duration-200 text-base py-3 uppercase tracking-wider font-semibold"
+                className="block text-[#F5EDD4] hover:text-[#6B9CC3] transition-colors duration-200 text-base py-3 px-4 uppercase tracking-wider font-semibold rounded-lg hover:bg-[#4A332F]/50"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}

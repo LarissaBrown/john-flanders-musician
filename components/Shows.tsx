@@ -54,19 +54,19 @@ const upcomingShows: Show[] = [
 
 export default function Shows() {
   return (
-    <section id="shows" className="py-32 bg-[#1C1612]">
-      <div className="mx-auto px-8 sm:px-16 lg:px-24">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
+    <section id="shows" className="py-20 sm:py-24 lg:py-32 bg-[#1C1612]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-16 sm:mb-20">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
             Upcoming Shows
           </h2>
-          <p className="text-xl text-[#F5F0E8] mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-[#F5F0E8] max-w-3xl mx-auto leading-relaxed">
             Join me for an unforgettable musical experience.
           </p>
         </div>
 
-        {/* Shows Grid - matching Shop layout */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {/* Shows Grid */}
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {upcomingShows.map((show) => (
             <div
               key={show.id}
@@ -86,66 +86,64 @@ export default function Shows() {
               </div>
 
               {/* Show Info */}
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-bold text-[#F5F0E8] mb-3">
+              <div className="p-6 sm:p-8 text-center">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#F5F0E8] mb-4">
                   {show.title}
                 </h3>
                 
-                <div className="space-y-2 mb-4 text-[#B8AFA3] text-sm">
-                  <p className="flex items-center justify-center space-x-2">
-                    <MapPin className="w-4 h-4 text-[#F6B800]" />
+                <div className="space-y-3 mb-6 text-[#B8AFA3] text-sm">
+                  <p className="flex items-center justify-center gap-2">
+                    <MapPin className="w-4 h-4 text-[#F6B800] flex-shrink-0" />
                     <span>{show.venue}</span>
                   </p>
-                  <p className="flex items-center justify-center space-x-2">
-                    <MapPin className="w-4 h-4 text-[#F6B800]" />
+                  <p className="flex items-center justify-center gap-2">
+                    <MapPin className="w-4 h-4 text-[#F6B800] flex-shrink-0" />
                     <span>{show.location}</span>
                   </p>
-                  <p className="flex items-center justify-center space-x-2">
-                    <Calendar className="w-4 h-4 text-[#F6B800]" />
+                  <p className="flex items-center justify-center gap-2">
+                    <Calendar className="w-4 h-4 text-[#F6B800] flex-shrink-0" />
                     <span>{format(new Date(show.date), 'MMM dd, yyyy')}</span>
                   </p>
-                  <p className="flex items-center justify-center space-x-2">
-                    <Clock className="w-4 h-4 text-[#F6B800]" />
+                  <p className="flex items-center justify-center gap-2">
+                    <Clock className="w-4 h-4 text-[#F6B800] flex-shrink-0" />
                     <span>{show.time}</span>
                   </p>
                 </div>
 
                 {show.description && (
-                  <p className="text-[#B8AFA3] text-sm mb-4 line-clamp-2">
+                  <p className="text-[#B8AFA3] text-sm mb-6 line-clamp-2 px-2">
                     {show.description}
                   </p>
                 )}
 
                 {/* Button */}
-                <div className="flex flex-col items-center gap-4 mt-6">
-                  {show.ticketUrl && (
-                    <button className="w-full bg-[#F6B800] hover:bg-[#FFCA28] text-[#1C1612] px-6 py-3 rounded-xl font-black text-sm uppercase tracking-wide transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                      Get Tickets
-                    </button>
-                  )}
-                </div>
+                {show.ticketUrl && (
+                  <button className="w-full bg-[#F6B800] hover:bg-[#FFCA28] text-[#1C1612] px-6 py-3.5 rounded-xl font-black text-sm uppercase tracking-wide transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 mt-4">
+                    Get Tickets
+                  </button>
+                )}
               </div>
             </div>
           ))}
         </div>
 
         {upcomingShows.length === 0 && (
-          <div className="text-center py-20">
+          <div className="text-center py-20 px-6">
             <Calendar className="w-16 h-16 text-[#F6B800] mx-auto mb-6 opacity-50" />
-            <p className="text-xl text-[#F5F0E8]">
+            <p className="text-lg sm:text-xl text-[#F5F0E8]">
               No upcoming shows scheduled. Check back soon!
             </p>
           </div>
         )}
         
         {/* Bottom text */}
-        <div className="text-center mt-16">
-          <p className="text-[#B8AFA3] text-sm uppercase tracking-widest">
+        <div className="text-center mt-16 sm:mt-20 px-6">
+          <p className="text-[#B8AFA3] text-sm uppercase tracking-widest mb-3">
             Available in selected venues.
           </p>
           <Link 
             href="#contact" 
-            className="text-[#F6B800] hover:text-[#FFCA28] text-sm uppercase tracking-widest mt-2 inline-block font-semibold transition-colors"
+            className="text-[#F6B800] hover:text-[#FFCA28] text-sm uppercase tracking-widest inline-block font-semibold transition-colors"
           >
             Book a private show
           </Link>

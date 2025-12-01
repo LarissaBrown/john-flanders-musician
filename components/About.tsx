@@ -27,39 +27,39 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-32 bg-[#2D241E]">
-      <div className="mx-auto px-8 sm:px-16 lg:px-24">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
+    <section id="about" className="py-20 sm:py-24 lg:py-32 bg-[#2D241E]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-16 sm:mb-20">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
             About
           </h2>
-          <p className="text-xl text-[#F5F0E8] mx-auto leading-relaxed text-center">
+          <p className="text-lg sm:text-xl text-[#F5F0E8] max-w-3xl mx-auto leading-relaxed">
             A passionate musician dedicated to creating unforgettable experiences
           </p>
         </div>
 
         {/* Profile Image Placeholder */}
-        <div className="flex justify-center mb-12">
-          <div className="w-64 h-64 rounded-full bg-gradient-to-br from-[#3A2F28] to-[#1C1612] border-4 border-[#F6B800] flex items-center justify-center overflow-hidden">
-            <div className="text-[#F6B800] text-6xl">🎷</div>
+        <div className="flex justify-center mb-16">
+          <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-gradient-to-br from-[#3A2F28] to-[#1C1612] border-4 border-[#F6B800] flex items-center justify-center overflow-hidden shadow-2xl">
+            <div className="text-[#F6B800] text-6xl sm:text-7xl">🎷</div>
           </div>
         </div>
 
-        <div className="mx-auto mb-20">
-          <div className="space-y-6 text-[#F5F0E8] text-lg leading-relaxed text-center">
-            <p>
+        <div className="max-w-4xl mx-auto mb-20">
+          <div className="space-y-8 text-[#F5F0E8] text-base sm:text-lg leading-relaxed">
+            <p className="px-4">
               John Flanders is a seasoned multi-instrumentalist whose music captures
               the essence of the American Southwest. With over 15 years of professional
               experience, John has performed at venues ranging from intimate gatherings
               to large festival stages.
             </p>
-            <p>
+            <p className="px-4">
               His unique style blends traditional folk, contemporary rock, and blues,
               creating a sound that resonates with audiences of all ages. Whether
               performing solo or with a band, John brings energy, authenticity, and
               passion to every show.
             </p>
-            <p className="text-[#F6B800] font-semibold">
+            <p className="text-[#F6B800] font-semibold text-center mt-12 px-4">
               Available for concerts, private events, weddings, corporate functions,
               and more. Let's create something memorable together.
             </p>
@@ -67,19 +67,19 @@ export default function About() {
         </div>
 
         {/* Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {highlights.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
                 key={index}
-                className="bg-[#1C1612] rounded-xl p-8 border border-[#F6B800]/10 hover:border-[#F6B800]/30 transition-all duration-300 transform hover:-translate-y-1 text-center"
+                className="bg-[#1C1612] rounded-2xl p-8 sm:p-10 border border-[#F6B800]/10 hover:border-[#F6B800]/30 transition-all duration-300 transform hover:-translate-y-1 text-center shadow-lg hover:shadow-2xl"
               >
-                <Icon className="w-12 h-12 text-[#F6B800] mb-4 mx-auto" />
-                <h4 className="text-lg font-bold text-[#F6B800] mb-2 uppercase tracking-wide">
+                <Icon className="w-14 h-14 text-[#F6B800] mb-6 mx-auto" />
+                <h4 className="text-xl font-bold text-[#F6B800] mb-3 uppercase tracking-wide">
                   {item.title}
                 </h4>
-                <p className="text-[#B8AFA3] leading-relaxed">{item.description}</p>
+                <p className="text-[#B8AFA3] leading-relaxed text-base">{item.description}</p>
               </div>
             );
           })}

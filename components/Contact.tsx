@@ -47,25 +47,25 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-32 bg-[#1C1612]">
-      <div className="mx-auto px-8 sm:px-16 lg:px-24">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
+    <section id="contact" className="py-20 sm:py-24 lg:py-32 bg-[#1C1612]">
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-16 sm:mb-20">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
             Get In Touch
           </h2>
-          <p className="text-xl text-[#F5F0E8] mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-[#F5F0E8] max-w-3xl mx-auto leading-relaxed">
             Interested in booking for your event? Let's make it happen!
           </p>
         </div>
 
-        <div className="mx-auto">
+        <div>
           {/* Contact Form */}
-          <div className="bg-[#2D241E] rounded-2xl shadow-2xl p-10 border border-[#F6B800]/10">
-            <h3 className="text-2xl font-bold text-[#F6B800] mb-8 uppercase tracking-wide">
+          <div className="bg-[#2D241E] rounded-2xl shadow-2xl p-8 sm:p-10 lg:p-12 border border-[#F6B800]/10">
+            <h3 className="text-2xl sm:text-3xl font-bold text-[#F6B800] mb-8 sm:mb-10 uppercase tracking-wide">
               Book an Event
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6" suppressHydrationWarning>
+            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-7" suppressHydrationWarning>
               <div suppressHydrationWarning>
                 <label className="block text-[#F5F0E8] font-semibold mb-3 text-sm uppercase tracking-wide">
                   Name *
@@ -176,8 +176,8 @@ export default function Contact() {
           </div>
 
           {/* Contact Info */}
-          <div className="mt-8 text-center">
-            <p className="text-[#B8AFA3] text-sm mb-2">Direct Contact</p>
+          <div className="mt-10 sm:mt-12 text-center px-4">
+            <p className="text-[#B8AFA3] text-sm mb-3">Direct Contact</p>
             <a
               href="mailto:info@johnflanders.com"
               className="text-[#F6B800] hover:text-[#FFCA28] transition-colors text-lg font-semibold"

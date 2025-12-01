@@ -62,19 +62,19 @@ export default function Shop() {
   };
 
   return (
-    <section id="shop" className="py-32 bg-[#1C1612]">
-      <div className="mx-auto px-8 sm:px-16 lg:px-24">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
+    <section id="shop" className="py-20 sm:py-24 lg:py-32 bg-[#1C1612]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center mb-16 sm:mb-20">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
             Shop Music
           </h2>
-          <p className="text-xl text-[#F5F0E8] mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-[#F5F0E8] max-w-3xl mx-auto leading-relaxed">
             Support the music - purchase singles and albums
           </p>
         </div>
 
         {/* Products Grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
           {products.map((product) => (
             <div
               key={product.id}
@@ -91,27 +91,27 @@ export default function Shop() {
               </div>
 
               {/* Product Info */}
-              <div className="p-6 text-center">
-                <span className="inline-block bg-[#F6B800] text-[#1C1612] px-3 py-1.5 rounded-full text-xs font-black uppercase tracking-wider mb-3">
+              <div className="p-6 sm:p-8 text-center">
+                <span className="inline-block bg-[#F6B800] text-[#1C1612] px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider mb-4">
                   {product.type}
                 </span>
-                <h3 className="text-xl font-bold text-[#F5F0E8] mb-2">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#F5F0E8] mb-3">
                   {product.name}
                 </h3>
                 {product.description && (
-                  <p className="text-[#B8AFA3] text-sm mb-4">
+                  <p className="text-[#B8AFA3] text-sm mb-5 px-2">
                     {product.description}
                   </p>
                 )}
 
                 {/* Price and Action */}
-                <div className="flex flex-col items-center gap-4 mt-6">
-                  <span className="text-2xl font-black text-[#F6B800]">
+                <div className="flex flex-col items-center gap-5 mt-6">
+                  <span className="text-2xl sm:text-3xl font-black text-[#F6B800]">
                     ${product.price.toFixed(2)}
                   </span>
                   <button
                     onClick={() => handleAddToCart(product)}
-                    className="w-full bg-[#F6B800] hover:bg-[#FFCA28] text-[#1C1612] px-6 py-3 rounded-xl font-black text-sm uppercase tracking-wide transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                    className="w-full bg-[#F6B800] hover:bg-[#FFCA28] text-[#1C1612] px-6 py-3.5 rounded-xl font-black text-sm uppercase tracking-wide transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5"
                   >
                     Add to Cart
                   </button>
