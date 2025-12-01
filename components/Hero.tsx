@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-[28rem] sm:pt-[30rem] md:pt-[32rem] lg:pt-[34rem] px-6 sm:px-8 lg:px-12"
+      className="relative h-[600px] sm:h-[700px] md:h-[800px] lg:h-[85vh] flex items-center justify-center overflow-hidden pt-20 sm:pt-24 md:pt-28 px-6 sm:px-8 lg:px-12"
     >
       {/* Warm Dark Spots Background */}
       <div className="absolute inset-0 z-0">
@@ -24,10 +24,10 @@ export default function Hero() {
       </div>
 
       {/* Content - Centered and balanced */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto text-center py-12 sm:py-16 md:py-20 lg:py-24 mt-32 sm:mt-36 md:mt-40 lg:mt-48">
+      <div className="relative z-20 w-full max-w-7xl mx-auto text-center py-12 sm:py-16 md:py-20">
 
         {/* Saxophone Illustration - Positioned above the warm backdrop */}
-        <div className="flex justify-center mb-6 -mt-10">
+        <div className="flex justify-center mb-8">
           <div className="relative w-24 h-32 sm:w-32 sm:h-40 md:w-40 md:h-52 lg:w-48 lg:h-60 z-30 rotate-[15deg] opacity-75 scale-150">
             <Image
               src="/images/saxophone.png"
