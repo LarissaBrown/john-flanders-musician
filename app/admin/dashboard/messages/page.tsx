@@ -64,11 +64,11 @@ export default function MessagesManagement() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
       {/* Messages List */}
-      <div className="lg:col-span-1 bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-        <div className="p-4 border-b border-gray-200 bg-gray-50">
-          <h3 className="font-semibold text-rich-brown">
+      <div className="lg:col-span-1 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="p-6 border-b border-gray-200 bg-gray-50">
+          <h3 className="text-lg font-semibold text-rich-brown">
             Inbox ({messages.length})
           </h3>
         </div>
@@ -111,7 +111,7 @@ export default function MessagesManagement() {
       {/* Message Detail */}
       <div className="lg:col-span-2">
         {selectedMessage ? (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 sm:p-10">
             {/* Header */}
             <div className="flex items-start justify-between mb-6 pb-6 border-b border-gray-200">
               <div>
@@ -224,7 +224,7 @@ export default function MessagesManagement() {
             </div>
           </div>
         ) : (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 sm:p-16 text-center">
             <Mail className="w-16 h-16 text-gray-400 mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-gray-900 mb-2">
               No message selected

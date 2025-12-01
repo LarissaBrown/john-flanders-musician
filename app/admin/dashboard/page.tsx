@@ -114,22 +114,22 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Welcome Message */}
-      <div className="bg-gradient-to-r from-canyon-red to-canyon-terracotta rounded-lg p-6 text-warm-cream">
-        <h2 className="text-2xl font-bold mb-2">Welcome back, Admin!</h2>
-        <p className="text-canyon-sand">
+      <div className="bg-gradient-to-r from-canyon-red to-canyon-terracotta rounded-xl p-8 sm:p-10 text-warm-cream shadow-lg">
+        <h2 className="text-3xl font-bold mb-3">Welcome back, Admin!</h2>
+        <p className="text-lg text-warm-cream/90">
           Here's what's happening with your website today.
         </p>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {statCards.map((card) => (
           <Link
             key={card.name}
             href={card.href}
-            className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-200"
+            className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all p-8 border border-gray-200 hover:border-canyon-red/30 transform hover:-translate-y-1 duration-200"
           >
             <div className="flex items-center justify-between mb-4">
               <div
@@ -153,9 +153,9 @@ export default function AdminDashboard() {
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-        <h3 className="text-lg font-bold text-rich-brown mb-4">Quick Actions</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="bg-white rounded-xl shadow-sm p-8 sm:p-10 border border-gray-200">
+        <h3 className="text-2xl font-bold text-rich-brown mb-6">Quick Actions</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <Link
             href="/admin/dashboard/shows"
             className="flex items-center space-x-3 p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg hover:from-blue-100 hover:to-blue-200 transition-colors"
@@ -203,9 +203,9 @@ export default function AdminDashboard() {
       </div>
 
       {/* Recent Activity */}
-      <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-        <h3 className="text-lg font-bold text-rich-brown mb-4">Getting Started</h3>
-        <div className="space-y-3">
+      <div className="bg-white rounded-xl shadow-sm p-8 sm:p-10 border border-gray-200">
+        <h3 className="text-2xl font-bold text-rich-brown mb-6">Getting Started</h3>
+        <div className="space-y-4">
           <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
             <div className="w-2 h-2 bg-gold rounded-full mt-2"></div>
             <div>

@@ -128,10 +128,10 @@ export default function ShowsManagement() {
   return (
     <div>
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-          <h2 className="text-2xl font-bold text-rich-brown">Shows & Events</h2>
-          <p className="text-gray-600">Manage your performance schedule</p>
+          <h2 className="text-3xl font-bold text-rich-brown mb-2">Shows & Events</h2>
+          <p className="text-lg text-gray-600">Manage your performance schedule</p>
         </div>
         <button
           onClick={() => openModal()}
@@ -144,7 +144,7 @@ export default function ShowsManagement() {
 
       {/* Shows List */}
       {shows.length === 0 ? (
-        <div className="bg-white rounded-lg shadow-sm p-12 text-center">
+        <div className="bg-white rounded-xl shadow-sm p-12 sm:p-16 text-center border border-gray-200">
           <Calendar className="w-16 h-16 text-gray-400 mx-auto mb-4" />
           <h3 className="text-xl font-semibold text-gray-900 mb-2">No shows yet</h3>
           <p className="text-gray-600 mb-6">
@@ -158,11 +158,11 @@ export default function ShowsManagement() {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {shows.map((show) => (
             <div
               key={show._id}
-              className={`bg-white rounded-lg shadow-sm border-2 p-6 ${
+              className={`bg-white rounded-xl shadow-sm border-2 p-8 transition-all hover:shadow-md ${
                 show.featured ? 'border-gold' : 'border-gray-200'
               }`}
             >
@@ -233,14 +233,14 @@ export default function ShowsManagement() {
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4">
-              <h3 className="text-xl font-bold text-rich-brown">
+          <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            <div className="sticky top-0 bg-white border-b border-gray-200 px-8 py-6">
+              <h3 className="text-2xl font-bold text-rich-brown">
                 {editingShow ? 'Edit Show' : 'Add New Show'}
               </h3>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-6 space-y-6">
+            <form onSubmit={handleSubmit} className="p-8 space-y-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Event Title *

@@ -145,10 +145,10 @@ export default function ProductsManagement() {
   return (
     <div>
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-          <h2 className="text-2xl font-bold text-rich-brown">Shop Products</h2>
-          <p className="text-gray-600">Manage your music catalog</p>
+          <h2 className="text-3xl font-bold text-rich-brown mb-2">Shop Products</h2>
+          <p className="text-lg text-gray-600">Manage your music catalog</p>
         </div>
         <button
           onClick={() => openModal()}
@@ -161,7 +161,7 @@ export default function ProductsManagement() {
 
       {/* Products Grid */}
       {products.length === 0 ? (
-        <div className="bg-white rounded-lg shadow-sm p-12 text-center">
+        <div className="bg-white rounded-xl shadow-sm p-12 sm:p-16 text-center border border-gray-200">
           <Package className="w-16 h-16 text-gray-400 mx-auto mb-4" />
           <h3 className="text-xl font-semibold text-gray-900 mb-2">No products yet</h3>
           <p className="text-gray-600 mb-6">
@@ -175,11 +175,11 @@ export default function ProductsManagement() {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {products.map((product) => (
             <div
               key={product._id}
-              className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden"
+              className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
             >
               <div className="relative aspect-square bg-gray-100">
                 {product.imageUrl ? (

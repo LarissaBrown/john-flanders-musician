@@ -143,29 +143,30 @@ export default function DashboardLayout({
       {/* Main content */}
       <div className="lg:pl-64">
         {/* Top bar */}
-        <header className="bg-white border-b border-gray-200 h-16 flex items-center px-6">
+        <header className="bg-white border-b border-gray-200 h-20 flex items-center px-6 sm:px-8 lg:px-12">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="lg:hidden text-gray-600 hover:text-gray-900"
+            className="lg:hidden text-gray-600 hover:text-gray-900 mr-4"
           >
             <Menu className="w-6 h-6" />
           </button>
           <div className="flex-1 flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-rich-brown ml-4 lg:ml-0">
+            <h1 className="text-2xl sm:text-3xl font-bold text-rich-brown">
               {navigation.find((item) => item.href === pathname)?.name || 'Dashboard'}
             </h1>
             <Link
               href="/"
               target="_blank"
-              className="text-canyon-red hover:text-canyon-terracotta transition-colors"
+              className="text-canyon-red hover:text-canyon-terracotta transition-colors font-medium flex items-center space-x-2"
             >
-              View Site →
+              <span>View Site</span>
+              <span>→</span>
             </Link>
           </div>
         </header>
 
         {/* Page content */}
-        <main className="p-6">
+        <main className="p-6 sm:p-8 lg:p-12 max-w-[1600px] mx-auto">
           {children}
         </main>
       </div>

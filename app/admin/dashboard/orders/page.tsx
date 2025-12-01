@@ -84,8 +84,8 @@ export default function OrdersManagement() {
   return (
     <div>
       {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sm:p-8">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm text-gray-600">Total Orders</p>
             <Package className="w-5 h-5 text-blue-500" />
@@ -93,7 +93,7 @@ export default function OrdersManagement() {
           <p className="text-3xl font-bold text-rich-brown">{stats.total}</p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sm:p-8">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm text-gray-600">Pending</p>
             <Package className="w-5 h-5 text-yellow-500" />
@@ -101,7 +101,7 @@ export default function OrdersManagement() {
           <p className="text-3xl font-bold text-yellow-600">{stats.pending}</p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sm:p-8">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm text-gray-600">Completed</p>
             <Check className="w-5 h-5 text-green-500" />
@@ -109,7 +109,7 @@ export default function OrdersManagement() {
           <p className="text-3xl font-bold text-green-600">{stats.completed}</p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sm:p-8">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm text-gray-600">Revenue</p>
             <DollarSign className="w-5 h-5 text-green-500" />
@@ -121,7 +121,7 @@ export default function OrdersManagement() {
       </div>
 
       {/* Filter Tabs */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 mb-8">
         <div className="flex border-b border-gray-200">
           {(['all', 'pending', 'completed', 'cancelled'] as const).map((status) => (
             <button
@@ -146,7 +146,7 @@ export default function OrdersManagement() {
 
       {/* Orders List */}
       {filteredOrders.length === 0 ? (
-        <div className="bg-white rounded-lg shadow-sm p-12 text-center">
+        <div className="bg-white rounded-xl shadow-sm p-12 sm:p-16 text-center border border-gray-200">
           <Package className="w-16 h-16 text-gray-400 mx-auto mb-4" />
           <h3 className="text-xl font-semibold text-gray-900 mb-2">No orders found</h3>
           <p className="text-gray-600">
@@ -156,11 +156,11 @@ export default function OrdersManagement() {
           </p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-6">
           {filteredOrders.map((order) => (
             <div
               key={order._id}
-              className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
+              className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sm:p-8 hover:shadow-md transition-shadow"
             >
               {/* Order Header */}
               <div className="flex flex-wrap items-start justify-between mb-4 pb-4 border-b border-gray-200">

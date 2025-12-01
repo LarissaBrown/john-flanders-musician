@@ -6,13 +6,13 @@ export default function ImagesManagement() {
   return (
     <div>
       {/* Header */}
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-rich-brown">Image Gallery</h2>
-        <p className="text-gray-600">Manage your site images</p>
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold text-rich-brown mb-2">Image Gallery</h2>
+        <p className="text-lg text-gray-600">Manage your site images</p>
       </div>
 
       {/* Instructions */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 sm:p-12">
         <div className="text-center max-w-2xl mx-auto">
           <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mx-auto mb-6">
             <ImageIcon className="w-8 h-8 text-blue-600" />
@@ -94,8 +94,8 @@ export default function ImagesManagement() {
       </div>
 
       {/* Current Images */}
-      <div className="mt-8 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-        <h3 className="text-lg font-bold text-rich-brown mb-4">Current Images in /public/images/</h3>
+      <div className="mt-8 bg-white rounded-xl shadow-sm border border-gray-200 p-8 sm:p-10">
+        <h3 className="text-2xl font-bold text-rich-brown mb-6">Current Images in /public/images/</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             'saxophone.png',

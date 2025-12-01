@@ -114,10 +114,10 @@ export default function MediaManagement() {
   return (
     <div>
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-          <h2 className="text-2xl font-bold text-rich-brown">Media Gallery</h2>
-          <p className="text-gray-600">Manage your audio and video content</p>
+          <h2 className="text-3xl font-bold text-rich-brown mb-2">Media Gallery</h2>
+          <p className="text-lg text-gray-600">Manage your audio and video content</p>
         </div>
         <button
           onClick={() => openModal()}
@@ -130,7 +130,7 @@ export default function MediaManagement() {
 
       {/* Empty State */}
       {media.length === 0 ? (
-        <div className="bg-white rounded-lg shadow-sm p-12 text-center">
+        <div className="bg-white rounded-xl shadow-sm p-12 sm:p-16 text-center border border-gray-200">
           <Music className="w-16 h-16 text-gray-400 mx-auto mb-4" />
           <h3 className="text-xl font-semibold text-gray-900 mb-2">No media yet</h3>
           <p className="text-gray-600 mb-6">
