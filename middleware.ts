@@ -1,22 +1,28 @@
-import { withAuth } from 'next-auth/middleware';
 import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { getToken } from 'next-auth/jwt';
 
-export default withAuth(
-  function middleware(req) {
-    // Allow the request to proceed if authenticated
-    return NextResponse.next();
-  },
-  {
-    callbacks: {
-      authorized: ({ token }) => !!token,
-    },
-    pages: {
-      signIn: '/admin/login',
-    },
+export async function middleware(request: NextRequest) {
+  // Check if accessing admin dashboard routes
+  const isAdminDashboard = request.nextUrl.pathname.startsWith('/admin/dashboard');
+  
+  if (isAdminDashboard) {
+    const token = await getToken({ 
+      req: request,
+      secret: process.env.NEXTAUTH_SECRET 
+    });
+
+    if (!token) {
+      // Not authenticated, redirect to login
+      const loginUrl = new URL('/admin/login', request.url);
+      return NextResponse.redirect(loginUrl);
+    }
   }
-);
 
-// Protect all admin routes except the login page
+  return NextResponse.next();
+}
+
+// Protect all admin dashboard routes
 export const config = {
   matcher: ['/admin/dashboard/:path*'],
 };

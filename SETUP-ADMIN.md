@@ -63,10 +63,26 @@ NEXTAUTH_URL=http://localhost:3000
 
 # Admin Credentials (REQUIRED)
 ADMIN_EMAIL=admin@johnflanders.com
-ADMIN_PASSWORD_HASH=paste-the-hash-from-step-1-here
+ADMIN_PASSWORD_HASH="paste-the-hash-from-step-1-here"
 
 # Site Configuration
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+### ⚠️ IMPORTANT: Password Hash Formatting
+
+**The password hash MUST be wrapped in quotes!** 
+
+Because bcrypt hashes contain `$` symbols, they need to be quoted in `.env` files:
+
+✅ **CORRECT:**
+```env
+ADMIN_PASSWORD_HASH="$2a$10$ZFx9C3xGQvGHJKL4MNP7QOe.RSTUVWXYZabcdefghijklmnopqr12345"
+```
+
+❌ **WRONG:**
+```env
+ADMIN_PASSWORD_HASH=$2a$10$ZFx9C3xGQvGHJKL4MNP7QOe.RSTUVWXYZabcdefghijklmnopqr12345
 ```
 
 ### Example of filled-in `.env.local`:
@@ -81,7 +97,7 @@ NEXTAUTH_URL=http://localhost:3000
 
 # Admin Credentials
 ADMIN_EMAIL=admin@johnflanders.com
-ADMIN_PASSWORD_HASH=$2a$10$ZFx9C3xGQvGHJKL4MNP7QOe.RSTUVWXYZabcdefghijklmnopqr12345
+ADMIN_PASSWORD_HASH="$2a$10$ZFx9C3xGQvGHJKL4MNP7QOe.RSTUVWXYZabcdefghijklmnopqr12345"
 
 # Site Configuration
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
@@ -139,9 +155,11 @@ When you deploy to Vercel/Netlify:
 ### "Invalid credentials" error
 
 **Check:**
+- Did you wrap the password hash in quotes? `ADMIN_PASSWORD_HASH="$2a$10$..."`
 - Did you copy the full hash (including `$2a$10$...`)?
 - Is your email exactly the same as in `.env.local`?
 - Did you restart the dev server after creating `.env.local`?
+- Are there any extra spaces before or after the hash?
 
 ### Can't run the hash generator
 

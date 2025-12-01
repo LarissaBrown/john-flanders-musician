@@ -12,6 +12,7 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
+          console.error('Missing email or password');
           throw new Error('Please enter email and password');
         }
 
@@ -19,23 +20,33 @@ export const authOptions: NextAuthOptions = {
         const adminEmail = process.env.ADMIN_EMAIL;
         const adminPassword = process.env.ADMIN_PASSWORD_HASH;
 
+        console.log('Admin email configured:', !!adminEmail);
+        console.log('Admin password hash configured:', !!adminPassword);
+        console.log('Attempting login with email:', credentials.email);
+
         if (!adminEmail || !adminPassword) {
+          console.error('Admin credentials not configured in environment');
           throw new Error('Admin credentials not configured');
         }
 
         // Verify email
         if (credentials.email !== adminEmail) {
+          console.error('Email mismatch');
           throw new Error('Invalid credentials');
         }
 
         // Verify password
         const isValid = await bcrypt.compare(credentials.password, adminPassword);
         
+        console.log('Password verification result:', isValid);
+        
         if (!isValid) {
+          console.error('Password verification failed');
           throw new Error('Invalid credentials');
         }
 
         // Return user object
+        console.log('Login successful!');
         return {
           id: '1',
           email: adminEmail,
