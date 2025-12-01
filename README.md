@@ -203,16 +203,35 @@ The contact form currently saves to the database. To enable email notifications:
    - AWS SES
    - Nodemailer with Gmail
 
+## 📚 Documentation
+
+### Complete documentation is organized in the `docs/` folder:
+
+**→ [📖 Documentation Hub](./docs/README.md)** - Start here for all documentation
+
+#### Quick Links:
+- 🚀 **[Getting Started](./docs/01-getting-started/)** - Setup and project overview
+- 🎨 **[Design System](./docs/02-design-system/)** - Colors, typography, and UI standards
+- 🔧 **[Development](./docs/03-development/)** - Implementation notes and history
+- 🚢 **[Deployment](./docs/04-deployment/)** - Deploy to production
+- ⚡ **[Features](./docs/05-features/)** - Feature documentation
+- 📋 **[Planning](./docs/06-planning/)** - Roadmap and future plans
+
+---
+
 ## 🎯 Future Enhancements
 
-- [ ] Admin dashboard for content management
+- [ ] **Admin dashboard** - Content management system (in planning - see [docs/06-planning/](./docs/06-planning/))
 - [ ] Calendar integration (Google Calendar, iCal)
 - [ ] Newsletter subscription
 - [ ] Blog/News section
-- [ ] Online music store/merch
 - [ ] Streaming service integration
 - [ ] Social media feed integration
 - [ ] Analytics dashboard
+
+See [docs/06-planning/](./docs/06-planning/) for detailed roadmap.
+
+---
 
 ## 📄 License
 
