@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { CartProvider } from "@/contexts/CartContext";
+import Providers from "@/components/Providers";
 
 export const metadata: Metadata = {
   title: "John Flanders - Multi-Instrumentalist Musician",
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="antialiased" suppressHydrationWarning>
-        <CartProvider>
-        {children}
-        </CartProvider>
+        <Providers>
+          <CartProvider>
+            {children}
+          </CartProvider>
+        </Providers>
       </body>
     </html>
   );

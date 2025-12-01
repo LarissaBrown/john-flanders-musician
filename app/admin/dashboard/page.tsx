@@ -1,163 +1,240 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { Calendar, Music, ShoppingBag, Mail, TrendingUp, DollarSign } from 'lucide-react';
 import Link from 'next/link';
-import { Calendar, Music, ShoppingBag, Mail, Image, LogOut, BarChart3 } from 'lucide-react';
+
+interface Stats {
+  totalShows: number;
+  upcomingShows: number;
+  totalMedia: number;
+  totalProducts: number;
+  totalOrders: number;
+  pendingOrders: number;
+  totalMessages: number;
+  unreadMessages: number;
+}
 
 export default function AdminDashboard() {
-  const router = useRouter();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [stats, setStats] = useState<Stats>({
+    totalShows: 0,
+    upcomingShows: 0,
+    totalMedia: 0,
+    totalProducts: 0,
+    totalOrders: 0,
+    pendingOrders: 0,
+    totalMessages: 0,
+    unreadMessages: 0,
+  });
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check authentication
-    const auth = localStorage.getItem('adminAuth');
-    if (!auth) {
-      router.push('/admin');
-    } else {
-      setIsAuthenticated(true);
-    }
-  }, [router]);
+    fetchStats();
+  }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem('adminAuth');
-    router.push('/admin');
+  const fetchStats = async () => {
+    try {
+      // Fetch all stats in parallel
+      const [events, media, products, orders, contacts] = await Promise.all([
+        fetch('/api/events').then(res => res.json()),
+        fetch('/api/media').then(res => res.json()),
+        fetch('/api/products').then(res => res.json()),
+        fetch('/api/orders').then(res => res.json()),
+        fetch('/api/contact').then(res => res.json()),
+      ]);
+
+      const now = new Date();
+      const upcomingShows = events.filter((e: any) => new Date(e.date) >= now).length;
+      const pendingOrders = orders.filter((o: any) => o.status === 'pending').length;
+
+      setStats({
+        totalShows: events.length,
+        upcomingShows,
+        totalMedia: media.length,
+        totalProducts: products.length,
+        totalOrders: orders.length,
+        pendingOrders,
+        totalMessages: contacts.length,
+        unreadMessages: contacts.length, // For now, treat all as unread
+      });
+    } catch (error) {
+      console.error('Error fetching stats:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  if (!isAuthenticated) {
-    return null;
+  const statCards = [
+    {
+      name: 'Upcoming Shows',
+      value: stats.upcomingShows,
+      total: stats.totalShows,
+      icon: Calendar,
+      color: 'from-blue-500 to-blue-600',
+      href: '/admin/dashboard/shows',
+    },
+    {
+      name: 'Media Items',
+      value: stats.totalMedia,
+      icon: Music,
+      color: 'from-purple-500 to-purple-600',
+      href: '/admin/dashboard/media',
+    },
+    {
+      name: 'Products',
+      value: stats.totalProducts,
+      icon: ShoppingBag,
+      color: 'from-green-500 to-green-600',
+      href: '/admin/dashboard/products',
+    },
+    {
+      name: 'Pending Orders',
+      value: stats.pendingOrders,
+      total: stats.totalOrders,
+      icon: DollarSign,
+      color: 'from-yellow-500 to-yellow-600',
+      href: '/admin/dashboard/orders',
+    },
+    {
+      name: 'Messages',
+      value: stats.unreadMessages,
+      total: stats.totalMessages,
+      icon: Mail,
+      color: 'from-red-500 to-red-600',
+      href: '/admin/dashboard/messages',
+    },
+  ];
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="text-gray-500">Loading dashboard...</div>
+      </div>
+    );
   }
 
-  const stats = [
-    { label: 'Upcoming Shows', value: '3', icon: Calendar, color: 'text-[#F6B800]' },
-    { label: 'Total Products', value: '4', icon: ShoppingBag, color: 'text-[#F6B800]' },
-    { label: 'Media Items', value: '4', icon: Music, color: 'text-[#F6B800]' },
-    { label: 'Messages', value: '0', icon: Mail, color: 'text-[#F6B800]' },
-  ];
-
-  const adminSections = [
-    { 
-      title: 'Manage Shows', 
-      description: 'Add, edit, or delete upcoming shows',
-      href: '/admin/shows',
-      icon: Calendar,
-      color: 'bg-[#F6B800]'
-    },
-    { 
-      title: 'Manage Products', 
-      description: 'Manage music singles and albums',
-      href: '/admin/products',
-      icon: ShoppingBag,
-      color: 'bg-[#F6B800]'
-    },
-    { 
-      title: 'Manage Media', 
-      description: 'Upload and organize audio/video',
-      href: '/admin/media',
-      icon: Music,
-      color: 'bg-[#F6B800]'
-    },
-    { 
-      title: 'Image Gallery', 
-      description: 'Manage all site images',
-      href: '/admin/gallery',
-      icon: Image,
-      color: 'bg-[#F6B800]'
-    },
-    { 
-      title: 'Contact Messages', 
-      description: 'View and respond to inquiries',
-      href: '/admin/contacts',
-      icon: Mail,
-      color: 'bg-[#F6B800]'
-    },
-    { 
-      title: 'Analytics', 
-      description: 'View site statistics',
-      href: '/admin/analytics',
-      icon: BarChart3,
-      color: 'bg-[#F6B800]'
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-[#1C1612]">
-      {/* Header */}
-      <header className="bg-[#2D241E] border-b border-[#F6B800]/20">
-        <div className="mx-auto px-8 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="flex space-x-1.5">
-                <div className="w-3 h-3 rounded-full bg-[#F6B800]"></div>
-                <div className="w-3 h-3 rounded-full bg-[#F6B800] opacity-80"></div>
-                <div className="w-3 h-3 rounded-full bg-[#F6B800] opacity-60"></div>
+    <div className="space-y-6">
+      {/* Welcome Message */}
+      <div className="bg-gradient-to-r from-canyon-red to-canyon-terracotta rounded-lg p-6 text-warm-cream">
+        <h2 className="text-2xl font-bold mb-2">Welcome back, Admin!</h2>
+        <p className="text-canyon-sand">
+          Here's what's happening with your website today.
+        </p>
+      </div>
+
+      {/* Stats Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {statCards.map((card) => (
+          <Link
+            key={card.name}
+            href={card.href}
+            className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-200"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <div
+                className={`w-12 h-12 rounded-lg bg-gradient-to-br ${card.color} flex items-center justify-center`}
+              >
+                <card.icon className="w-6 h-6 text-white" />
               </div>
-              <h1 className="text-2xl font-black text-[#F6B800] uppercase tracking-wide">
-                Admin Dashboard
-              </h1>
+              {card.name === 'Upcoming Shows' || card.name === 'Pending Orders' || card.name === 'Messages' ? (
+                <TrendingUp className="w-5 h-5 text-green-500" />
+              ) : null}
             </div>
-            <div className="flex items-center space-x-4">
-              <Link
-                href="/"
-                className="text-[#F5F0E8] hover:text-[#F6B800] transition-colors text-sm uppercase tracking-wide"
-              >
-                View Site
-              </Link>
-              <button
-                onClick={handleLogout}
-                className="flex items-center space-x-2 bg-[#F6B800] hover:bg-[#FFCA28] text-[#1C1612] px-4 py-2 rounded-lg font-bold text-sm uppercase tracking-wide transition-all"
-              >
-                <LogOut className="w-4 h-4" />
-                <span>Logout</span>
-              </button>
+            <h3 className="text-gray-600 text-sm font-medium mb-1">{card.name}</h3>
+            <div className="flex items-baseline space-x-2">
+              <p className="text-3xl font-bold text-rich-brown">{card.value}</p>
+              {card.total !== undefined && (
+                <p className="text-gray-500 text-sm">/ {card.total} total</p>
+              )}
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      {/* Quick Actions */}
+      <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+        <h3 className="text-lg font-bold text-rich-brown mb-4">Quick Actions</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Link
+            href="/admin/dashboard/shows"
+            className="flex items-center space-x-3 p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg hover:from-blue-100 hover:to-blue-200 transition-colors"
+          >
+            <Calendar className="w-8 h-8 text-blue-600" />
+            <div>
+              <p className="font-semibold text-blue-900">Add Show</p>
+              <p className="text-sm text-blue-700">Create new event</p>
+            </div>
+          </Link>
+
+          <Link
+            href="/admin/dashboard/media"
+            className="flex items-center space-x-3 p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg hover:from-purple-100 hover:to-purple-200 transition-colors"
+          >
+            <Music className="w-8 h-8 text-purple-600" />
+            <div>
+              <p className="font-semibold text-purple-900">Upload Media</p>
+              <p className="text-sm text-purple-700">Add audio/video</p>
+            </div>
+          </Link>
+
+          <Link
+            href="/admin/dashboard/products"
+            className="flex items-center space-x-3 p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg hover:from-green-100 hover:to-green-200 transition-colors"
+          >
+            <ShoppingBag className="w-8 h-8 text-green-600" />
+            <div>
+              <p className="font-semibold text-green-900">Add Product</p>
+              <p className="text-sm text-green-700">New album/single</p>
+            </div>
+          </Link>
+
+          <Link
+            href="/admin/dashboard/messages"
+            className="flex items-center space-x-3 p-4 bg-gradient-to-br from-red-50 to-red-100 rounded-lg hover:from-red-100 hover:to-red-200 transition-colors"
+          >
+            <Mail className="w-8 h-8 text-red-600" />
+            <div>
+              <p className="font-semibold text-red-900">View Messages</p>
+              <p className="text-sm text-red-700">Check inquiries</p>
+            </div>
+          </Link>
+        </div>
+      </div>
+
+      {/* Recent Activity */}
+      <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+        <h3 className="text-lg font-bold text-rich-brown mb-4">Getting Started</h3>
+        <div className="space-y-3">
+          <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+            <div className="w-2 h-2 bg-gold rounded-full mt-2"></div>
+            <div>
+              <p className="font-medium text-gray-900">Add your shows and events</p>
+              <p className="text-sm text-gray-600">
+                Keep fans updated with your performance schedule
+              </p>
             </div>
           </div>
-        </div>
-      </header>
-
-      <div className="mx-auto px-8 py-12">
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <div
-                key={index}
-                className="bg-[#2D241E] rounded-xl p-6 border border-[#F6B800]/10"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <Icon className={`w-8 h-8 ${stat.color}`} />
-                  <span className="text-3xl font-black text-[#F6B800]">{stat.value}</span>
-                </div>
-                <p className="text-[#B8AFA3] text-sm uppercase tracking-wide">{stat.label}</p>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Admin Sections Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {adminSections.map((section, index) => {
-            const Icon = section.icon;
-            return (
-              <Link
-                key={index}
-                href={section.href}
-                className="bg-[#2D241E] rounded-xl p-8 border border-[#F6B800]/10 hover:border-[#F6B800]/30 transition-all duration-300 transform hover:-translate-y-2 group"
-              >
-                <div className={`${section.color} w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                  <Icon className="w-6 h-6 text-[#1C1612]" />
-                </div>
-                <h3 className="text-xl font-bold text-[#F6B800] mb-2 uppercase tracking-wide">
-                  {section.title}
-                </h3>
-                <p className="text-[#B8AFA3]">{section.description}</p>
-              </Link>
-            );
-          })}
+          <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+            <div className="w-2 h-2 bg-gold rounded-full mt-2"></div>
+            <div>
+              <p className="font-medium text-gray-900">Upload your music and videos</p>
+              <p className="text-sm text-gray-600">
+                Showcase your talents with audio and video content
+              </p>
+            </div>
+          </div>
+          <div className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+            <div className="w-2 h-2 bg-gold rounded-full mt-2"></div>
+            <div>
+              <p className="font-medium text-gray-900">List your albums and singles</p>
+              <p className="text-sm text-gray-600">
+                Start selling your music through the online shop
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
