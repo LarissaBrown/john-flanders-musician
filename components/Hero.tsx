@@ -24,7 +24,7 @@ export default function Hero() {
       </div>
 
       {/* Content - Positioned lower on page */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto text-center pt-[40vh] sm:pt-[45vh] md:pt-[50vh]">
+      <div className="relative z-20 w-full max-w-7xl mx-auto text-center pt-[30vh] sm:pt-[35vh] md:pt-[38vh]">
 
         <div className="animate-fade-in-up space-y-8 sm:space-y-10 md:space-y-12 flex justify-center">
           {/* Warm backdrop for text readability */}
