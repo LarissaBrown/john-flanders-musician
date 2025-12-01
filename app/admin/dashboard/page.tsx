@@ -1,13 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Calendar, Music, ShoppingBag, Mail, TrendingUp, DollarSign } from 'lucide-react';
+import { Calendar, Music, ShoppingBag, Mail, TrendingUp, DollarSign, Image } from 'lucide-react';
 import Link from 'next/link';
 
 interface Stats {
   totalShows: number;
   upcomingShows: number;
   totalMedia: number;
+  totalImages: number;
   totalProducts: number;
   totalOrders: number;
   pendingOrders: number;
@@ -20,6 +21,7 @@ export default function AdminDashboard() {
     totalShows: 0,
     upcomingShows: 0,
     totalMedia: 0,
+    totalImages: 0,
     totalProducts: 0,
     totalOrders: 0,
     pendingOrders: 0,
@@ -58,6 +60,7 @@ export default function AdminDashboard() {
         totalShows: events.length,
         upcomingShows,
         totalMedia: media.length,
+        totalImages: 9, // Placeholder - shows existing images count
         totalProducts: products.length,
         totalOrders: orders.length,
         pendingOrders,
@@ -86,6 +89,13 @@ export default function AdminDashboard() {
       icon: Music,
       color: 'from-purple-500 to-purple-600',
       href: '/admin/dashboard/media',
+    },
+    {
+      name: 'Images',
+      value: stats.totalImages,
+      icon: Image,
+      color: 'from-pink-500 to-pink-600',
+      href: '/admin/dashboard/images',
     },
     {
       name: 'Products',
@@ -182,6 +192,17 @@ export default function AdminDashboard() {
             <div>
               <p className="font-semibold text-purple-900">Upload Media</p>
               <p className="text-sm text-purple-700">Add audio/video</p>
+            </div>
+          </Link>
+
+          <Link
+            href="/admin/dashboard/images"
+            className="flex items-center space-x-3 p-4 bg-gradient-to-br from-pink-50 to-pink-100 rounded-lg hover:from-pink-100 hover:to-pink-200 transition-colors"
+          >
+            <Image className="w-8 h-8 text-pink-600" />
+            <div>
+              <p className="font-semibold text-pink-900">Upload Images</p>
+              <p className="text-sm text-pink-700">Add photos</p>
             </div>
           </Link>
 
