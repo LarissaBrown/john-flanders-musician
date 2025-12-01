@@ -75,15 +75,17 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
 Because bcrypt hashes contain `$` symbols, they need to be quoted in `.env` files:
 
-✅ **CORRECT:**
+✅ **CORRECT (Use backslash escaping):**
+```env
+ADMIN_PASSWORD_HASH=\$2a\$10\$ZFx9C3xGQvGHJKL4MNP7QOe.RSTUVWXYZabcdefghijklmnopqr12345
+```
+
+❌ **WRONG (Double quotes don't work with Next.js):**
 ```env
 ADMIN_PASSWORD_HASH="$2a$10$ZFx9C3xGQvGHJKL4MNP7QOe.RSTUVWXYZabcdefghijklmnopqr12345"
 ```
 
-❌ **WRONG:**
-```env
-ADMIN_PASSWORD_HASH=$2a$10$ZFx9C3xGQvGHJKL4MNP7QOe.RSTUVWXYZabcdefghijklmnopqr12345
-```
+> **Note:** Due to how Next.js processes environment variables, the `$` symbols in bcrypt hashes must be escaped with backslashes (`\$`). Do not use quotes.
 
 ### Example of filled-in `.env.local`:
 
@@ -97,7 +99,7 @@ NEXTAUTH_URL=http://localhost:3000
 
 # Admin Credentials
 ADMIN_EMAIL=admin@johnflanders.com
-ADMIN_PASSWORD_HASH="$2a$10$ZFx9C3xGQvGHJKL4MNP7QOe.RSTUVWXYZabcdefghijklmnopqr12345"
+ADMIN_PASSWORD_HASH=\$2a\$10\$ZFx9C3xGQvGHJKL4MNP7QOe.RSTUVWXYZabcdefghijklmnopqr12345
 
 # Site Configuration
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
