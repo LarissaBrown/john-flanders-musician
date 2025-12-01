@@ -12,39 +12,47 @@ interface Product {
   description?: string;
 }
 
-// Sample products - will be replaced with API calls
+// John Flanders Albums
 const products: Product[] = [
   {
     id: '1',
-    name: 'Desert Wind',
-    price: 1.99,
-    type: 'single',
-    imageUrl: '/placeholder-album.jpg',
-    description: 'Single track',
+    name: 'The Go Between',
+    price: 14.99,
+    type: 'album',
+    imageUrl: '/images/double_helix_albumn_cover.jpg',
+    description: 'John Flanders & Double Helix - Latest release',
   },
   {
     id: '2',
-    name: 'Canyon Echoes',
-    price: 9.99,
+    name: 'Natural Selection',
+    price: 14.99,
     type: 'album',
-    imageUrl: '/placeholder-album.jpg',
-    description: 'Full album - 12 tracks',
+    imageUrl: '/images/double_helix_albumn_cover.jpg',
+    description: 'John Flanders & Double Helix - Audience favorite',
   },
   {
     id: '3',
-    name: 'Red Rock Blues',
-    price: 1.99,
-    type: 'single',
-    imageUrl: '/placeholder-album.jpg',
-    description: 'Single track',
+    name: 'In The Sky Tonight',
+    price: 14.99,
+    type: 'album',
+    imageUrl: '/images/double_helix_albumn_cover.jpg',
+    description: 'John Flanders & Double Helix',
   },
   {
     id: '4',
-    name: 'Southwest Sessions',
+    name: 'A Prehensile Tale',
     price: 12.99,
     type: 'album',
-    imageUrl: '/placeholder-album.jpg',
-    description: 'Full album - 15 tracks',
+    imageUrl: '/images/double_helix_albumn_cover.jpg',
+    description: 'John Flanders solo album',
+  },
+  {
+    id: '5',
+    name: 'Stranded in Time',
+    price: 12.99,
+    type: 'album',
+    imageUrl: '/images/double_helix_albumn_cover.jpg',
+    description: 'John Flanders solo album',
   },
 ];
 

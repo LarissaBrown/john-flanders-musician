@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Shows from '@/components/Shows';
+import Discography from '@/components/Discography';
 import Shop from '@/components/Shop';
 import Media from '@/components/Media';
 import Contact from '@/components/Contact';
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <About />
       <Shows />
+      <Discography />
       <Shop />
       <Media />
       <Contact />
