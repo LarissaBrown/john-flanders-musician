@@ -1,6 +1,7 @@
 'use client';
 
 import { Music2, Award, Users, Wind } from 'lucide-react';
+import Image from 'next/image';
 
 export default function About() {
   const highlights = [
@@ -38,10 +39,17 @@ export default function About() {
           </p>
         </div>
 
-        {/* Profile Image Placeholder */}
+        {/* Profile Image */}
         <div className="flex justify-center mb-16">
-          <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-gradient-to-br from-[#3A2F28] to-[#1C1612] border-4 border-[#F6B800] flex items-center justify-center overflow-hidden shadow-2xl">
-            <div className="text-[#F6B800] text-6xl sm:text-7xl">🎷</div>
+          <div className="relative w-64 h-96 sm:w-80 sm:h-[30rem] md:w-96 md:h-[36rem] rounded-2xl overflow-hidden border-4 border-[#F6B800] shadow-2xl">
+            <Image
+              src="/images/john_flanders_brick_sax.jpg"
+              alt="John Flanders with saxophone"
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 256px, (max-width: 768px) 320px, 384px"
+              priority
+            />
           </div>
         </div>
 
