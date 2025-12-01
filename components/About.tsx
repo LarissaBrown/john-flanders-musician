@@ -1,31 +1,8 @@
 'use client';
 
-import { Music2, Award, Users, Wind } from 'lucide-react';
 import Image from 'next/image';
 
 export default function About() {
-  const highlights = [
-    {
-      icon: Music2,
-      title: 'Multi-Instrumentalist',
-      description: 'Saxophone, flute, clarinet, and keyboards',
-    },
-    {
-      icon: Award,
-      title: 'Award-Winning Artist',
-      description: 'Multi-time City Weekly Best of Utah winner',
-    },
-    {
-      icon: Users,
-      title: 'Session Musician',
-      description: 'TV, radio, film soundtracks, and live performances',
-    },
-    {
-      icon: Wind,
-      title: 'Jazz & Beyond',
-      description: 'From classic jazz to fusion-swing and NPR features',
-    },
-  ];
 
   return (
     <section id="about" className="py-20 sm:py-24 lg:py-32 bg-[#2D241E] px-6 sm:px-8 lg:px-12">
@@ -79,25 +56,6 @@ export default function About() {
               Available for concerts, private events, weddings, corporate functions, and more. Let's create something memorable together.
             </p>
           </div>
-        </div>
-
-        {/* Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
-          {highlights.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={index}
-                className="bg-[#1C1612] rounded-2xl p-8 sm:p-10 border border-[#F6B800]/10 hover:border-[#F6B800]/30 transition-all duration-300 transform hover:-translate-y-1 text-center shadow-lg hover:shadow-2xl"
-              >
-                <Icon className="w-14 h-14 text-[#F6B800] mb-6 mx-auto" />
-                <h4 className="text-xl font-bold text-[#F6B800] mb-3 uppercase tracking-wide">
-                  {item.title}
-                </h4>
-                <p className="text-[#B8AFA3] leading-relaxed text-base">{item.description}</p>
-              </div>
-            );
-          })}
         </div>
       </div>
     </section>
