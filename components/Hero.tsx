@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24 md:pt-28 px-6 sm:px-8 lg:px-12"
+      className="relative min-h-screen flex items-start justify-center overflow-hidden pt-20 px-6 sm:px-8 lg:px-12"
     >
       {/* Warm Dark Spots Background */}
       <div className="absolute inset-0 z-0">
