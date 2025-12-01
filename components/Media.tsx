@@ -59,8 +59,8 @@ export default function Media() {
   });
 
   return (
-    <section id="media" className="py-20 sm:py-24 lg:py-32 bg-[#2D241E]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="media" className="py-20 sm:py-24 lg:py-32 bg-[#2D241E] px-6 sm:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 sm:mb-20">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
             Media Gallery

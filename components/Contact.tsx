@@ -47,8 +47,8 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-24 lg:py-32 bg-[#1C1612]">
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="contact" className="py-20 sm:py-24 lg:py-32 bg-[#1C1612] px-6 sm:px-8 lg:px-12">
+      <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16 sm:mb-20">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
             Get In Touch
