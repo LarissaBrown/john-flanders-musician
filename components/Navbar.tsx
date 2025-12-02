@@ -53,13 +53,13 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Navigation with proper spacing */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Navigation - Only visible on very large screens */}
+          <div className="hidden xl:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[#F5EDD4] hover:text-[#6B9CC3] transition-colors duration-200 font-semibold text-sm uppercase tracking-wider"
+                className="text-[#F5EDD4] hover:text-[#6B9CC3] transition-colors duration-200 font-semibold text-sm uppercase tracking-wider whitespace-nowrap"
               >
                 {link.label}
               </Link>
@@ -68,7 +68,7 @@ export default function Navbar() {
             {/* Admin Link */}
             <Link
               href="/admin/login"
-              className="text-[#F5EDD4] hover:text-[#E9756D] transition-colors duration-200 font-semibold text-sm uppercase tracking-wider"
+              className="text-[#F5EDD4] hover:text-[#E9756D] transition-colors duration-200 font-semibold text-sm uppercase tracking-wider whitespace-nowrap"
             >
               Admin
             </Link>
@@ -76,7 +76,7 @@ export default function Navbar() {
             {/* Cart Button with proper spacing */}
             <button
               onClick={() => setShowCart(true)}
-              className="relative text-[#F5EDD4] hover:text-[#E9756D] transition-colors ml-4"
+              className="relative text-[#F5EDD4] hover:text-[#E9756D] transition-colors ml-2"
             >
               <ShoppingBag className="w-6 h-6" />
               {itemCount > 0 && (
@@ -87,8 +87,8 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Mobile Cart & Menu with proper spacing */}
-          <div className="md:hidden flex items-center gap-4">
+          {/* Cart & Hamburger Menu - visible on medium and smaller screens */}
+          <div className="xl:hidden flex items-center gap-4">
             <button
               onClick={() => setShowCart(true)}
               className="relative text-[#F5EDD4] hover:text-[#E9756D] transition-colors"
@@ -104,6 +104,7 @@ export default function Navbar() {
             <button
               className="text-[#F5EDD4] hover:text-[#6B9CC3] transition-colors p-1"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
                 <X className="w-7 h-7" />
@@ -114,9 +115,9 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Hamburger Menu Dropdown */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-[#3D3230]/98 backdrop-blur-lg rounded-xl my-4 p-6 space-y-3 border border-[#6B9CC3]/20 shadow-xl">
+          <div className="xl:hidden bg-[#3D3230]/98 backdrop-blur-lg rounded-xl my-4 p-6 space-y-2 border border-[#6B9CC3]/20 shadow-xl animate-fade-in">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -128,10 +129,10 @@ export default function Navbar() {
               </Link>
             ))}
             
-            {/* Admin Link in Mobile Menu */}
+            {/* Admin Link in Menu */}
             <Link
               href="/admin/login"
-              className="block text-[#F5EDD4] hover:text-[#E9756D] transition-colors duration-200 text-base py-3 px-4 uppercase tracking-wider font-semibold rounded-lg hover:bg-[#4A332F]/50"
+              className="block text-[#F5EDD4] hover:text-[#E9756D] transition-colors duration-200 text-base py-3 px-4 uppercase tracking-wider font-semibold rounded-lg hover:bg-[#4A332F]/50 border-t border-[#6B9CC3]/20 mt-2 pt-4"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Admin
