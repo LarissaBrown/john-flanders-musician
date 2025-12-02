@@ -16,8 +16,8 @@ export default function Home() {
       <Hero />
       <About />
       <Shows />
-      <Discography />
       <Shop />
+      <Discography />
       <Media />
       <PhotoGallery />
       <Contact />

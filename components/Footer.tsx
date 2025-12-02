@@ -46,6 +46,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="#discography" className="text-cream hover:text-peach transition-colors text-sm block py-1">
+                  Discography
+                </Link>
+              </li>
+              <li>
                 <Link href="#media" className="text-cream hover:text-peach transition-colors text-sm block py-1">
                   Media Gallery
                 </Link>
