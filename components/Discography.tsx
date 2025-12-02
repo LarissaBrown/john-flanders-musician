@@ -76,7 +76,6 @@ export default function Discography() {
     {
       artist: 'Andy Monaco',
       album: '"Nobody Said Love", "Maybe"',
-      link: 'http://andymonaco.com',
     },
     {
       artist: 'The Gene Swift Project',
