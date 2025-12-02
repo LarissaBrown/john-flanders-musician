@@ -40,7 +40,7 @@ export default function Hero() {
               {/* Tagline */}
               <div className="space-y-6 sm:space-y-7 md:space-y-8">
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#FFE4B5] uppercase tracking-wide leading-tight text-center [text-shadow:0_2px_8px_rgba(0,0,0,0.4)]">
-                  Live music from the heart of the Southwest.
+                  Live music from the heart of the Intermountain West.
                 </h2>
                 
                 <p className="text-lg sm:text-xl md:text-2xl text-[#FFFAF0] font-light leading-relaxed text-center [text-shadow:0_2px_6px_rgba(0,0,0,0.3)]">

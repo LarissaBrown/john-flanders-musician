@@ -16,7 +16,7 @@ export default function About() {
 
         <div className="max-w-6xl mx-auto mb-20">
           {/* Image floats left, text flows around it */}
-          <div className="float-left w-64 h-96 sm:w-72 sm:h-[27rem] md:w-80 md:h-[30rem] lg:w-96 lg:h-[36rem] mr-8 mb-8 rounded-2xl overflow-hidden border-4 border-[#F6B800] shadow-2xl">
+          <div className="float-left relative w-64 h-96 sm:w-72 sm:h-[27rem] md:w-80 md:h-[30rem] lg:w-96 lg:h-[36rem] mr-8 mb-8 rounded-2xl overflow-hidden border-4 border-[#F6B800] shadow-2xl">
             <Image
               src="/images/john_flanders_brick_sax.jpg"
               alt="John Flanders with saxophone"
