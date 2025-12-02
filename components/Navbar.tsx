@@ -54,29 +54,39 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation - Only visible on very large screens */}
-          <div className="hidden xl:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-[#F5EDD4] hover:text-[#6B9CC3] transition-colors duration-200 font-semibold text-sm uppercase tracking-wider whitespace-nowrap"
-              >
-                {link.label}
-              </Link>
+          <div className="hidden xl:flex items-center">
+            {navLinks.map((link, index) => (
+              <div key={link.href} className="flex items-center">
+                <Link
+                  href={link.href}
+                  className="text-[#F5EDD4] hover:text-[#6B9CC3] transition-colors duration-200 font-semibold text-sm uppercase tracking-wider whitespace-nowrap px-3"
+                >
+                  {link.label}
+                </Link>
+                {index < navLinks.length - 1 && (
+                  <span className="text-[#6B9CC3] text-lg font-light">|</span>
+                )}
+              </div>
             ))}
+            
+            {/* Pipe before Admin */}
+            <span className="text-[#6B9CC3] text-lg font-light">|</span>
             
             {/* Admin Link */}
             <Link
               href="/admin/login"
-              className="text-[#F5EDD4] hover:text-[#E9756D] transition-colors duration-200 font-semibold text-sm uppercase tracking-wider whitespace-nowrap"
+              className="text-[#F5EDD4] hover:text-[#E9756D] transition-colors duration-200 font-semibold text-sm uppercase tracking-wider whitespace-nowrap px-3"
             >
               Admin
             </Link>
             
+            {/* Pipe before Cart */}
+            <span className="text-[#6B9CC3] text-lg font-light">|</span>
+            
             {/* Cart Button with proper spacing */}
             <button
               onClick={() => setShowCart(true)}
-              className="relative text-[#F5EDD4] hover:text-[#E9756D] transition-colors ml-2"
+              className="relative text-[#F5EDD4] hover:text-[#E9756D] transition-colors ml-3"
             >
               <ShoppingBag className="w-6 h-6" />
               {itemCount > 0 && (
