@@ -13,6 +13,7 @@ interface Product {
   imageUrl: string;
   description?: string;
   stock?: number;
+  isAvailable?: boolean;
 }
 
 export default function Shop() {
