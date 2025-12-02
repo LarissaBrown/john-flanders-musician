@@ -64,7 +64,6 @@ export default function Discography() {
     {
       artist: 'Red Rock Hot Club',
       album: 'Gyptology',
-      link: 'http://redrockhotclub.com',
     },
     {
       artist: 'Jonni Lightfoot',
