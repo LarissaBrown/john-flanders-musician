@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const DEFAULT_HERO_IMAGE = '/images/john_flanders_goldner_hirsch_inn.jpg';
+const DEFAULT_HERO_IMAGE = '/images/blue-sky-canyon.webp';
 
 export default function Hero() {
   const [heroImage, setHeroImage] = useState(DEFAULT_HERO_IMAGE);
@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-start justify-center overflow-hidden pt-20 px-6 sm:px-8 lg:px-12"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 px-6 sm:px-8 lg:px-12"
     >
       {/* Background Image - Configurable via Admin */}
       <div className="absolute top-16 left-0 right-0 bottom-0 z-0">
@@ -35,8 +35,8 @@ export default function Hero() {
         />
       </div>
 
-      {/* Content - Positioned lower on page */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto text-center pt-[30vh] sm:pt-[35vh] md:pt-[38vh]">
+      {/* Content - Centered on page */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto text-center">
 
         <div className="animate-fade-in-up space-y-8 sm:space-y-10 md:space-y-12 flex justify-center">
           {/* Warm backdrop for text readability */}
@@ -45,7 +45,7 @@ export default function Hero() {
             
             <div className="relative z-40 py-8 sm:py-10 md:py-12 lg:py-14 px-6 sm:px-10 md:px-12 lg:px-16 space-y-6">
               {/* Brand Name */}
-              <h1 className="font-black tracking-tight text-[#FFD700] whitespace-nowrap text-center text-[clamp(2.5rem,6vw,5.5rem)] [text-shadow:0_4px_12px_rgba(0,0,0,0.4),0_0_30px_rgba(255,215,0,0.5)]">
+              <h1 className="font-black tracking-tight text-[#f5526d] whitespace-nowrap text-center text-[clamp(2.5rem,6vw,5.5rem)] [text-shadow:0_4px_12px_rgba(0,0,0,0.4),0_0_30px_#8B2E3E">
                 JOHN FLANDERS
               </h1>
 
@@ -67,7 +67,7 @@ export default function Hero() {
       {/* Available for bookings */}
       <Link 
         href="#contact"
-        className="absolute z-30 text-[#F5DEB3] text-xs sm:text-sm uppercase tracking-widest hover:text-[#E9756D] transition-colors cursor-pointer bg-[#2D241E]/80 px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl backdrop-blur-md bottom-8 sm:bottom-10 md:bottom-12 right-6 sm:right-8 md:right-10 [text-shadow:0_2px_4px_rgba(0,0,0,0.3)] hover:bg-[#2D241E]/90 shadow-lg"
+        className="absolute z-30 text-[#2e1a03] text-xs sm:text-sm uppercase tracking-widest hover:text-[#E9756D] transition-colors cursor-pointer bg-[#f9c29d]/80 px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl backdrop-blur-md bottom-8 sm:bottom-10 md:bottom-12 right-6 sm:right-8 md:right-10 [text-shadow:0_2px_4px_rgba(0,0,0,0.3)] hover:bg-[#2D241E]/90 shadow-lg"
       >
         <span className="hidden sm:inline">Available for bookings →</span>
         <span className="sm:hidden">Book now →</span>
@@ -75,8 +75,8 @@ export default function Hero() {
 
       {/* Scroll Indicator */}
       <div className="hidden sm:block absolute bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
-        <div className="w-6 h-10 md:w-7 md:h-12 border-2 border-[#F19456] rounded-full flex items-start justify-center p-2 shadow-[0_0_15px_rgba(241,148,86,0.6)]">
-          <div className="w-1 h-3 md:w-1.5 md:h-4 bg-[#F19456] rounded-full"></div>
+        <div className="w-6 h-10 md:w-7 md:h-12 border-2 border-[#f2e7e0] rounded-full flex items-start justify-center p-2 shadow-[0_0_15px_rgba(241,148,86,0.6)]">
+          <div className="w-1 h-3 md:w-1.5 md:h-4 bg-[#f2e7e0] rounded-full"></div>
         </div>
       </div>
     </section>

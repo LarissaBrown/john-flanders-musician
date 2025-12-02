@@ -78,14 +78,14 @@ export default function PhotoGallery() {
   };
 
   return (
-    <section id="photos" className="py-20 sm:py-24 lg:py-32 bg-[#1C1612] px-6 sm:px-8 lg:px-12">
+    <section id="photos" className="py-20 sm:py-24 lg:py-32 bg-rich-brown px-6 sm:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16 sm:mb-20">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mb-6 uppercase tracking-wide">
             Photo Gallery
           </h2>
-          <p className="text-lg sm:text-xl text-[#F5F0E8] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-cream max-w-3xl mx-auto leading-relaxed">
             Moments from performances and recordings
           </p>
         </div>
@@ -96,7 +96,7 @@ export default function PhotoGallery() {
             <div
               key={index}
               onClick={() => setSelectedImage(index)}
-              className="group relative aspect-[4/5] rounded-2xl overflow-hidden cursor-pointer border-2 border-[#F6B800]/10 hover:border-[#F6B800]/50 transition-all duration-300 hover:shadow-2xl hover:shadow-[#F6B800]/20 transform hover:-translate-y-2"
+              className="group relative aspect-[4/5] rounded-2xl overflow-hidden cursor-pointer border-2 border-primary/20 hover:border-primary/60 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 transform hover:-translate-y-2"
             >
               <Image
                 src={photo.src}
@@ -118,37 +118,37 @@ export default function PhotoGallery() {
 
         {/* Press Reviews */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-[#F6B800] mb-8 text-center">
+          <h3 className="text-3xl font-bold text-primary mb-8 text-center">
             Press Reviews
           </h3>
           <div className="grid gap-6 md:grid-cols-2">
             {pressReviews.map((review, index) => (
               <div
                 key={index}
-                className="bg-[#2D241E] rounded-2xl p-8 border border-[#F6B800]/10 hover:border-[#F6B800]/30 transition-all"
+                className="bg-surface-dark rounded-2xl p-8 border border-primary/20 hover:border-primary/40 transition-all"
               >
-                <Quote className="w-10 h-10 text-[#F6B800]/30 mb-4" />
-                <blockquote className="text-[#F5F0E8] text-base sm:text-lg leading-relaxed mb-6 italic">
+                <Quote className="w-10 h-10 text-primary/40 mb-4" />
+                <blockquote className="text-cream text-base sm:text-lg leading-relaxed mb-6 italic">
                   "{review.quote}"
                 </blockquote>
                 <div className="flex flex-wrap items-center gap-3 text-sm">
-                  <span className="text-[#F6B800] font-bold">{review.source}</span>
+                  <span className="text-accent font-bold">{review.source}</span>
                   {review.reviewer && (
                     <>
-                      <span className="text-[#B8AFA3]">•</span>
-                      <span className="text-[#B8AFA3]">{review.reviewer}</span>
+                      <span className="text-cream/60">•</span>
+                      <span className="text-cream/60">{review.reviewer}</span>
                     </>
                   )}
                   {review.album && (
                     <>
-                      <span className="text-[#B8AFA3]">•</span>
-                      <span className="text-[#B8AFA3] italic">{review.album}</span>
+                      <span className="text-cream/60">•</span>
+                      <span className="text-cream/60 italic">{review.album}</span>
                     </>
                   )}
                   {review.rating && (
                     <>
-                      <span className="text-[#B8AFA3]">•</span>
-                      <span className="text-[#F6B800] font-semibold">{review.rating}</span>
+                      <span className="text-cream/60">•</span>
+                      <span className="text-secondary font-semibold">{review.rating}</span>
                     </>
                   )}
                 </div>
@@ -168,7 +168,7 @@ export default function PhotoGallery() {
                 e.stopPropagation();
                 setSelectedImage(null);
               }}
-              className="absolute top-4 right-4 text-white hover:text-[#F6B800] transition-colors"
+              className="absolute top-4 right-4 text-white hover:text-primary transition-colors"
             >
               <X className="w-8 h-8" />
             </button>
@@ -178,7 +178,7 @@ export default function PhotoGallery() {
                 e.stopPropagation();
                 prevImage();
               }}
-              className="absolute left-4 text-white hover:text-[#F6B800] transition-colors"
+              className="absolute left-4 text-white hover:text-primary transition-colors"
             >
               <ChevronLeft className="w-12 h-12" />
             </button>
@@ -188,7 +188,7 @@ export default function PhotoGallery() {
                 e.stopPropagation();
                 nextImage();
               }}
-              className="absolute right-4 text-white hover:text-[#F6B800] transition-colors"
+              className="absolute right-4 text-white hover:text-primary transition-colors"
             >
               <ChevronRight className="w-12 h-12" />
             </button>

@@ -47,27 +47,27 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-24 lg:py-32 bg-[#1C1612] px-6 sm:px-8 lg:px-12">
+    <section id="contact" className="py-20 sm:py-24 lg:py-32 bg-purple px-6 sm:px-8 lg:px-12">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16 sm:mb-20">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mb-6 uppercase tracking-wide">
             Get In Touch
           </h2>
-          <p className="text-lg sm:text-xl text-[#F5F0E8] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-cream max-w-3xl mx-auto leading-relaxed">
             Interested in booking for your event? Let's make it happen!
           </p>
         </div>
 
         <div>
           {/* Contact Form */}
-          <div className="bg-[#2D241E] rounded-2xl shadow-2xl p-8 sm:p-10 lg:p-12 border border-[#F6B800]/10">
-            <h3 className="text-2xl sm:text-3xl font-bold text-[#F6B800] mb-8 sm:mb-10 uppercase tracking-wide">
+          <div className="bg-surface-dark rounded-2xl shadow-2xl p-8 sm:p-10 lg:p-12 border border-primary/20">
+            <h3 className="text-2xl sm:text-3xl font-bold text-secondary mb-8 sm:mb-10 uppercase tracking-wide">
               Book an Event
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-7" suppressHydrationWarning>
               <div suppressHydrationWarning>
-                <label className="block text-[#F5F0E8] font-semibold mb-3 text-sm uppercase tracking-wide">
+                <label className="block text-cream font-semibold mb-3 text-sm uppercase tracking-wide">
                   Name *
                 </label>
                 <input
@@ -76,13 +76,13 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-5 py-4 bg-[#1C1612] border-2 border-[#3A2F28] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors text-[#F5F0E8]"
+                  className="w-full px-5 py-4 bg-rich-brown border-2 border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors text-cream placeholder:text-cream/50"
                   placeholder="Your full name"
                 />
               </div>
 
               <div suppressHydrationWarning>
-                <label className="block text-[#F5F0E8] font-semibold mb-3 text-sm uppercase tracking-wide">
+                <label className="block text-cream font-semibold mb-3 text-sm uppercase tracking-wide">
                   Email *
                 </label>
                 <input
@@ -91,13 +91,13 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-5 py-4 bg-[#1C1612] border-2 border-[#3A2F28] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors text-[#F5F0E8]"
+                  className="w-full px-5 py-4 bg-rich-brown border-2 border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors text-cream placeholder:text-cream/50"
                   placeholder="your@email.com"
                 />
               </div>
 
               <div suppressHydrationWarning>
-                <label className="block text-[#F5F0E8] font-semibold mb-3 text-sm uppercase tracking-wide">
+                <label className="block text-cream font-semibold mb-3 text-sm uppercase tracking-wide">
                   Phone
                 </label>
                 <input
@@ -105,13 +105,13 @@ export default function Contact() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-5 py-4 bg-[#1C1612] border-2 border-[#3A2F28] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors text-[#F5F0E8]"
+                  className="w-full px-5 py-4 bg-rich-brown border-2 border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors text-cream placeholder:text-cream/50"
                   placeholder="(123) 456-7890"
                 />
               </div>
 
               <div>
-                <label className="block text-[#F5F0E8] font-semibold mb-3 text-sm uppercase tracking-wide">
+                <label className="block text-cream font-semibold mb-3 text-sm uppercase tracking-wide">
                   Event Type *
                 </label>
                 <select
@@ -119,7 +119,7 @@ export default function Contact() {
                   value={formData.eventType}
                   onChange={handleChange}
                   required
-                  className="w-full px-5 py-4 bg-[#1C1612] border-2 border-[#3A2F28] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors text-[#F5F0E8]"
+                  className="w-full px-5 py-4 bg-rich-brown border-2 border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors text-cream"
                 >
                   <option value="">Select event type</option>
                   <option value="concert">Concert/Festival</option>
@@ -132,7 +132,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="block text-[#F5F0E8] font-semibold mb-3 text-sm uppercase tracking-wide">
+                <label className="block text-cream font-semibold mb-3 text-sm uppercase tracking-wide">
                   Event Date
                 </label>
                 <input
@@ -140,12 +140,12 @@ export default function Contact() {
                   name="eventDate"
                   value={formData.eventDate}
                   onChange={handleChange}
-                  className="w-full px-5 py-4 bg-[#1C1612] border-2 border-[#3A2F28] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors text-[#F5F0E8]"
+                  className="w-full px-5 py-4 bg-rich-brown border-2 border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors text-cream"
                 />
               </div>
 
               <div>
-                <label className="block text-[#F5F0E8] font-semibold mb-3 text-sm uppercase tracking-wide">
+                <label className="block text-cream font-semibold mb-3 text-sm uppercase tracking-wide">
                   Message *
                 </label>
                 <textarea
@@ -154,13 +154,13 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-5 py-4 bg-[#1C1612] border-2 border-[#3A2F28] rounded-lg focus:border-[#F6B800] focus:outline-none transition-colors resize-none text-[#F5F0E8]"
+                  className="w-full px-5 py-4 bg-rich-brown border-2 border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors resize-none text-cream placeholder:text-cream/50"
                   placeholder="Tell me about your event..."
                 ></textarea>
               </div>
 
               {submitMessage && (
-                <div className="bg-[#7BA05B] text-white px-5 py-4 rounded-lg font-semibold">
+                <div className="bg-green-600 text-white px-5 py-4 rounded-lg font-semibold">
                   {submitMessage}
                 </div>
               )}
@@ -168,7 +168,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#F6B800] text-[#1C1612] py-5 rounded-xl font-black text-base uppercase tracking-wide hover:bg-[#FFCA28] transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-1"
+                className="w-full bg-accent hover:bg-accent-hover text-white py-5 rounded-xl font-black text-base uppercase tracking-wide transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-1"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
@@ -177,10 +177,10 @@ export default function Contact() {
 
           {/* Contact Info */}
           <div className="mt-10 sm:mt-12 text-center px-4">
-            <p className="text-[#B8AFA3] text-sm mb-3">Direct Contact</p>
+            <p className="text-cream/70 text-sm mb-3">Direct Contact</p>
             <a
               href="mailto:info@johnflanders.com"
-              className="text-[#F6B800] hover:text-[#FFCA28] transition-colors text-lg font-semibold"
+              className="text-primary hover:text-secondary transition-colors text-lg font-semibold"
             >
               info@johnflanders.com
             </a>

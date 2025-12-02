@@ -75,28 +75,28 @@ export default function Media() {
   }, []);
 
   return (
-    <section id="media" className="py-20 sm:py-24 lg:py-32 bg-[#2D241E] px-6 sm:px-8 lg:px-12">
+    <section id="media" className="py-20 sm:py-24 lg:py-32 bg-cream px-6 sm:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 sm:mb-20">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-rich-brown mb-6 uppercase tracking-wide">
             Media Gallery
           </h2>
-          <p className="text-lg sm:text-xl text-[#F5F0E8] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-text-dark max-w-3xl mx-auto leading-relaxed">
             Listen to recordings and watch performances
           </p>
         </div>
 
         {/* Filter Tabs */}
         <div className="flex justify-center mb-12 sm:mb-16 px-4">
-          <div className="bg-[#1C1612] rounded-full p-1.5 inline-flex gap-2 border border-[#F6B800]/20 shadow-lg">
+          <div className="bg-white rounded-full p-1.5 inline-flex gap-2 border border-secondary/20 shadow-lg">
             {['all', 'audio', 'video'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab as typeof activeTab)}
                 className={`px-6 sm:px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wide transition-all ${
                   activeTab === tab
-                    ? 'bg-[#F6B800] text-[#1C1612] shadow-md'
-                    : 'text-[#F5F0E8] hover:text-[#F6B800]'
+                    ? 'bg-primary text-white shadow-md'
+                    : 'text-text-dark hover:text-primary'
                 }`}
               >
                 {tab}
@@ -108,13 +108,13 @@ export default function Media() {
         {/* Media Grid */}
         {loading ? (
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#F6B800]"></div>
-            <p className="mt-4 text-[#F5F0E8]">Loading media...</p>
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            <p className="mt-4 text-text-dark">Loading media...</p>
           </div>
         ) : filteredMedia.length === 0 ? (
           <div className="text-center py-20 px-6">
-            <Music className="w-16 h-16 text-[#F6B800] mx-auto mb-6 opacity-50" />
-            <p className="text-lg sm:text-xl text-[#F5F0E8]">
+            <Music className="w-16 h-16 text-primary mx-auto mb-6 opacity-50" />
+            <p className="text-lg sm:text-xl text-text-dark">
               No {activeTab !== 'all' ? activeTab : ''} media available yet.
             </p>
           </div>
@@ -123,25 +123,25 @@ export default function Media() {
             {filteredMedia.map((item) => (
               <div
                 key={item._id}
-                className="bg-[#1C1612] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-[#F6B800]/10 hover:border-[#F6B800]/30 transform hover:-translate-y-2"
+                className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-secondary/20 hover:border-primary/40 transform hover:-translate-y-2"
               >
                 {/* Thumbnail/Player */}
-                <div className="relative bg-gradient-to-br from-[#3A2F28] to-[#1C1612] aspect-video flex items-center justify-center group cursor-pointer">
+                <div className="relative bg-gradient-to-br from-secondary/20 to-cream-dark aspect-video flex items-center justify-center group cursor-pointer">
                   <button
-                    className="relative z-10 bg-[#F6B800] hover:bg-[#FFCA28] rounded-full p-5 transition-all group-hover:scale-110 shadow-lg"
+                    className="relative z-10 bg-accent hover:bg-accent-hover rounded-full p-5 transition-all group-hover:scale-110 shadow-lg"
                     onClick={() => handlePlayPause(item)}
                   >
                     {playingId === item._id ? (
-                      <Pause className="w-8 h-8 text-[#1C1612]" />
+                      <Pause className="w-8 h-8 text-white" />
                     ) : (
-                      <Play className="w-8 h-8 text-[#1C1612] ml-1" />
+                      <Play className="w-8 h-8 text-white ml-1" />
                     )}
                   </button>
 
                   {/* Duration */}
                   {item.duration && (
-                    <div className="absolute bottom-4 right-4 bg-[#1C1612]/90 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                      <span className="text-sm font-bold text-[#F6B800]">
+                    <div className="absolute bottom-4 right-4 bg-rich-brown/90 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                      <span className="text-sm font-bold text-cream">
                         {item.duration}
                       </span>
                     </div>
@@ -150,14 +150,14 @@ export default function Media() {
 
                 {/* Info */}
                 <div className="p-6 sm:p-8 text-center">
-                  <p className="text-xs font-bold uppercase tracking-widest text-[#F6B800] mb-3">
+                  <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">
                     {item.type}
                   </p>
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#F5F0E8] mb-3">
+                  <h3 className="text-xl sm:text-2xl font-bold text-rich-brown mb-3">
                     {item.title}
                   </h3>
                   {item.description && (
-                    <p className="text-[#B8AFA3] text-sm px-2">{item.description}</p>
+                    <p className="text-text-muted text-sm px-2">{item.description}</p>
                   )}
                 </div>
               </div>

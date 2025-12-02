@@ -37,8 +37,8 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#4A332F]/98 backdrop-blur-lg shadow-xl border-b border-[#6B9CC3]/20'
-          : 'bg-[#4A332F]/90 backdrop-blur-sm'
+          ? 'bg-purple/98 backdrop-blur-lg shadow-xl border-b border-[#6B9CC3]/20'
+          : 'bg-purple/90 backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
