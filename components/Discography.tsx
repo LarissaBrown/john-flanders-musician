@@ -2,6 +2,7 @@
 
 import { Music, ExternalLink, Play } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Discography() {
   const doubleHelixAlbums = [
@@ -11,18 +12,21 @@ export default function Discography() {
       description: 'The newest album from John Flanders & Double Helix',
       tracks: ['Latin Blues', 'The Go Between'],
       featured: true,
+      image: '/images/the-go-between-cover.jpg', // Placeholder - upload actual cover
     },
     {
       title: 'In The Sky Tonight',
       year: '2010s',
       description: 'John Flanders & Double Helix',
       tracks: ['Architeuthis'],
+      image: '/images/in-the-sky-tonight-cover.jpg', // Placeholder - upload actual cover
     },
     {
       title: 'Natural Selection',
       year: '2000s',
       description: 'Audience favorite - Named Best Jazz Group after debut',
       highlight: 'City Weekly Best Jazz Group',
+      image: '/images/natural-selection-cover.jpg', // Placeholder - upload actual cover
     },
   ];
 
@@ -31,11 +35,13 @@ export default function Discography() {
       title: 'A Prehensile Tale',
       year: '2000s',
       description: 'John Flanders solo project',
+      image: '/images/a-prehensile-tale-cover.jpg', // Placeholder - upload actual cover
     },
     {
       title: 'Stranded in Time',
       year: '2000s',
       description: 'John Flanders solo album',
+      image: '/images/stranded-in-time-cover.jpg', // Placeholder - upload actual cover
     },
   ];
 
@@ -119,38 +125,51 @@ export default function Discography() {
             {doubleHelixAlbums.map((album, index) => (
               <div
                 key={index}
-                className={`bg-[#1C1612] rounded-2xl p-8 border transition-all duration-300 hover:transform hover:-translate-y-1 ${
+                className={`bg-[#1C1612] rounded-2xl overflow-hidden border transition-all duration-300 hover:transform hover:-translate-y-1 ${
                   album.featured
                     ? 'border-[#F6B800] shadow-lg shadow-[#F6B800]/20'
                     : 'border-[#F6B800]/10 hover:border-[#F6B800]/30'
                 }`}
               >
-                {album.featured && (
-                  <span className="inline-block bg-[#F6B800] text-[#1C1612] px-3 py-1 rounded-full text-xs font-bold uppercase mb-4">
-                    Latest
-                  </span>
-                )}
-                <h4 className="text-2xl font-bold text-[#F5F0E8] mb-2">{album.title}</h4>
-                <p className="text-[#F6B800] text-sm mb-4">{album.year}</p>
-                <p className="text-[#B8AFA3] mb-4">{album.description}</p>
-                {album.highlight && (
-                  <p className="text-[#F6B800] text-sm font-semibold mb-4">
-                    🏆 {album.highlight}
-                  </p>
-                )}
-                {album.tracks && (
-                  <div className="mt-4 pt-4 border-t border-[#F6B800]/20">
-                    <p className="text-[#B8AFA3] text-sm mb-2">Sample Tracks:</p>
-                    <ul className="space-y-1">
-                      {album.tracks.map((track, i) => (
-                        <li key={i} className="text-[#F5F0E8] text-sm flex items-center gap-2">
-                          <Play className="w-3 h-3 text-[#F6B800]" />
-                          {track}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                {/* Album Cover Image */}
+                <div className="relative w-full aspect-square bg-[#2D241E]">
+                  <Image
+                    src={album.image}
+                    alt={`${album.title} album cover`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
+                
+                <div className="p-8">
+                  {album.featured && (
+                    <span className="inline-block bg-[#F6B800] text-[#1C1612] px-3 py-1 rounded-full text-xs font-bold uppercase mb-4">
+                      Latest
+                    </span>
+                  )}
+                  <h4 className="text-2xl font-bold text-[#F5F0E8] mb-2">{album.title}</h4>
+                  <p className="text-[#F6B800] text-sm mb-4">{album.year}</p>
+                  <p className="text-[#B8AFA3] mb-4">{album.description}</p>
+                  {album.highlight && (
+                    <p className="text-[#F6B800] text-sm font-semibold mb-4">
+                      🏆 {album.highlight}
+                    </p>
+                  )}
+                  {album.tracks && (
+                    <div className="mt-4 pt-4 border-t border-[#F6B800]/20">
+                      <p className="text-[#B8AFA3] text-sm mb-2">Sample Tracks:</p>
+                      <ul className="space-y-1">
+                        {album.tracks.map((track, i) => (
+                          <li key={i} className="text-[#F5F0E8] text-sm flex items-center gap-2">
+                            <Play className="w-3 h-3 text-[#F6B800]" />
+                            {track}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -166,11 +185,24 @@ export default function Discography() {
             {soloAlbums.map((album, index) => (
               <div
                 key={index}
-                className="bg-[#1C1612] rounded-2xl p-8 border border-[#F6B800]/10 hover:border-[#F6B800]/30 transition-all duration-300 hover:transform hover:-translate-y-1"
+                className="bg-[#1C1612] rounded-2xl overflow-hidden border border-[#F6B800]/10 hover:border-[#F6B800]/30 transition-all duration-300 hover:transform hover:-translate-y-1"
               >
-                <h4 className="text-2xl font-bold text-[#F5F0E8] mb-2">{album.title}</h4>
-                <p className="text-[#F6B800] text-sm mb-4">{album.year}</p>
-                <p className="text-[#B8AFA3]">{album.description}</p>
+                {/* Album Cover Image */}
+                <div className="relative w-full aspect-square bg-[#2D241E]">
+                  <Image
+                    src={album.image}
+                    alt={`${album.title} album cover`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                
+                <div className="p-8">
+                  <h4 className="text-2xl font-bold text-[#F5F0E8] mb-2">{album.title}</h4>
+                  <p className="text-[#F6B800] text-sm mb-4">{album.year}</p>
+                  <p className="text-[#B8AFA3]">{album.description}</p>
+                </div>
               </div>
             ))}
           </div>
