@@ -101,52 +101,46 @@ export default function Shows() {
                       Featured
                     </div>
                   )}
-                <div className="text-center">
-                  <div className="text-[#F6B800] text-6xl mb-2">🎵</div>
-                  <p className="text-[#B8AFA3] text-xs uppercase tracking-wide">Show Poster</p>
-                </div>
-              </div>
-
-              {/* Show Info */}
-              <div className="p-6 sm:p-8 text-center">
-                <h3 className="text-xl sm:text-2xl font-bold text-[#F5F0E8] mb-4">
-                  {show.title}
-                </h3>
-                
-                <div className="space-y-3 mb-6 text-[#B8AFA3] text-sm">
-                  <p className="flex items-center justify-center gap-2">
-                    <MapPin className="w-4 h-4 text-[#F6B800] flex-shrink-0" />
-                    <span>{show.venue}</span>
-                  </p>
-                  <p className="flex items-center justify-center gap-2">
-                    <MapPin className="w-4 h-4 text-[#F6B800] flex-shrink-0" />
-                    <span>{show.location}</span>
-                  </p>
-                  <p className="flex items-center justify-center gap-2">
-                    <Calendar className="w-4 h-4 text-[#F6B800] flex-shrink-0" />
-                    <span>{format(new Date(show.date), 'MMM dd, yyyy')}</span>
-                  </p>
-                  <p className="flex items-center justify-center gap-2">
-                    <Clock className="w-4 h-4 text-[#F6B800] flex-shrink-0" />
-                    <span>{show.time}</span>
-                  </p>
                 </div>
 
-                {show.description && (
-                  <p className="text-[#B8AFA3] text-sm mb-6 line-clamp-2 px-2">
-                    {show.description}
-                  </p>
-                )}
+                {/* Show Info */}
+                <div className="p-6 sm:p-8 text-center">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#F5F0E8] mb-4">
+                    {show.title}
+                  </h3>
+                  
+                  <div className="space-y-3 mb-6 text-[#B8AFA3] text-sm">
+                    <p className="flex items-center justify-center gap-2">
+                      <MapPin className="w-4 h-4 text-[#F6B800] flex-shrink-0" />
+                      <span>{show.venue}</span>
+                    </p>
+                    <p className="flex items-center justify-center gap-2">
+                      <MapPin className="w-4 h-4 text-[#F6B800] flex-shrink-0" />
+                      <span>{show.location}</span>
+                    </p>
+                    <p className="flex items-center justify-center gap-2">
+                      <Calendar className="w-4 h-4 text-[#F6B800] flex-shrink-0" />
+                      <span>{format(new Date(show.date), 'MMM dd, yyyy')}</span>
+                    </p>
+                    <p className="flex items-center justify-center gap-2">
+                      <Clock className="w-4 h-4 text-[#F6B800] flex-shrink-0" />
+                      <span>{show.time}</span>
+                    </p>
+                  </div>
 
-                {/* Button */}
-                {show.ticketUrl && (
-                  <button className="w-full bg-[#F6B800] hover:bg-[#FFCA28] text-[#1C1612] px-6 py-3.5 rounded-xl font-black text-sm uppercase tracking-wide transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 mt-4">
-                    Get Tickets
-                  </button>
-                )}
-              </div>
-            </div>
-          ))}
+                  {show.description && (
+                    <p className="text-[#B8AFA3] text-sm mb-6 line-clamp-2 px-2">
+                      {show.description}
+                    </p>
+                  )}
+
+                  {/* Button */}
+                  {show.ticketUrl && (
+                    <button className="w-full bg-[#F6B800] hover:bg-[#FFCA28] text-[#1C1612] px-6 py-3.5 rounded-xl font-black text-sm uppercase tracking-wide transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5 mt-4">
+                      Get Tickets
+                    </button>
+                  )}
+                </div>
               </div>
             ))}
           </div>
