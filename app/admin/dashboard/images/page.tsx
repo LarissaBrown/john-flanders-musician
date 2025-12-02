@@ -7,6 +7,7 @@ interface UploadedImage {
   url: string;
   filename: string;
   isFromUploads?: boolean; // Track if from uploads folder (can delete/rename)
+  inGallery?: boolean; // Track if image should appear in public photo gallery
 }
 
 export default function ImagesManagement() {
@@ -29,10 +30,14 @@ export default function ImagesManagement() {
       const data = await response.json();
       
       if (data.success && data.images) {
+        // Load gallery settings from localStorage
+        const gallerySettings = JSON.parse(localStorage.getItem('imageGallerySettings') || '{}');
+
         // Mark uploaded images
         const uploadedImgs = data.images.map((img: UploadedImage) => ({
           ...img,
           isFromUploads: true,
+          inGallery: gallerySettings[img.filename] ?? false,
         }));
 
         // Add existing static images
@@ -52,6 +57,7 @@ export default function ImagesManagement() {
           filename,
           url: `/images/${filename}`,
           isFromUploads: false,
+          inGallery: gallerySettings[filename] ?? false,
         }));
 
         // Combine both lists (uploaded first, then existing)
@@ -223,6 +229,27 @@ export default function ImagesManagement() {
     }
   };
 
+  const toggleGalleryStatus = (filename: string, currentStatus: boolean) => {
+    // Update local state
+    setUploadedImages(prev =>
+      prev.map(img =>
+        img.filename === filename
+          ? { ...img, inGallery: !currentStatus }
+          : img
+      )
+    );
+
+    // Save to localStorage
+    const gallerySettings = JSON.parse(localStorage.getItem('imageGallerySettings') || '{}');
+    gallerySettings[filename] = !currentStatus;
+    localStorage.setItem('imageGallerySettings', JSON.stringify(gallerySettings));
+
+    setMessage({
+      type: 'success',
+      text: `${filename} ${!currentStatus ? 'added to' : 'removed from'} gallery`,
+    });
+  };
+
   return (
     <div className="space-y-8">
       {/* Header */}
@@ -314,7 +341,7 @@ export default function ImagesManagement() {
           Available Images {uploadedImages.length > 0 && `(${uploadedImages.length})`}
         </h3>
         <p className="text-gray-600 mb-6">
-          All images in your gallery. Click to copy URL, rename, or delete.
+          All images available for your website. Check "Show in Gallery" to display images in the public photo gallery, or leave unchecked for other uses (backgrounds, album covers, etc.).
         </p>
         
         {loading ? (
@@ -368,6 +395,20 @@ export default function ImagesManagement() {
                       <p className="text-xs text-gray-600 truncate" title={image.filename}>
                         {image.filename}
                       </p>
+                      
+                      {/* Gallery Checkbox */}
+                      <label className="flex items-center gap-2 p-2 bg-gray-50 rounded cursor-pointer hover:bg-gray-100 transition-colors">
+                        <input
+                          type="checkbox"
+                          checked={image.inGallery ?? false}
+                          onChange={() => toggleGalleryStatus(image.filename, image.inGallery ?? false)}
+                          className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                        />
+                        <span className="text-xs font-medium text-gray-700">
+                          Show in Gallery
+                        </span>
+                      </label>
+
                       <div className="flex gap-2">
                         <button
                           onClick={() => copyToClipboard(image.url)}
