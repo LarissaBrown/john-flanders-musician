@@ -18,10 +18,10 @@ export default function About() {
           {/* Mobile: Stacked layout (image on top, text below) */}
           {/* Desktop: Image floats left, text flows around it */}
           
-          {/* Image - centered on mobile, floats left on md+ */}
-          <div className="md:float-left relative w-64 h-96 sm:w-72 sm:h-[27rem] md:w-80 md:h-[30rem] lg:w-96 lg:h-[36rem] mx-auto md:mx-0 md:mr-8 mb-8 rounded-2xl overflow-hidden border-4 border-primary shadow-2xl">
+          {/* Image - centered on mobile, floats right on md+ */}
+          <div className="md:float-right relative w-72 h-72 sm:w-80 sm:h-80 md:w-[21rem] md:h-[21rem] lg:w-[25rem] lg:h-[25rem] mx-auto md:mx-0 md:ml-8 mb-8 rounded-2xl overflow-hidden border-4 border-primary shadow-2xl">
             <Image
-              src="/images/john_flanders_brick_sax.jpg"
+              src="/images/john_flanders_goldner_hirsch_inn.jpg"
               alt="John Flanders with saxophone"
               fill
               className="object-cover"
@@ -51,7 +51,7 @@ export default function About() {
               Originally from Canton, Ohio, John studied at The Ohio State University and the University of Connecticut, learning from jazz greats such as Ted Nash, Lou Donaldson, Ernie Krivda, and Eddie Daniels. His career has taken him from New York to Los Angeles to international stages—and even the open seas during his years performing in cruise-ship orchestras backing top Vegas entertainers. With more than 15 years of teaching experience and guest lectures on jazz history, John brings both expertise and passion to every musical endeavor.
             </p>
             
-            <p className="text-accent font-semibold text-center mt-12 text-lg md:clear-left">
+            <p className="text-accent font-semibold text-center mt-12 text-lg md:clear-right">
               Available for concerts, private events, weddings, corporate functions, and more. Let's create something memorable together.
             </p>
           </div>
