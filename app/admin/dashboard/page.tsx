@@ -90,7 +90,8 @@ export default function AdminDashboard() {
       try {
         const imagesRes = await fetch('/api/images/list');
         const imagesData = await imagesRes.json();
-        imagesCount = Array.isArray(imagesData) ? imagesData.length : 0;
+        // API returns {success: true, images: [...]}
+        imagesCount = imagesData?.images?.length || (Array.isArray(imagesData) ? imagesData.length : 0);
       } catch {
         imagesCount = 0;
       }
