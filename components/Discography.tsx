@@ -1,32 +1,59 @@
 'use client';
 
-import { Music, ExternalLink, Play } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { Music, ExternalLink, Play, Pause } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Discography() {
+  const [playingTrack, setPlayingTrack] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const handlePlayTrack = (trackUrl: string, trackName: string) => {
+    if (audioRef.current) {
+      if (playingTrack === trackName) {
+        // Stop playing
+        audioRef.current.pause();
+        setPlayingTrack(null);
+      } else {
+        // Play new track
+        audioRef.current.src = trackUrl;
+        audioRef.current.play();
+        setPlayingTrack(trackName);
+      }
+    }
+  };
+
   const doubleHelixAlbums = [
     {
       title: 'The Go Between',
       year: 'Latest Release',
       description: 'The newest album from John Flanders & Double Helix',
-      tracks: ['Latin Blues', 'The Go Between'],
+      tracks: [
+        { name: 'Latin Blues', url: '/audio/LatinBlues.mp3' },
+        { name: 'The Go Between', url: '/audio/TheGoBetween.mp3' },
+      ],
       featured: true,
-      image: '/images/the-go-between-cover.jpg', // Placeholder - upload actual cover
+      image: '/images/the-go-between-cover.jpg',
     },
     {
       title: 'In The Sky Tonight',
       year: '2010s',
       description: 'John Flanders & Double Helix',
-      tracks: ['Architeuthis'],
-      image: '/images/in-the-sky-tonight-cover.jpg', // Placeholder - upload actual cover
+      tracks: [
+        { name: 'Architeuthis', url: '/audio/Architeuthis.mp3' },
+      ],
+      image: '/images/in-the-sky-tonight-cover.jpg',
     },
     {
       title: 'Natural Selection',
       year: '2000s',
       description: 'Audience favorite - Named Best Jazz Group after debut',
       highlight: 'City Weekly Best Jazz Group',
-      image: '/images/natural-selection-cover.jpg', // Placeholder - upload actual cover
+      tracks: [
+        { name: 'Hunkered Down', url: '/audio/06HunkeredDown.mp3' },
+      ],
+      image: '/images/natural-selection-cover.jpg',
     },
   ];
 
@@ -151,14 +178,30 @@ export default function Discography() {
                       🏆 {album.highlight}
                     </p>
                   )}
-                  {album.tracks && (
+                  {album.tracks && album.tracks.length > 0 && (
                     <div className="mt-4 pt-4 border-t border-[#F6B800]/20">
-                      <p className="text-[#B8AFA3] text-sm mb-2">Sample Tracks:</p>
-                      <ul className="space-y-1">
+                      <p className="text-[#B8AFA3] text-sm mb-3">Sample Tracks:</p>
+                      <ul className="space-y-2">
                         {album.tracks.map((track, i) => (
-                          <li key={i} className="text-[#F5F0E8] text-sm flex items-center gap-2">
-                            <Play className="w-3 h-3 text-[#F6B800]" />
-                            {track}
+                          <li key={i} className="flex items-center gap-3">
+                            <button
+                              onClick={() => handlePlayTrack(track.url, track.name)}
+                              className={`flex items-center justify-center w-8 h-8 rounded-full transition-all ${
+                                playingTrack === track.name
+                                  ? 'bg-[#F6B800] text-[#1C1612]'
+                                  : 'bg-[#F6B800]/20 text-[#F6B800] hover:bg-[#F6B800]/40'
+                              }`}
+                              aria-label={playingTrack === track.name ? `Pause ${track.name}` : `Play ${track.name}`}
+                            >
+                              {playingTrack === track.name ? (
+                                <Pause className="w-4 h-4" />
+                              ) : (
+                                <Play className="w-4 h-4 ml-0.5" />
+                              )}
+                            </button>
+                            <span className={`text-sm ${playingTrack === track.name ? 'text-[#F6B800] font-semibold' : 'text-[#F5F0E8]'}`}>
+                              {track.name}
+                            </span>
                           </li>
                         ))}
                       </ul>
@@ -276,6 +319,13 @@ export default function Discography() {
             Visit Shop
           </Link>
         </div>
+
+        {/* Hidden audio element for playback */}
+        <audio
+          ref={audioRef}
+          onEnded={() => setPlayingTrack(null)}
+          className="hidden"
+        />
       </div>
     </section>
   );
