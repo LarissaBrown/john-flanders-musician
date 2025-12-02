@@ -125,21 +125,21 @@ export default function Discography() {
   ];
 
   return (
-    <section id="discography" className="py-20 sm:py-24 lg:py-32 bg-[#2D241E] px-6 sm:px-8 lg:px-12">
+    <section id="discography" className="py-20 sm:py-24 lg:py-32 bg-cream px-6 sm:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16 sm:mb-20">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-rich-brown mb-6 uppercase tracking-wide">
             Discography
           </h2>
-          <p className="text-lg sm:text-xl text-[#F5F0E8] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-text-dark max-w-3xl mx-auto leading-relaxed">
             Albums, collaborations, and film & television work
           </p>
         </div>
 
         {/* Double Helix Albums */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-[#F6B800] mb-8 flex items-center gap-3">
+          <h3 className="text-3xl font-bold text-primary mb-8 flex items-center gap-3">
             <Music className="w-8 h-8" />
             John Flanders & Double Helix
           </h3>
@@ -147,14 +147,14 @@ export default function Discography() {
             {doubleHelixAlbums.map((album, index) => (
               <div
                 key={index}
-                className={`bg-[#1C1612] rounded-2xl overflow-hidden border transition-all duration-300 hover:transform hover:-translate-y-1 ${
+                className={`bg-white rounded-2xl overflow-hidden border transition-all duration-300 hover:transform hover:-translate-y-1 shadow-lg ${
                   album.featured
-                    ? 'border-[#F6B800] shadow-lg shadow-[#F6B800]/20'
-                    : 'border-[#F6B800]/10 hover:border-[#F6B800]/30'
+                    ? 'border-primary shadow-primary/20'
+                    : 'border-secondary/20 hover:border-primary/40'
                 }`}
               >
                 {/* Album Cover Image */}
-                <div className="relative w-full aspect-square bg-[#2D241E]">
+                <div className="relative w-full aspect-square bg-cream-dark">
                   <Image
                     src={album.image}
                     alt={`${album.title} album cover`}
@@ -166,21 +166,21 @@ export default function Discography() {
                 
                 <div className="p-8">
                   {album.featured && (
-                    <span className="inline-block bg-[#F6B800] text-[#1C1612] px-3 py-1 rounded-full text-xs font-bold uppercase mb-4">
+                    <span className="inline-block bg-accent text-white px-3 py-1 rounded-full text-xs font-bold uppercase mb-4">
                       Latest
                     </span>
                   )}
-                  <h4 className="text-2xl font-bold text-[#F5F0E8] mb-2">{album.title}</h4>
-                  <p className="text-[#F6B800] text-sm mb-4">{album.year}</p>
-                  <p className="text-[#B8AFA3] mb-4">{album.description}</p>
+                  <h4 className="text-2xl font-bold text-rich-brown mb-2">{album.title}</h4>
+                  <p className="text-primary text-sm mb-4">{album.year}</p>
+                  <p className="text-text-muted mb-4">{album.description}</p>
                   {album.highlight && (
-                    <p className="text-[#F6B800] text-sm font-semibold mb-4">
+                    <p className="text-accent text-sm font-semibold mb-4">
                       🏆 {album.highlight}
                     </p>
                   )}
                   {album.tracks && album.tracks.length > 0 && (
-                    <div className="mt-4 pt-4 border-t border-[#F6B800]/20">
-                      <p className="text-[#B8AFA3] text-sm mb-3">Sample Tracks:</p>
+                    <div className="mt-4 pt-4 border-t border-secondary/20">
+                      <p className="text-text-muted text-sm mb-3">Sample Tracks:</p>
                       <ul className="space-y-2">
                         {album.tracks.map((track, i) => (
                           <li key={i} className="flex items-center gap-3">
@@ -188,8 +188,8 @@ export default function Discography() {
                               onClick={() => handlePlayTrack(track.url, track.name)}
                               className={`flex items-center justify-center w-8 h-8 rounded-full transition-all ${
                                 playingTrack === track.name
-                                  ? 'bg-[#F6B800] text-[#1C1612]'
-                                  : 'bg-[#F6B800]/20 text-[#F6B800] hover:bg-[#F6B800]/40'
+                                  ? 'bg-primary text-white'
+                                  : 'bg-primary/20 text-primary hover:bg-primary/40'
                               }`}
                               aria-label={playingTrack === track.name ? `Pause ${track.name}` : `Play ${track.name}`}
                             >
@@ -199,7 +199,7 @@ export default function Discography() {
                                 <Play className="w-4 h-4 ml-0.5" />
                               )}
                             </button>
-                            <span className={`text-sm ${playingTrack === track.name ? 'text-[#F6B800] font-semibold' : 'text-[#F5F0E8]'}`}>
+                            <span className={`text-sm ${playingTrack === track.name ? 'text-primary font-semibold' : 'text-text-dark'}`}>
                               {track.name}
                             </span>
                           </li>
@@ -215,7 +215,7 @@ export default function Discography() {
 
         {/* Solo Albums */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-[#F6B800] mb-8 flex items-center gap-3">
+          <h3 className="text-3xl font-bold text-primary mb-8 flex items-center gap-3">
             <Music className="w-8 h-8" />
             Solo Albums
           </h3>
@@ -223,10 +223,10 @@ export default function Discography() {
             {soloAlbums.map((album, index) => (
               <div
                 key={index}
-                className="bg-[#1C1612] rounded-2xl overflow-hidden border border-[#F6B800]/10 hover:border-[#F6B800]/30 transition-all duration-300 hover:transform hover:-translate-y-1"
+                className="bg-white rounded-2xl overflow-hidden border border-secondary/20 hover:border-primary/40 transition-all duration-300 hover:transform hover:-translate-y-1 shadow-lg"
               >
                 {/* Album Cover Image */}
-                <div className="relative w-full aspect-square bg-[#2D241E]">
+                <div className="relative w-full aspect-square bg-cream-dark">
                   <Image
                     src={album.image}
                     alt={`${album.title} album cover`}
@@ -237,9 +237,9 @@ export default function Discography() {
                 </div>
                 
                 <div className="p-8">
-                  <h4 className="text-2xl font-bold text-[#F5F0E8] mb-2">{album.title}</h4>
-                  <p className="text-[#F6B800] text-sm mb-4">{album.year}</p>
-                  <p className="text-[#B8AFA3]">{album.description}</p>
+                  <h4 className="text-2xl font-bold text-rich-brown mb-2">{album.title}</h4>
+                  <p className="text-primary text-sm mb-4">{album.year}</p>
+                  <p className="text-text-muted">{album.description}</p>
                 </div>
               </div>
             ))}
@@ -248,23 +248,23 @@ export default function Discography() {
 
         {/* Collaborations */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-[#F6B800] mb-8">
+          <h3 className="text-3xl font-bold text-primary mb-8">
             Featured Collaborations
           </h3>
-          <div className="bg-[#1C1612] rounded-2xl p-8 sm:p-10 border border-[#F6B800]/10">
+          <div className="bg-white rounded-2xl p-8 sm:p-10 border border-secondary/20 shadow-lg">
             <div className="grid gap-4 sm:gap-6">
               {collaborations.map((collab, index) => (
                 <div
                   key={index}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 bg-[#2D241E] rounded-xl hover:bg-[#3A2F28] transition-colors"
+                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 bg-cream rounded-xl hover:bg-cream-dark transition-colors"
                 >
                   <div className="flex-1">
-                    <h4 className="text-lg font-bold text-[#F5F0E8] mb-1">
+                    <h4 className="text-lg font-bold text-rich-brown mb-1">
                       {collab.artist}
                     </h4>
-                    <p className="text-[#F6B800] text-sm mb-2">{collab.album}</p>
+                    <p className="text-primary text-sm mb-2">{collab.album}</p>
                     {collab.note && (
-                      <p className="text-[#B8AFA3] text-sm">{collab.note}</p>
+                      <p className="text-text-muted text-sm">{collab.note}</p>
                     )}
                   </div>
                   {collab.link && (
@@ -272,7 +272,7 @@ export default function Discography() {
                       href={collab.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-[#F6B800] hover:text-[#FFCA28] text-sm font-semibold transition-colors"
+                      className="inline-flex items-center gap-2 text-accent hover:text-accent-hover text-sm font-semibold transition-colors"
                     >
                       Visit Site
                       <ExternalLink className="w-4 h-4" />
@@ -286,18 +286,18 @@ export default function Discography() {
 
         {/* Film & TV */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-[#F6B800] mb-8">
+          <h3 className="text-3xl font-bold text-primary mb-8">
             Film & Television
           </h3>
-          <div className="bg-[#1C1612] rounded-2xl p-8 sm:p-10 border border-[#F6B800]/10">
+          <div className="bg-white rounded-2xl p-8 sm:p-10 border border-secondary/20 shadow-lg">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {filmTV.map((credit, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-3 p-4 bg-[#2D241E] rounded-lg"
+                  className="flex items-start gap-3 p-4 bg-cream rounded-lg"
                 >
-                  <div className="w-2 h-2 bg-[#F6B800] rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-[#F5F0E8] text-sm">{credit}</p>
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-text-dark text-sm">{credit}</p>
                 </div>
               ))}
             </div>
@@ -305,16 +305,16 @@ export default function Discography() {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center bg-gradient-to-br from-[#F6B800]/10 to-[#F6B800]/5 rounded-2xl p-10 sm:p-12 border border-[#F6B800]/20">
-          <h3 className="text-2xl sm:text-3xl font-bold text-[#F5F0E8] mb-4">
+        <div className="text-center bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-10 sm:p-12 border border-primary/20">
+          <h3 className="text-2xl sm:text-3xl font-bold text-rich-brown mb-4">
             Get the Music
           </h3>
-          <p className="text-[#B8AFA3] mb-8 max-w-2xl mx-auto">
+          <p className="text-text-muted mb-8 max-w-2xl mx-auto">
             Purchase albums and support independent music
           </p>
           <Link
             href="#shop"
-            className="inline-block bg-[#F6B800] hover:bg-[#FFCA28] text-[#1C1612] px-8 py-4 rounded-xl font-black text-base uppercase tracking-wide transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            className="inline-block bg-accent hover:bg-accent-hover text-white px-8 py-4 rounded-xl font-black text-base uppercase tracking-wide transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             Visit Shop
           </Link>

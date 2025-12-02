@@ -19,10 +19,16 @@ export default function ImagesManagement() {
   const [editingImage, setEditingImage] = useState<string | null>(null);
   const [newFilename, setNewFilename] = useState('');
   const [loading, setLoading] = useState(true);
+  const [heroImageUrl, setHeroImageUrl] = useState('/images/john_flanders_goldner_hirsch_inn.jpg');
 
-  // Load existing uploaded images on mount
+  // Load existing uploaded images and hero image on mount
   useEffect(() => {
     loadUploadedImages();
+    // Load saved hero image URL
+    const savedHeroImage = localStorage.getItem('hero_background_image');
+    if (savedHeroImage) {
+      setHeroImageUrl(savedHeroImage);
+    }
   }, []);
 
   const loadUploadedImages = async () => {

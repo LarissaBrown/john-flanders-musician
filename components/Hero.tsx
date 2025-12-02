@@ -1,19 +1,31 @@
 'use client';
 
-import { ArrowRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+const DEFAULT_HERO_IMAGE = '/images/john_flanders_goldner_hirsch_inn.jpg';
+
 export default function Hero() {
+  const [heroImage, setHeroImage] = useState(DEFAULT_HERO_IMAGE);
+
+  useEffect(() => {
+    // Load hero image from localStorage (set by admin)
+    const savedImage = localStorage.getItem('hero_background_image');
+    if (savedImage) {
+      setHeroImage(savedImage);
+    }
+  }, []);
+
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-start justify-center overflow-hidden pt-20 px-6 sm:px-8 lg:px-12"
     >
-      {/* Background Image */}
+      {/* Background Image - Configurable via Admin */}
       <div className="absolute top-16 left-0 right-0 bottom-0 z-0">
         <Image
-          src="/images/john_flanders_goldner_hirsch_inn.jpg"
+          src={heroImage}
           alt="Warm ambient background"
           fill
           priority
