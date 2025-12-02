@@ -50,7 +50,6 @@ export default function Discography() {
       artist: 'Steve Kusaba',
       album: 'The Centrifugal Satz Clock',
       note: 'with Steve Vai, Dweezil Zappa, Vinnie Colaiuta, Mike Miller, Mitch Forman, Chad Wackerman',
-      link: 'http://satzclock.com/music',
     },
     {
       artist: 'Access Film Music',
