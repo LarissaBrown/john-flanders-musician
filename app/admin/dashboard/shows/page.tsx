@@ -12,6 +12,7 @@ interface Show {
   date: string;
   time: string;
   description?: string;
+  imageUrl?: string;
   ticketUrl?: string;
   featured?: boolean;
 }
@@ -28,6 +29,7 @@ export default function ShowsManagement() {
     date: '',
     time: '',
     description: '',
+    imageUrl: '',
     ticketUrl: '',
     featured: false,
   });
@@ -325,6 +327,22 @@ export default function ShowsManagement() {
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-canyon-red focus:border-transparent"
                   placeholder="Tell fans about this performance..."
                 />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Poster/Image URL
+                </label>
+                <input
+                  type="text"
+                  value={formData.imageUrl}
+                  onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-canyon-red focus:border-transparent"
+                  placeholder="/images/uploads/show-poster.jpg"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Copy URL from the Images section or leave blank for default
+                </p>
               </div>
 
               <div>

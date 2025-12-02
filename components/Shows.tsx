@@ -1,58 +1,47 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Calendar, MapPin, Clock } from 'lucide-react';
 import { format } from 'date-fns';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface Show {
-  id: string;
+  _id: string;
   title: string;
   venue: string;
   location: string;
   date: string;
   time: string;
   description?: string;
+  imageUrl?: string;
   ticketUrl?: string;
   featured?: boolean;
 }
 
-// Sample data - will be replaced with API calls
-const upcomingShows: Show[] = [
-  {
-    id: '1',
-    title: 'Sunset Sessions',
-    venue: 'Red Rock Amphitheater',
-    location: 'Sedona, AZ',
-    date: '2024-12-15',
-    time: '7:00 PM',
-    description: 'An evening of acoustic melodies under the stars',
-    ticketUrl: '#',
-    featured: true,
-  },
-  {
-    id: '2',
-    title: 'Desert Blues Night',
-    venue: 'Canyon View Lounge',
-    location: 'Moab, UT',
-    date: '2024-12-22',
-    time: '8:00 PM',
-    description: 'Blues and soul music with special guests',
-    ticketUrl: '#',
-  },
-  {
-    id: '3',
-    title: 'New Year\'s Eve Celebration',
-    venue: 'Grand Canyon Lodge',
-    location: 'Grand Canyon, AZ',
-    date: '2024-12-31',
-    time: '9:00 PM',
-    description: 'Ring in the new year with live music',
-    ticketUrl: '#',
-    featured: true,
-  },
-];
-
 export default function Shows() {
+  const [shows, setShows] = useState<Show[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchShows();
+  }, []);
+
+  const fetchShows = async () => {
+    try {
+      const response = await fetch('/api/events');
+      const data = await response.json();
+      
+      // Ensure we have an array
+      const showsArray = Array.isArray(data) ? data : (data?.data || []);
+      setShows(showsArray);
+    } catch (error) {
+      console.error('Error fetching shows:', error);
+      setShows([]);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <section id="shows" className="py-20 sm:py-24 lg:py-32 bg-[#1C1612] px-6 sm:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
@@ -66,19 +55,42 @@ export default function Shows() {
         </div>
 
         {/* Shows Grid */}
-        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {upcomingShows.map((show) => (
-            <div
-              key={show.id}
-              className="bg-[#2D241E] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-[#F6B800]/10 hover:border-[#F6B800]/30 transform hover:-translate-y-2"
-            >
-              {/* Show Image Placeholder */}
-              <div className="aspect-video bg-gradient-to-br from-[#3A2F28] to-[#1C1612] flex items-center justify-center relative">
-                {show.featured && (
-                  <div className="absolute top-3 right-3 bg-[#F6B800] text-[#1C1612] px-3 py-1.5 rounded-full text-xs font-black uppercase tracking-wider">
-                    Featured
-                  </div>
-                )}
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#F6B800]"></div>
+            <p className="mt-4 text-[#F5F0E8]">Loading shows...</p>
+          </div>
+        ) : shows.length === 0 ? (
+          <div className="text-center py-12">
+            <Calendar className="w-16 h-16 text-[#F6B800]/50 mx-auto mb-4" />
+            <p className="text-lg text-[#F5F0E8]">No upcoming shows at this time.</p>
+            <p className="text-sm text-[#B8AFA3] mt-2">Check back soon for new performances!</p>
+          </div>
+        ) : (
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {shows.map((show) => (
+              <div
+                key={show._id}
+                className="bg-[#2D241E] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-[#F6B800]/10 hover:border-[#F6B800]/30 transform hover:-translate-y-2"
+              >
+                {/* Show Image */}
+                <div className="aspect-video bg-gradient-to-br from-[#3A2F28] to-[#1C1612] flex items-center justify-center relative overflow-hidden">
+                  {show.imageUrl ? (
+                    <Image
+                      src={show.imageUrl}
+                      alt={show.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <Calendar className="w-16 h-16 text-[#F6B800]/30" />
+                  )}
+                  {show.featured && (
+                    <div className="absolute top-3 right-3 bg-[#F6B800] text-[#1C1612] px-3 py-1.5 rounded-full text-xs font-black uppercase tracking-wider z-10">
+                      Featured
+                    </div>
+                  )}
                 <div className="text-center">
                   <div className="text-[#F6B800] text-6xl mb-2">🎵</div>
                   <p className="text-[#B8AFA3] text-xs uppercase tracking-wide">Show Poster</p>
@@ -125,14 +137,8 @@ export default function Shows() {
               </div>
             </div>
           ))}
-        </div>
-
-        {upcomingShows.length === 0 && (
-          <div className="text-center py-20 px-6">
-            <Calendar className="w-16 h-16 text-[#F6B800] mx-auto mb-6 opacity-50" />
-            <p className="text-lg sm:text-xl text-[#F5F0E8]">
-              No upcoming shows scheduled. Check back soon!
-            </p>
+              </div>
+            ))}
           </div>
         )}
         
