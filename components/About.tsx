@@ -19,7 +19,7 @@ export default function About() {
           {/* Desktop: Image floats left, text flows around it */}
           
           {/* Image - centered on mobile, floats left on md+ */}
-          <div className="md:float-left relative w-72 h-72 sm:w-80 sm:h-80 md:w-[21rem] md:h-[21rem] lg:w-[25rem] lg:h-[25rem] mx-auto md:mx-0 md:mr-8 mb-8 rounded-2xl overflow-hidden border-4 border-primary shadow-2xl">
+          <div className="md:float-left relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto md:mx-0 md:mr-8 mb-8 rounded-2xl overflow-hidden border-4 border-primary shadow-2xl">
             <Image
               src="/images/john_flanders_goldner_hirsch_inn.jpg"
               alt="John Flanders with saxophone"
