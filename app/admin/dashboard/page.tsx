@@ -36,36 +36,80 @@ export default function AdminDashboard() {
 
   const fetchStats = async () => {
     try {
-      // Fetch all stats in parallel
-      const [eventsRes, mediaRes, productsRes, ordersRes, contactsRes] = await Promise.all([
-        fetch('/api/events').then(res => res.json()).catch(() => []),
-        fetch('/api/media').then(res => res.json()).catch(() => []),
-        fetch('/api/products').then(res => res.json()).catch(() => []),
-        fetch('/api/orders').then(res => res.json()).catch(() => []),
-        fetch('/api/contact').then(res => res.json()).catch(() => []),
-      ]);
+      // Default seed data (same as admin pages use when localStorage is empty)
+      const defaultShows = [
+        { _id: 'seed-show-1', title: 'Sunset Sessions', date: '2025-06-15', featured: true },
+        { _id: 'seed-show-2', title: 'Desert Blues Night', date: '2025-06-22', featured: false },
+        { _id: 'seed-show-3', title: 'Summer Jazz Festival', date: '2025-07-04', featured: true },
+      ];
 
-      // Ensure we have arrays (handle both direct arrays and {data: []} format)
-      const events = Array.isArray(eventsRes) ? eventsRes : (eventsRes?.data || []);
-      const media = Array.isArray(mediaRes) ? mediaRes : (mediaRes?.data || []);
-      const products = Array.isArray(productsRes) ? productsRes : (productsRes?.data || []);
-      const orders = Array.isArray(ordersRes) ? ordersRes : (ordersRes?.data || []);
-      const contacts = Array.isArray(contactsRes) ? contactsRes : (contactsRes?.data || []);
+      const defaultMedia = [
+        { _id: 'seed-media-1', title: 'Latin Blues', type: 'audio' },
+        { _id: 'seed-media-2', title: 'The Go Between', type: 'audio' },
+        { _id: 'seed-media-3', title: 'Architeuthis', type: 'audio' },
+        { _id: 'seed-media-4', title: 'Hunkered Down', type: 'audio' },
+        { _id: 'seed-media-5', title: 'Double Helix', type: 'audio' },
+        { _id: 'seed-media-6', title: 'Corcovado', type: 'audio' },
+        { _id: 'seed-media-7', title: 'John Flanders Quartet', type: 'audio' },
+        { _id: 'seed-media-8', title: 'Jazz with Male Vocals', type: 'audio' },
+        { _id: 'seed-media-9', title: 'Latin Jazz Factory', type: 'audio' },
+        { _id: 'seed-media-10', title: 'Sin City Soul', type: 'audio' },
+        { _id: 'seed-media-11', title: 'Raydius', type: 'audio' },
+        { _id: 'seed-media-12', title: 'ATF Band', type: 'audio' },
+      ];
+
+      const defaultProducts = [
+        { _id: 'seed-product-1', name: 'The Go Between', type: 'album' },
+        { _id: 'seed-product-2', name: 'Natural Selection', type: 'album' },
+        { _id: 'seed-product-3', name: 'In The Sky Tonight', type: 'album' },
+        { _id: 'seed-product-4', name: 'A Prehensile Tale', type: 'album' },
+        { _id: 'seed-product-5', name: 'Stranded in Time', type: 'album' },
+      ];
+
+      // Load from localStorage, or use defaults if empty
+      const showsData = localStorage.getItem('admin_shows');
+      const mediaData = localStorage.getItem('admin_media');
+      const productsData = localStorage.getItem('admin_products');
+      const ordersData = localStorage.getItem('admin_orders');
+      const messagesData = localStorage.getItem('admin_messages');
+
+      // Use stored data or seed with defaults
+      const shows = showsData ? JSON.parse(showsData) : defaultShows;
+      const media = mediaData ? JSON.parse(mediaData) : defaultMedia;
+      const products = productsData ? JSON.parse(productsData) : defaultProducts;
+      const orders = ordersData ? JSON.parse(ordersData) : [];
+      const messages = messagesData ? JSON.parse(messagesData) : [];
+
+      // Seed localStorage if empty (so other pages have data too)
+      if (!showsData) localStorage.setItem('admin_shows', JSON.stringify(defaultShows));
+      if (!mediaData) localStorage.setItem('admin_media', JSON.stringify(defaultMedia));
+      if (!productsData) localStorage.setItem('admin_products', JSON.stringify(defaultProducts));
+
+      // Fetch images count from API
+      let imagesCount = 0;
+      try {
+        const imagesRes = await fetch('/api/images/list');
+        const imagesData = await imagesRes.json();
+        imagesCount = Array.isArray(imagesData) ? imagesData.length : 0;
+      } catch {
+        imagesCount = 0;
+      }
 
       const now = new Date();
-      const upcomingShows = events.filter((e: any) => new Date(e.date) >= now).length;
-      const pendingOrders = orders.filter((o: any) => o.status === 'pending').length;
+      const upcomingShows = shows.filter((e: { date: string }) => new Date(e.date) >= now).length;
+      const pendingOrders = orders.filter((o: { status: string }) => o.status === 'pending').length;
+      const unreadMessages = messages.filter((m: { read?: boolean }) => !m.read).length;
 
       setStats({
-        totalShows: events.length,
+        totalShows: shows.length,
         upcomingShows,
         totalMedia: media.length,
-        totalImages: 9, // Placeholder - shows existing images count
+        totalImages: imagesCount,
         totalProducts: products.length,
         totalOrders: orders.length,
         pendingOrders,
-        totalMessages: contacts.length,
-        unreadMessages: contacts.length, // For now, treat all as unread
+        totalMessages: messages.length,
+        unreadMessages: unreadMessages || messages.length, // Show total if no read status
       });
     } catch (error) {
       console.error('Error fetching stats:', error);
