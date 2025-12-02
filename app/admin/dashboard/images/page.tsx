@@ -6,6 +6,7 @@ import { Image as ImageIcon, Upload, X, Check, AlertCircle, Trash2, Edit2, Save 
 interface UploadedImage {
   url: string;
   filename: string;
+  isFromUploads?: boolean; // Track if from uploads folder (can delete/rename)
 }
 
 export default function ImagesManagement() {
@@ -28,7 +29,33 @@ export default function ImagesManagement() {
       const data = await response.json();
       
       if (data.success && data.images) {
-        setUploadedImages(data.images);
+        // Mark uploaded images
+        const uploadedImgs = data.images.map((img: UploadedImage) => ({
+          ...img,
+          isFromUploads: true,
+        }));
+
+        // Add existing static images
+        const existingImages = [
+          'john_flanders_goldner_hirsch_inn.jpg',
+          'john_flanders_brick_sax.jpg',
+          'John_Flanders_SB_Trio.jpg',
+          'john-flanders-trio-by-windows.jpeg',
+          'john_flanders_tux.jpeg',
+          'double_helix_albumn_cover.jpg',
+          'in-the-sky-tonight-cover.jpg',
+          'sunset-red-rocks.webp',
+          'blue-sky-canyon.webp',
+          'pink-red-rocks.webp',
+          'saxophone.png',
+        ].map(filename => ({
+          filename,
+          url: `/images/${filename}`,
+          isFromUploads: false,
+        }));
+
+        // Combine both lists (uploaded first, then existing)
+        setUploadedImages([...uploadedImgs, ...existingImages]);
       }
     } catch (error) {
       console.error('Failed to load uploaded images:', error);
@@ -116,7 +143,15 @@ export default function ImagesManagement() {
     });
   };
 
-  const handleDelete = async (filename: string) => {
+  const handleDelete = async (filename: string, isFromUploads: boolean) => {
+    if (!isFromUploads) {
+      setMessage({
+        type: 'error',
+        text: 'Cannot delete core site images. Only uploaded images can be deleted.',
+      });
+      return;
+    }
+
     if (!confirm(`Are you sure you want to delete ${filename}?`)) return;
 
     try {
@@ -149,7 +184,14 @@ export default function ImagesManagement() {
     }
   };
 
-  const startRename = (filename: string) => {
+  const startRename = (filename: string, isFromUploads: boolean) => {
+    if (!isFromUploads) {
+      setMessage({
+        type: 'error',
+        text: 'Cannot rename core site images. Only uploaded images can be renamed.',
+      });
+      return;
+    }
     setEditingImage(filename);
     setNewFilename(filename);
   };
@@ -281,11 +323,14 @@ export default function ImagesManagement() {
         </div>
       </div>
 
-      {/* Uploaded Images */}
+      {/* All Images Gallery */}
       <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 sm:p-12">
         <h3 className="text-2xl font-bold text-rich-brown mb-6">
-          Uploaded Images {uploadedImages.length > 0 && `(${uploadedImages.length})`}
+          Available Images {uploadedImages.length > 0 && `(${uploadedImages.length})`}
         </h3>
+        <p className="text-gray-600 mb-6">
+          All images in your gallery. Uploaded images can be renamed or deleted.
+        </p>
         
         {loading ? (
           <div className="text-center py-12">
@@ -335,7 +380,14 @@ export default function ImagesManagement() {
                     </div>
                   ) : (
                     <>
-                      <p className="text-xs text-gray-600 truncate">{image.filename}</p>
+                      <p className="text-xs text-gray-600 truncate" title={image.filename}>
+                        {image.filename}
+                      </p>
+                      {!image.isFromUploads && (
+                        <span className="inline-block text-[10px] bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                          Core Image
+                        </span>
+                      )}
                       <div className="flex gap-2">
                         <button
                           onClick={() => copyToClipboard(image.url)}
@@ -344,22 +396,24 @@ export default function ImagesManagement() {
                           Copy URL
                         </button>
                       </div>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => startRename(image.filename)}
-                          className="flex-1 text-xs bg-blue-50 hover:bg-blue-100 text-blue-600 px-2 py-1.5 rounded transition-colors font-medium flex items-center justify-center gap-1"
-                        >
-                          <Edit2 className="w-3 h-3" />
-                          Rename
-                        </button>
-                        <button
-                          onClick={() => handleDelete(image.filename)}
-                          className="flex-1 text-xs bg-red-50 hover:bg-red-100 text-red-600 px-2 py-1.5 rounded transition-colors font-medium flex items-center justify-center gap-1"
-                        >
-                          <Trash2 className="w-3 h-3" />
-                          Delete
-                        </button>
-                      </div>
+                      {image.isFromUploads && (
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => startRename(image.filename, image.isFromUploads ?? false)}
+                            className="flex-1 text-xs bg-blue-50 hover:bg-blue-100 text-blue-600 px-2 py-1.5 rounded transition-colors font-medium flex items-center justify-center gap-1"
+                          >
+                            <Edit2 className="w-3 h-3" />
+                            Rename
+                          </button>
+                          <button
+                            onClick={() => handleDelete(image.filename, image.isFromUploads ?? false)}
+                            className="flex-1 text-xs bg-red-50 hover:bg-red-100 text-red-600 px-2 py-1.5 rounded transition-colors font-medium flex items-center justify-center gap-1"
+                          >
+                            <Trash2 className="w-3 h-3" />
+                            Delete
+                          </button>
+                        </div>
+                      )}
                     </>
                   )}
                 </div>
@@ -373,58 +427,6 @@ export default function ImagesManagement() {
             <p className="text-sm text-gray-500 mt-2">Upload images using the form above</p>
           </div>
         )}
-      </div>
-
-      {/* Existing Images */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 sm:p-12">
-        <h3 className="text-2xl font-bold text-rich-brown mb-6">Existing Images</h3>
-        <p className="text-gray-600 mb-6">
-          These images are currently in your <code className="bg-gray-100 px-2 py-1 rounded text-sm">/public/images/</code> folder
-        </p>
-        
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {[
-            // Performance Photos
-            'john_flanders_goldner_hirsch_inn.jpg',
-            'john_flanders_brick_sax.jpg',
-            'John_Flanders_SB_Trio.jpg',
-            'john-flanders-trio-by-windows.jpeg',
-            'john_flanders_tux.jpeg',
-            // Album Covers
-            'double_helix_albumn_cover.jpg',
-            // Background Images
-            'sunset-red-rocks.webp',
-            'blue-sky-canyon.webp',
-            'pink-red-rocks.webp',
-            // Icons
-            'saxophone.png',
-          ].map((image) => (
-            <div
-              key={image}
-              className="group border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all"
-            >
-              <div className="aspect-square bg-gray-100 flex items-center justify-center overflow-hidden">
-                <img
-                  src={`/images/${image}`}
-                  alt={image}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = 'none';
-                  }}
-                />
-              </div>
-              <div className="p-3">
-                <p className="text-xs text-gray-600 truncate mb-2">{image}</p>
-                <button
-                  onClick={() => copyToClipboard(`/images/${image}`)}
-                  className="w-full text-xs bg-gray-100 hover:bg-canyon-red hover:text-white px-3 py-2 rounded-lg transition-colors font-medium"
-                >
-                  Copy URL
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );
