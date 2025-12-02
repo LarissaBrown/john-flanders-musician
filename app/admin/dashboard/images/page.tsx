@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Image as ImageIcon, Upload, X, Check, AlertCircle, Trash2, Edit2, Save } from 'lucide-react';
 
 interface UploadedImage {
@@ -15,6 +15,27 @@ export default function ImagesManagement() {
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [editingImage, setEditingImage] = useState<string | null>(null);
   const [newFilename, setNewFilename] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  // Load existing uploaded images on mount
+  useEffect(() => {
+    loadUploadedImages();
+  }, []);
+
+  const loadUploadedImages = async () => {
+    try {
+      const response = await fetch('/api/images/list');
+      const data = await response.json();
+      
+      if (data.success && data.images) {
+        setUploadedImages(data.images);
+      }
+    } catch (error) {
+      console.error('Failed to load uploaded images:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -63,7 +84,8 @@ export default function ImagesManagement() {
       const failed = results.filter(r => r.error);
 
       if (successful.length > 0) {
-        setUploadedImages(prev => [...prev, ...successful]);
+        // Reload the full list to show newly uploaded images
+        await loadUploadedImages();
         setMessage({
           type: 'success',
           text: `Successfully uploaded ${successful.length} image(s)`,
@@ -107,7 +129,8 @@ export default function ImagesManagement() {
       const result = await response.json();
 
       if (result.success) {
-        setUploadedImages(prev => prev.filter(img => img.filename !== filename));
+        // Reload the full list to reflect deletion
+        await loadUploadedImages();
         setMessage({
           type: 'success',
           text: `Successfully deleted ${filename}`,
@@ -152,13 +175,8 @@ export default function ImagesManagement() {
       const result = await response.json();
 
       if (result.success) {
-        setUploadedImages(prev =>
-          prev.map(img =>
-            img.filename === oldFilename
-              ? { ...img, filename: newFilename, url: result.newUrl }
-              : img
-          )
-        );
+        // Reload the full list to reflect rename
+        await loadUploadedImages();
         setMessage({
           type: 'success',
           text: `Successfully renamed to ${newFilename}`,
@@ -264,11 +282,17 @@ export default function ImagesManagement() {
       </div>
 
       {/* Uploaded Images */}
-      {uploadedImages.length > 0 && (
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 sm:p-12">
-          <h3 className="text-2xl font-bold text-rich-brown mb-6">
-            Recently Uploaded ({uploadedImages.length})
-          </h3>
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 sm:p-12">
+        <h3 className="text-2xl font-bold text-rich-brown mb-6">
+          Uploaded Images {uploadedImages.length > 0 && `(${uploadedImages.length})`}
+        </h3>
+        
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-canyon-red"></div>
+            <p className="mt-4 text-gray-600">Loading images...</p>
+          </div>
+        ) : uploadedImages.length > 0 ? (
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {uploadedImages.map((image, index) => (
@@ -342,8 +366,14 @@ export default function ImagesManagement() {
               </div>
             ))}
           </div>
-        </div>
-      )}
+        ) : (
+          <div className="text-center py-12">
+            <ImageIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+            <p className="text-gray-600">No images uploaded yet</p>
+            <p className="text-sm text-gray-500 mt-2">Upload images using the form above</p>
+          </div>
+        )}
+      </div>
 
       {/* Existing Images */}
       <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 sm:p-12">
