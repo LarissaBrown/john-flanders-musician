@@ -10,6 +10,7 @@ interface Media {
   type: 'audio' | 'video';
   url: string;
   description?: string;
+  thumbnailUrl?: string;
   duration?: string;
   featured?: boolean;
 }
