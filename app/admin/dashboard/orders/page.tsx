@@ -83,6 +83,17 @@ export default function OrdersManagement() {
   }
 
   return (
+    <>
+      {/* Back to Dashboard Button */}
+      <Link
+        href="/admin/dashboard"
+        className="inline-flex items-center gap-2 text-gray-600 hover:text-canyon-red transition-colors mb-6"
+      >
+        <ArrowLeft className="w-5 h-5" />
+        <span className="font-medium">Back to Dashboard</span>
+      </Link>
+
+      <div>
     <div>
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
@@ -271,6 +282,8 @@ export default function OrdersManagement() {
         </div>
       )}
     </div>
+    </div>
+    </>
   );
 }
 

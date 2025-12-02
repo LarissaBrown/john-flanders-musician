@@ -253,6 +253,15 @@ export default function ImagesManagement() {
 
   return (
     <div className="space-y-8">
+      {/* Back to Dashboard Button */}
+      <Link
+        href="/admin/dashboard"
+        className="inline-flex items-center gap-2 text-gray-600 hover:text-canyon-red transition-colors"
+      >
+        <ArrowLeft className="w-5 h-5" />
+        <span className="font-medium">Back to Dashboard</span>
+      </Link>
+
       {/* Header */}
       <div>
         <h2 className="text-3xl font-bold text-rich-brown mb-2">Image Gallery</h2>
