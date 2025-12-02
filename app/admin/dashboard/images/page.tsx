@@ -2,7 +2,7 @@
 import Link from 'next/link';
 
 import { useState, useCallback, useEffect } from 'react';
-import { Image as ImageIcon, Upload, X, Check, AlertCircle, Trash2, Edit2, Save, ArrowLeft } from 'lucide-react';
+import { Image as ImageIcon, Upload, X, Check, AlertCircle, Trash2, Edit2, Save, ArrowLeft, Home } from 'lucide-react';
 
 interface UploadedImage {
   url: string;
@@ -264,6 +264,25 @@ export default function ImagesManagement() {
     });
   };
 
+  const handleSetHeroImage = (imageUrl: string) => {
+    setHeroImageUrl(imageUrl);
+    localStorage.setItem('hero_background_image', imageUrl);
+    setMessage({
+      type: 'success',
+      text: 'Hero background image updated! Refresh the homepage to see changes.',
+    });
+  };
+
+  const resetHeroImage = () => {
+    const defaultImage = '/images/blue-sky-canyon.webp';
+    setHeroImageUrl(defaultImage);
+    localStorage.setItem('hero_background_image', defaultImage);
+    setMessage({
+      type: 'success',
+      text: 'Hero background reset to default.',
+    });
+  };
+
   return (
     <div className="space-y-8">
       {/* Back to Dashboard Button */}
@@ -279,6 +298,84 @@ export default function ImagesManagement() {
       <div>
         <h2 className="text-3xl font-bold text-rich-brown mb-2">Image Gallery</h2>
         <p className="text-lg text-gray-600">Upload and manage your site images</p>
+      </div>
+
+      {/* Hero Background Image Selector */}
+      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl shadow-sm border border-blue-200 p-6 sm:p-8">
+        <div className="flex items-start gap-4">
+          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
+            <Home className="w-6 h-6 text-white" />
+          </div>
+          <div className="flex-1">
+            <h3 className="text-xl font-bold text-gray-900 mb-2">Homepage Hero Background</h3>
+            <p className="text-gray-600 text-sm mb-4">
+              Select an image to use as the background for the homepage hero section.
+            </p>
+            
+            {/* Current Hero Image Preview */}
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center mb-4">
+              <div className="w-32 h-20 rounded-lg overflow-hidden border-2 border-blue-300 shadow-sm flex-shrink-0">
+                <img
+                  src={heroImageUrl}
+                  alt="Current hero background"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex-1">
+                <p className="text-sm font-medium text-gray-700 mb-1">Current Image:</p>
+                <p className="text-xs text-gray-500 break-all bg-white px-3 py-2 rounded border">{heroImageUrl}</p>
+              </div>
+            </div>
+
+            {/* Hero Image URL Input */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="text"
+                value={heroImageUrl}
+                onChange={(e) => setHeroImageUrl(e.target.value)}
+                placeholder="Enter image URL (e.g., /images/my-image.jpg)"
+                className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm"
+              />
+              <button
+                onClick={() => handleSetHeroImage(heroImageUrl)}
+                className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold text-sm transition-colors whitespace-nowrap"
+              >
+                Save Hero Image
+              </button>
+              <button
+                onClick={resetHeroImage}
+                className="px-4 py-2.5 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-medium text-sm transition-colors whitespace-nowrap"
+              >
+                Reset
+              </button>
+            </div>
+
+            {/* Quick Select from Available Images */}
+            <div className="mt-4">
+              <p className="text-sm font-medium text-gray-700 mb-2">Quick Select:</p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { name: 'Blue Sky Canyon', url: '/images/blue-sky-canyon.webp' },
+                  { name: 'Goldner Hirsch Inn', url: '/images/john_flanders_goldner_hirsch_inn.jpg' },
+                  { name: 'Sunset Red Rocks', url: '/images/sunset-red-rocks.webp' },
+                  { name: 'Pink Red Rocks', url: '/images/pink-red-rocks.webp' },
+                ].map((img) => (
+                  <button
+                    key={img.url}
+                    onClick={() => handleSetHeroImage(img.url)}
+                    className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all ${
+                      heroImageUrl === img.url
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-white border border-gray-300 text-gray-700 hover:border-blue-400 hover:text-blue-600'
+                    }`}
+                  >
+                    {img.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Message */}
