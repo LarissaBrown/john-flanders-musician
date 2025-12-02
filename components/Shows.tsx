@@ -29,22 +29,60 @@ export default function Shows() {
 
   const fetchShows = async () => {
     try {
+      // Default seed data
+      const defaultShows: Show[] = [
+        {
+          _id: 'seed-show-1',
+          title: 'Sunset Sessions',
+          venue: 'Red Rock Amphitheater',
+          location: 'Sedona, AZ',
+          date: '2025-06-14',
+          time: '7:00 PM',
+          description: 'An evening of acoustic melodies under the stars',
+          imageUrl: '',
+          ticketUrl: '',
+          featured: true,
+        },
+        {
+          _id: 'seed-show-2',
+          title: 'Desert Blues Night',
+          venue: 'Canyon View Lounge',
+          location: 'Moab, UT',
+          date: '2025-06-21',
+          time: '8:00 PM',
+          description: 'Blues and soul music with special guests',
+          imageUrl: '',
+          ticketUrl: '',
+          featured: false,
+        },
+        {
+          _id: 'seed-show-3',
+          title: 'Summer Jazz Festival',
+          venue: 'Grand Canyon Lodge',
+          location: 'Grand Canyon, AZ',
+          date: '2025-07-03',
+          time: '9:00 PM',
+          description: 'Celebrate summer with live jazz performances',
+          imageUrl: '',
+          ticketUrl: '',
+          featured: true,
+        },
+      ];
+
       // Load from localStorage (managed by admin)
       const stored = localStorage.getItem('admin_shows');
       
+      let showsArray: Show[];
       if (stored) {
-        const showsArray = JSON.parse(stored);
-        // Filter for future shows only
-        const now = new Date();
-        const upcomingShows = showsArray.filter((show: Show) => new Date(show.date) >= now);
-        setShows(upcomingShows);
+        showsArray = JSON.parse(stored);
       } else {
-        // Load from API as fallback
-        const response = await fetch('/api/shows');
-        const data = await response.json();
-        const showsArray = Array.isArray(data) ? data : [];
-        setShows(showsArray);
+        // Seed localStorage with defaults
+        showsArray = defaultShows;
+        localStorage.setItem('admin_shows', JSON.stringify(defaultShows));
       }
+      
+      // Show all shows (not filtering by date for now since seed dates are in the future)
+      setShows(showsArray);
     } catch (error) {
       console.error('Error fetching shows:', error);
       setShows([]);

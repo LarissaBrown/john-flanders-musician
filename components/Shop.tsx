@@ -27,21 +27,75 @@ export default function Shop() {
 
   const fetchProducts = async () => {
     try {
+      // Default seed data
+      const defaultProducts: Product[] = [
+        {
+          _id: 'seed-product-1',
+          name: 'The Go Between',
+          price: 14.99,
+          type: 'album',
+          imageUrl: '/images/the-go-between-cover.jpg',
+          description: 'Latest album from John Flanders & Double Helix',
+          isAvailable: true,
+          stock: 100,
+        },
+        {
+          _id: 'seed-product-2',
+          name: 'Natural Selection',
+          price: 14.99,
+          type: 'album',
+          imageUrl: '/images/natural-selection-cover.jpg',
+          description: 'Award-winning album by Double Helix - City Weekly Best Jazz Group',
+          isAvailable: true,
+          stock: 100,
+        },
+        {
+          _id: 'seed-product-3',
+          name: 'In The Sky Tonight',
+          price: 14.99,
+          type: 'album',
+          imageUrl: '/images/in-the-sky-tonight-cover.jpg',
+          description: 'Critically acclaimed album by John Flanders & Double Helix',
+          isAvailable: true,
+          stock: 100,
+        },
+        {
+          _id: 'seed-product-4',
+          name: 'A Prehensile Tale',
+          price: 12.99,
+          type: 'album',
+          imageUrl: '/images/a-prehensile-tale-cover.jpg',
+          description: 'Solo album by John Flanders',
+          isAvailable: true,
+          stock: 100,
+        },
+        {
+          _id: 'seed-product-5',
+          name: 'Stranded in Time',
+          price: 12.99,
+          type: 'album',
+          imageUrl: '/images/stranded-in-time-cover.jpg',
+          description: 'Solo album by John Flanders',
+          isAvailable: true,
+          stock: 100,
+        },
+      ];
+
       // Load from localStorage (managed by admin)
       const stored = localStorage.getItem('admin_products');
       
+      let productsArray: Product[];
       if (stored) {
-        const productsArray = JSON.parse(stored);
-        // Filter for available products only
-        const availableProducts = productsArray.filter((p: Product) => p.isAvailable);
-        setProducts(availableProducts);
+        productsArray = JSON.parse(stored);
       } else {
-        // Load from API as fallback
-        const response = await fetch('/api/products');
-        const data = await response.json();
-        const productsArray = Array.isArray(data) ? data : (data?.data || []);
-        setProducts(productsArray);
+        // Seed localStorage with defaults
+        productsArray = defaultProducts;
+        localStorage.setItem('admin_products', JSON.stringify(defaultProducts));
       }
+      
+      // Filter for available products only (default to true if not set)
+      const availableProducts = productsArray.filter((p: Product) => p.isAvailable !== false);
+      setProducts(availableProducts);
     } catch (error) {
       console.error('Error fetching products:', error);
       setProducts([]);
