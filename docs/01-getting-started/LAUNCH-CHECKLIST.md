@@ -40,7 +40,7 @@
   - [ ] Mark featured events
 
 ### Contact Information
-- [ ] Confirm email address (currently: info@johnflanders.com)
+- [ ] Confirm email address (currently: larissa.johnson.brown@gmail.com)
 - [ ] Confirm phone number (currently: placeholder)
 - [ ] Update social media links:
   - [ ] Facebook URL

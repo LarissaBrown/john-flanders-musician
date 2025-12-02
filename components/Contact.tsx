@@ -179,10 +179,10 @@ export default function Contact() {
           <div className="mt-10 sm:mt-12 text-center px-4">
             <p className="text-cream/70 text-sm mb-3">Direct Contact</p>
             <a
-              href="mailto:info@johnflanders.com"
+              href="mailto:larissa.johnson.brown@gmail.com"
               className="text-primary hover:text-secondary transition-colors text-lg font-semibold"
             >
-              info@johnflanders.com
+              larissa.johnson.brown@gmail.com
             </a>
           </div>
         </div>

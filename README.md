@@ -239,7 +239,7 @@ See [docs/06-planning/](./docs/06-planning/) for detailed roadmap.
 
 ## 🤝 Support
 
-For questions or support, contact: info@johnflanders.com
+For questions or support, contact: larissa.johnson.brown@gmail.com
 
 ---
 

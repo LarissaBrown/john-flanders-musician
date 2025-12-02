@@ -92,14 +92,14 @@ export default function Footer() {
                 <Youtube className="w-5 h-5 text-background-dark" />
               </a>
               <a
-                href="mailto:info@johnflanders.com"
+                href="mailto:larissa.johnson.brown@gmail.com"
                 className="bg-primary hover:bg-primary-light p-3 rounded-full transition-all hover:scale-110 shadow-md"
               >
                 <Mail className="w-5 h-5 text-background-dark" />
               </a>
             </div>
             <p className="text-sm text-peach">
-              Email: info@johnflanders.com
+              Email: larissa.johnson.brown@gmail.com
             </p>
           </div>
         </div>
