@@ -2,73 +2,108 @@
 
 :root {
   /* 
-    RED ROCKS SOUTHWEST PALETTE
-    Primary: Natural Sky & Rock Tones
-    Accents: Sunset Drama
+    SOUTHWEST COLOR PALETTE
+    Based on Color Theory Guide - 60-30-10 Rule
+    Primary: Sky Blue (main accent)
+    Secondary: Terracotta (warm accent)
+    Accent: Sunset Coral (CTAs)
   */
   
-  /* PRIMARY COLORS - Red Rocks Natural */
-  --cream: #F5EDD4;              /* Light sand/cream - light backgrounds */
-  --sky-blue: #6B9CC3;           /* Bright sky blue - primary accent */
-  --olive-green: #6B7037;        /* Sage green - secondary accent */
-  --rich-brown: #5C3639;         /* Deep red-brown - dark elements */
-  --terracotta: #D49A7B;         /* Warm terracotta - warm accent */
+  /* === PRIMARY PALETTE (60% - Backgrounds & Neutrals) === */
+  --cream: #F5EDD4;              /* Light backgrounds */
+  --cream-dark: #E8DCC5;         /* Elevated light surfaces */
+  --rich-brown: #5C3639;         /* Dark backgrounds */
+  --rich-brown-light: #7A4A4D;   /* Lighter brown */
+  --surface-dark: #3D3230;       /* Dark cards */
+  --background-dark: #2A2220;    /* Darkest background */
   
-  /* SUNSET ACCENTS - Dramatic Highlights */
-  --sunset-coral: #E9756D;       /* Coral/salmon - CTA highlights */
-  --sunset-orange: #F19456;      /* Bright orange - hover states */
-  --sunset-wine: #8B2E3E;        /* Deep wine red - featured elements */
-  --sunset-purple: #5B4260;      /* Muted purple - depth/shadows */
-  --sunset-peach: #F4B48A;       /* Light peach - soft highlights */
+  /* === SECONDARY PALETTE (30% - Branding) === */
+  --primary: #6B9CC3;            /* Sky Blue - main accent */
+  --primary-light: #8BB5D4;      /* Lighter sky blue */
+  --primary-dark: #5A87AD;       /* Darker sky blue */
   
-  /* GOLD - Kept for Premium Feel */
-  --gold: #F6B800;               /* Vibrant gold - premium CTAs */
-  --gold-light: #FFCA28;         /* Light gold - hover */
+  --secondary: #D49A7B;          /* Terracotta - warm accent */
+  --secondary-light: #E4B89E;    /* Lighter terracotta */
+  --secondary-dark: #B8805F;     /* Darker terracotta */
   
-  /* BACKGROUND SYSTEM */
-  --background-dark: #2A2220;    /* Rich dark brown base */
-  --background-light: #F5EDD4;   /* Cream for light sections */
-  --surface-dark: #3D3230;       /* Elevated dark surfaces */
-  --surface-light: #E8DCC5;      /* Elevated light surfaces */
+  /* === ACCENT PALETTE (10% - CTAs & Highlights) === */
+  --accent: #E9756D;             /* Sunset Coral - primary CTA */
+  --accent-hover: #F19456;       /* Sunset Orange - hover */
+  --accent-dark: #D4635B;        /* Darker coral */
   
-  /* TEXT COLORS */
-  --text-primary-dark: #2A2220;  /* Dark text on light bg */
-  --text-primary-light: #F5EDD4; /* Light text on dark bg */
-  --text-muted: #8A7B6F;         /* Muted brown text */
+  /* === DRAMATIC ACCENTS === */
+  --wine: #8B2E3E;               /* Deep wine - featured/footer */
+  --purple: #5B4260;             /* Muted purple - depth */
+  --peach: #F4B48A;              /* Soft peach - highlights */
+  --olive: #6B7037;              /* Sage green - success */
   
-  /* SEMANTIC COLORS */
-  --success: #6B7037;            /* Olive green */
-  --error: #8B2E3E;              /* Sunset wine */
-  --warning: #F19456;            /* Sunset orange */
-  --info: #6B9CC3;               /* Sky blue */
+  /* === GOLD (Premium) === */
+  --gold: #F6B800;               /* Premium elements */
+  --gold-light: #FFCA28;         /* Gold hover */
   
-  /* SHADOWS */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
-  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.2);
-  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.25);
+  /* === TEXT COLORS === */
+  --text-dark: #2A2220;          /* Dark text on light bg */
+  --text-light: #F5EDD4;         /* Light text on dark bg */
+  --text-muted: #8A7B6F;         /* Muted text */
+  --text-muted-light: #C4B5A5;   /* Muted text on dark */
+  
+  /* === SEMANTIC COLORS === */
+  --success: #6B7037;
+  --error: #C84C40;
+  --warning: #D99A4A;
+  --info: #6B9CC3;
 }
 
 @theme inline {
+  /* Primary - Sky Blue */
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  
+  /* Secondary - Terracotta */
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+  --color-secondary-dark: var(--secondary-dark);
+  
+  /* Accent - Sunset Coral */
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-dark: var(--accent-dark);
+  
+  /* Backgrounds */
   --color-cream: var(--cream);
-  --color-sky-blue: var(--sky-blue);
-  --color-olive-green: var(--olive-green);
+  --color-cream-dark: var(--cream-dark);
   --color-rich-brown: var(--rich-brown);
-  --color-terracotta: var(--terracotta);
+  --color-rich-brown-light: var(--rich-brown-light);
+  --color-surface-dark: var(--surface-dark);
+  --color-background-dark: var(--background-dark);
   
-  --color-sunset-coral: var(--sunset-coral);
-  --color-sunset-orange: var(--sunset-orange);
-  --color-sunset-wine: var(--sunset-wine);
-  --color-sunset-purple: var(--sunset-purple);
-  --color-sunset-peach: var(--sunset-peach);
+  /* Dramatic */
+  --color-wine: var(--wine);
+  --color-purple: var(--purple);
+  --color-peach: var(--peach);
+  --color-olive: var(--olive);
   
+  /* Gold */
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
   
-  --color-background-dark: var(--background-dark);
-  --color-background-light: var(--background-light);
-  --color-surface-dark: var(--surface-dark);
-  --color-surface-light: var(--surface-light);
+  /* Text */
+  --color-text-dark: var(--text-dark);
+  --color-text-light: var(--text-light);
+  --color-text-muted: var(--text-muted);
+  --color-text-muted-light: var(--text-muted-light);
+  
+  /* Legacy aliases for compatibility */
+  --color-sky-blue: var(--primary);
+  --color-terracotta: var(--secondary);
+  --color-sunset-coral: var(--accent);
+  --color-sunset-orange: var(--accent-hover);
+  --color-sunset-wine: var(--wine);
+  --color-sunset-purple: var(--purple);
+  --color-sunset-peach: var(--peach);
+  --color-olive-green: var(--olive);
+  --color-background-light: var(--cream);
 }
 
 * {

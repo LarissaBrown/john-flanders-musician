@@ -61,13 +61,13 @@ export default function Shop() {
   };
 
   return (
-    <section id="shop" className="py-20 sm:py-24 lg:py-32 bg-[#1C1612] px-6 sm:px-8 lg:px-12">
+    <section id="shop" className="py-20 sm:py-24 lg:py-32 bg-purple px-6 sm:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 sm:mb-20">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gold mb-6 uppercase tracking-wide">
             Shop Music
           </h2>
-          <p className="text-lg sm:text-xl text-[#F5F0E8] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-cream max-w-3xl mx-auto leading-relaxed">
             Support the music - purchase singles and albums
           </p>
         </div>
@@ -75,24 +75,24 @@ export default function Shop() {
         {/* Products Grid */}
         {loading ? (
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#F6B800]"></div>
-            <p className="mt-4 text-[#F5F0E8]">Loading products...</p>
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-gold"></div>
+            <p className="mt-4 text-cream">Loading products...</p>
           </div>
         ) : products.length === 0 ? (
           <div className="text-center py-12">
-            <Music className="w-16 h-16 text-[#F6B800]/50 mx-auto mb-4" />
-            <p className="text-lg text-[#F5F0E8]">No products available at this time.</p>
-            <p className="text-sm text-[#B8AFA3] mt-2">Check back soon for new releases!</p>
+            <Music className="w-16 h-16 text-gold/50 mx-auto mb-4" />
+            <p className="text-lg text-cream">No products available at this time.</p>
+            <p className="text-sm text-text-muted-light mt-2">Check back soon for new releases!</p>
           </div>
         ) : (
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
             {products.map((product) => (
               <div
                 key={product._id}
-                className="bg-[#2D241E] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-[#F6B800]/10 hover:border-[#F6B800]/30 transform hover:-translate-y-2"
+                className="bg-surface-dark rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gold/20 hover:border-gold/40 transform hover:-translate-y-2"
               >
                 {/* Product Image */}
-                <div className="aspect-square bg-gradient-to-br from-[#3A2F28] to-[#1C1612] flex items-center justify-center relative overflow-hidden">
+                <div className="aspect-square bg-gradient-to-br from-surface-dark to-background-dark flex items-center justify-center relative overflow-hidden">
                   {product.imageUrl ? (
                     <Image
                       src={product.imageUrl}
@@ -102,32 +102,32 @@ export default function Shop() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
                   ) : (
-                    <Music className="w-16 h-16 text-[#F6B800]/30" />
+                    <Music className="w-16 h-16 text-gold/30" />
                   )}
                 </div>
 
               {/* Product Info */}
               <div className="p-6 sm:p-8 text-center">
-                <span className="inline-block bg-[#F6B800] text-[#1C1612] px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider mb-4">
+                <span className="inline-block bg-secondary text-background-dark px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider mb-4">
                   {product.type}
                 </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-[#F5F0E8] mb-3">
+                <h3 className="text-xl sm:text-2xl font-bold text-cream mb-3">
                   {product.name}
                 </h3>
                 {product.description && (
-                  <p className="text-[#B8AFA3] text-sm mb-5 px-2">
+                  <p className="text-text-muted-light text-sm mb-5 px-2">
                     {product.description}
                   </p>
                 )}
 
                 {/* Price and Action */}
                 <div className="flex flex-col items-center gap-5 mt-6">
-                  <span className="text-2xl sm:text-3xl font-black text-[#F6B800]">
+                  <span className="text-2xl sm:text-3xl font-black text-gold">
                     ${product.price.toFixed(2)}
                   </span>
                   <button
                     onClick={() => handleAddToCart(product)}
-                    className="w-full bg-[#F6B800] hover:bg-[#FFCA28] text-[#1C1612] px-6 py-3.5 rounded-xl font-black text-sm uppercase tracking-wide transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5"
+                    className="w-full bg-accent hover:bg-accent-hover text-background-dark px-6 py-3.5 rounded-xl font-black text-sm uppercase tracking-wide transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5"
                   >
                     Add to Cart
                   </button>
@@ -140,12 +140,12 @@ export default function Shop() {
 
         {/* Payment Methods */}
         <div className="mt-20 text-center">
-          <p className="text-[#B8AFA3] mb-6 font-semibold uppercase tracking-wide text-sm">
+          <p className="text-text-muted-light mb-6 font-semibold uppercase tracking-wide text-sm">
             Secure Payment Options
           </p>
           <div className="flex justify-center gap-8 items-center">
-            <span className="text-[#F6B800] font-black text-xl">PayPal</span>
-            <span className="text-[#F6B800] font-black text-xl">Venmo</span>
+            <span className="text-gold font-black text-xl">PayPal</span>
+            <span className="text-gold font-black text-xl">Venmo</span>
           </div>
         </div>
       </div>

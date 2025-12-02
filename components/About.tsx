@@ -5,10 +5,10 @@ import Image from 'next/image';
 export default function About() {
 
   return (
-    <section id="about" className="py-20 sm:py-24 lg:py-32 bg-[#2D241E] px-6 sm:px-8 lg:px-12">
+    <section id="about" className="py-20 sm:py-24 lg:py-32 bg-cream px-6 sm:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 sm:mb-20">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F6B800] mb-6 uppercase tracking-wide">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-rich-brown mb-6 uppercase tracking-wide">
             About the Artist
           </h2>
 
@@ -16,7 +16,7 @@ export default function About() {
 
         <div className="max-w-6xl mx-auto mb-20">
           {/* Image floats left, text flows around it */}
-          <div className="float-left relative w-64 h-96 sm:w-72 sm:h-[27rem] md:w-80 md:h-[30rem] lg:w-96 lg:h-[36rem] mr-8 mb-8 rounded-2xl overflow-hidden border-4 border-[#F6B800] shadow-2xl">
+          <div className="float-left relative w-64 h-96 sm:w-72 sm:h-[27rem] md:w-80 md:h-[30rem] lg:w-96 lg:h-[36rem] mr-8 mb-8 rounded-2xl overflow-hidden border-4 border-primary shadow-2xl">
             <Image
               src="/images/john_flanders_brick_sax.jpg"
               alt="John Flanders with saxophone"
@@ -27,9 +27,9 @@ export default function About() {
             />
           </div>
 
-          <div className="space-y-6 text-[#F5F0E8] text-base sm:text-lg leading-relaxed">
+          <div className="space-y-6 text-text-dark text-base sm:text-lg leading-relaxed">
             <p>
-              For more than a decade, <strong className="text-[#F6B800]">John Flanders</strong> has been one of the most in-demand saxophone and woodwind players in Salt Lake City and across the Intermountain West. His sound is heard everywhere—from TV and radio commercials to popular television shows and major film soundtracks. Known as both a standout bandleader and a trusted session musician, John's recordings have earned widespread praise and solidified his reputation as a skilled composer and arranger.
+              For more than a decade, <strong className="text-primary">John Flanders</strong> has been one of the most in-demand saxophone and woodwind players in Salt Lake City and across the Intermountain West. His sound is heard everywhere—from TV and radio commercials to popular television shows and major film soundtracks. Known as both a standout bandleader and a trusted session musician, John's recordings have earned widespread praise and solidified his reputation as a skilled composer and arranger.
             </p>
             
             <p>
@@ -37,7 +37,7 @@ export default function About() {
             </p>
             
             <p>
-              John leads several acclaimed projects, including the long-running jazz quartet <strong className="text-[#F6B800]">Bias Sphere</strong>, featuring Linke Hebrew (bass), Wayne Coons (drums), and Chris Hough (guitar). His fusion-swing group, <strong className="text-[#F6B800]">Double Helix</strong>, was named Best Jazz Group shortly after its debut and has released three albums, including the audience favorite <em>Natural Selection</em>. The group has also been featured nationally on NPR's <em>Marketplace</em>, and John has contributed original compositions to NPR's <em>To The Best of Our Knowledge</em>.
+              John leads several acclaimed projects, including the long-running jazz quartet <strong className="text-primary">Bias Sphere</strong>, featuring Linke Hebrew (bass), Wayne Coons (drums), and Chris Hough (guitar). His fusion-swing group, <strong className="text-primary">Double Helix</strong>, was named Best Jazz Group shortly after its debut and has released three albums, including the audience favorite <em>Natural Selection</em>. The group has also been featured nationally on NPR's <em>Marketplace</em>, and John has contributed original compositions to NPR's <em>To The Best of Our Knowledge</em>.
             </p>
             
             <p>
@@ -48,7 +48,7 @@ export default function About() {
               Originally from Canton, Ohio, John studied at The Ohio State University and the University of Connecticut, learning from jazz greats such as Ted Nash, Lou Donaldson, Ernie Krivda, and Eddie Daniels. His career has taken him from New York to Los Angeles to international stages—and even the open seas during his years performing in cruise-ship orchestras backing top Vegas entertainers. With more than 15 years of teaching experience and guest lectures on jazz history, John brings both expertise and passion to every musical endeavor.
             </p>
             
-            <p className="text-[#F6B800] font-semibold text-center mt-12 text-lg clear-left">
+            <p className="text-accent font-semibold text-center mt-12 text-lg clear-left">
               Available for concerts, private events, weddings, corporate functions, and more. Let's create something memorable together.
             </p>
           </div>
