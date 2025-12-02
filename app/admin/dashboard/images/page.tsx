@@ -144,14 +144,6 @@ export default function ImagesManagement() {
   };
 
   const handleDelete = async (filename: string, isFromUploads: boolean) => {
-    if (!isFromUploads) {
-      setMessage({
-        type: 'error',
-        text: 'Cannot delete core site images. Only uploaded images can be deleted.',
-      });
-      return;
-    }
-
     if (!confirm(`Are you sure you want to delete ${filename}?`)) return;
 
     try {
@@ -185,13 +177,6 @@ export default function ImagesManagement() {
   };
 
   const startRename = (filename: string, isFromUploads: boolean) => {
-    if (!isFromUploads) {
-      setMessage({
-        type: 'error',
-        text: 'Cannot rename core site images. Only uploaded images can be renamed.',
-      });
-      return;
-    }
     setEditingImage(filename);
     setNewFilename(filename);
   };
@@ -329,7 +314,7 @@ export default function ImagesManagement() {
           Available Images {uploadedImages.length > 0 && `(${uploadedImages.length})`}
         </h3>
         <p className="text-gray-600 mb-6">
-          All images in your gallery. Uploaded images can be renamed or deleted.
+          All images in your gallery. Click to copy URL, rename, or delete.
         </p>
         
         {loading ? (
@@ -383,11 +368,6 @@ export default function ImagesManagement() {
                       <p className="text-xs text-gray-600 truncate" title={image.filename}>
                         {image.filename}
                       </p>
-                      {!image.isFromUploads && (
-                        <span className="inline-block text-[10px] bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                          Core Image
-                        </span>
-                      )}
                       <div className="flex gap-2">
                         <button
                           onClick={() => copyToClipboard(image.url)}
@@ -396,24 +376,22 @@ export default function ImagesManagement() {
                           Copy URL
                         </button>
                       </div>
-                      {image.isFromUploads && (
-                        <div className="flex gap-2">
-                          <button
-                            onClick={() => startRename(image.filename, image.isFromUploads ?? false)}
-                            className="flex-1 text-xs bg-blue-50 hover:bg-blue-100 text-blue-600 px-2 py-1.5 rounded transition-colors font-medium flex items-center justify-center gap-1"
-                          >
-                            <Edit2 className="w-3 h-3" />
-                            Rename
-                          </button>
-                          <button
-                            onClick={() => handleDelete(image.filename, image.isFromUploads ?? false)}
-                            className="flex-1 text-xs bg-red-50 hover:bg-red-100 text-red-600 px-2 py-1.5 rounded transition-colors font-medium flex items-center justify-center gap-1"
-                          >
-                            <Trash2 className="w-3 h-3" />
-                            Delete
-                          </button>
-                        </div>
-                      )}
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => startRename(image.filename, image.isFromUploads ?? false)}
+                          className="flex-1 text-xs bg-blue-50 hover:bg-blue-100 text-blue-600 px-2 py-1.5 rounded transition-colors font-medium flex items-center justify-center gap-1"
+                        >
+                          <Edit2 className="w-3 h-3" />
+                          Rename
+                        </button>
+                        <button
+                          onClick={() => handleDelete(image.filename, image.isFromUploads ?? false)}
+                          className="flex-1 text-xs bg-red-50 hover:bg-red-100 text-red-600 px-2 py-1.5 rounded transition-colors font-medium flex items-center justify-center gap-1"
+                        >
+                          <Trash2 className="w-3 h-3" />
+                          Delete
+                        </button>
+                      </div>
                     </>
                   )}
                 </div>
