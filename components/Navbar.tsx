@@ -2,14 +2,16 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Menu, X, Calendar, PlayCircle, Mail, ShoppingBag } from 'lucide-react';
+import { Menu, X, Calendar, PlayCircle, Mail, ShoppingBag, Heart } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import CartModal from './CartModal';
+import TipJarModal from './TipJarModal';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showCart, setShowCart] = useState(false);
+  const [showTipJar, setShowTipJar] = useState(false);
   const { itemCount } = useCart();
 
   useEffect(() => {
@@ -41,17 +43,29 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-20">
-          {/* Logo with proper spacing */}
-          <Link href="/" className="flex items-center gap-4 group">
-            <div className="flex gap-2.5">
-              <div className="w-4 h-4 rounded-full bg-[#6B9CC3] shadow-[0_0_8px_rgba(107,156,195,0.6)]"></div>
-              <div className="w-4 h-4 rounded-full bg-[#6B9CC3] shadow-[0_0_8px_rgba(107,156,195,0.6)]"></div>
-              <div className="w-4 h-4 rounded-full bg-[#6B9CC3] shadow-[0_0_8px_rgba(107,156,195,0.6)]"></div>
-            </div>
-            <span className="text-lg font-black text-[#F5EDD4] group-hover:text-[#E9756D] transition-colors uppercase tracking-wider">
-              John Flanders
-            </span>
-          </Link>
+          {/* Logo with Tip Jar */}
+          <div className="flex items-center gap-4">
+            <Link href="/" className="flex items-center gap-4 group">
+              <div className="flex gap-2.5">
+                <div className="w-4 h-4 rounded-full bg-[#6B9CC3] shadow-[0_0_8px_rgba(107,156,195,0.6)]"></div>
+                <div className="w-4 h-4 rounded-full bg-[#6B9CC3] shadow-[0_0_8px_rgba(107,156,195,0.6)]"></div>
+                <div className="w-4 h-4 rounded-full bg-[#6B9CC3] shadow-[0_0_8px_rgba(107,156,195,0.6)]"></div>
+              </div>
+              <span className="text-lg font-black text-[#F5EDD4] group-hover:text-[#E9756D] transition-colors uppercase tracking-wider">
+                John Flanders
+              </span>
+            </Link>
+            
+            {/* Tip Jar Button */}
+            <button
+              onClick={() => setShowTipJar(true)}
+              className="flex items-center gap-2 bg-gradient-to-r from-[#E9756D] to-[#F6B800] text-[#1C1612] px-3 py-1.5 rounded-full font-bold text-xs uppercase tracking-wide hover:shadow-lg hover:shadow-[#E9756D]/30 transition-all hover:scale-105"
+              title="Support the music!"
+            >
+              <Heart className="w-4 h-4" fill="currentColor" />
+              <span className="hidden sm:inline">Tip</span>
+            </button>
+          </div>
 
           {/* Desktop Navigation - Only visible on very large screens */}
           <div className="hidden xl:flex items-center">
@@ -153,6 +167,9 @@ export default function Navbar() {
       
       {/* Cart Modal */}
       <CartModal isOpen={showCart} onClose={() => setShowCart(false)} />
+      
+      {/* Tip Jar Modal */}
+      <TipJarModal isOpen={showTipJar} onClose={() => setShowTipJar(false)} />
     </nav>
   );
 }
