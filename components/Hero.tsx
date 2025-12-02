@@ -45,7 +45,7 @@ export default function Hero() {
             
             <div className="relative z-40 py-8 sm:py-10 md:py-12 lg:py-14 px-6 sm:px-10 md:px-12 lg:px-16 space-y-6">
               {/* Brand Name */}
-              <h1 className="font-black tracking-tight text-[#f5526d] whitespace-nowrap text-center text-[clamp(2.5rem,6vw,5.5rem)] [text-shadow:0_4px_12px_rgba(0,0,0,0.4),0_0_30px_#8B2E3E">
+              <h1 className="font-black tracking-tight text-[#fdae4e] whitespace-nowrap text-center text-[clamp(2.5rem,6vw,5.5rem)] [text-shadow:0_4px_12px_rgba(0,0,0,0.4),0_0_30px_#8B2E3E">
                 JOHN FLANDERS
               </h1>
 
@@ -67,7 +67,7 @@ export default function Hero() {
       {/* Available for bookings */}
       <Link 
         href="#contact"
-        className="absolute z-30 text-[#2e1a03] text-xs sm:text-sm uppercase tracking-widest hover:text-[#E9756D] transition-colors cursor-pointer bg-[#f9c29d]/80 px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl backdrop-blur-md bottom-8 sm:bottom-10 md:bottom-12 right-6 sm:right-8 md:right-10 [text-shadow:0_2px_4px_rgba(0,0,0,0.3)] hover:bg-[#2D241E]/90 shadow-lg"
+        className="absolute z-30 text-[#2e1a03] text-xs sm:text-sm uppercase tracking-widest hover:text-[#E9756D] transition-colors cursor-pointer bg-cream/80 px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl backdrop-blur-md bottom-8 sm:bottom-10 md:bottom-12 right-6 sm:right-8 md:right-10 [text-shadow:0_2px_4px_rgba(0,0,0,0.3)] hover:bg-[#2D241E]/90 shadow-lg"
       >
         <span className="hidden sm:inline">Available for bookings →</span>
         <span className="sm:hidden">Book now →</span>
