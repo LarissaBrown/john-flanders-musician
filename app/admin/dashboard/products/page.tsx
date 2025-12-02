@@ -39,12 +39,69 @@ export default function ProductsManagement() {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('/api/products');
-      const data = await response.json();
+      // Load from localStorage first
+      const stored = localStorage.getItem('admin_products');
       
-      // Ensure we have an array
-      const productsArray = Array.isArray(data) ? data : (data?.data || []);
-      setProducts(productsArray);
+      if (stored) {
+        const productsArray = JSON.parse(stored);
+        setProducts(productsArray);
+      } else {
+        // Initialize with default seed data
+        const defaultProducts = [
+          {
+            _id: '1',
+            name: 'The Go Between',
+            price: 14.99,
+            type: 'album',
+            imageUrl: '/images/the-go-between-cover.jpg',
+            description: 'John Flanders & Double Helix - Latest release',
+            isAvailable: true,
+            stock: 100,
+          },
+          {
+            _id: '2',
+            name: 'Natural Selection',
+            price: 14.99,
+            type: 'album',
+            imageUrl: '/images/natural-selection-cover.jpg',
+            description: 'John Flanders & Double Helix - Audience favorite',
+            isAvailable: true,
+            stock: 100,
+          },
+          {
+            _id: '3',
+            name: 'In The Sky Tonight',
+            price: 14.99,
+            type: 'album',
+            imageUrl: '/images/in-the-sky-tonight-cover.jpg',
+            description: 'John Flanders & Double Helix',
+            isAvailable: true,
+            stock: 100,
+          },
+          {
+            _id: '4',
+            name: 'A Prehensile Tale',
+            price: 12.99,
+            type: 'album',
+            imageUrl: '/images/a-prehensile-tale-cover.jpg',
+            description: 'John Flanders solo album',
+            isAvailable: true,
+            stock: 100,
+          },
+          {
+            _id: '5',
+            name: 'Stranded in Time',
+            price: 12.99,
+            type: 'album',
+            imageUrl: '/images/stranded-in-time-cover.jpg',
+            description: 'John Flanders solo album',
+            isAvailable: true,
+            stock: 100,
+          },
+        ];
+        setProducts(defaultProducts);
+        localStorage.setItem('admin_products', JSON.stringify(defaultProducts));
+      }
     } catch (error) {
       console.error('Error fetching products:', error);
       setProducts([]);
@@ -63,19 +120,26 @@ export default function ProductsManagement() {
     };
 
     try {
-      const url = editingProduct ? `/api/products?id=${editingProduct._id}` : '/api/products';
-      const method = editingProduct ? 'PUT' : 'POST';
-
-      const response = await fetch(url, {
-        method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(cleanedData),
-      });
-
-      if (response.ok) {
-        await fetchProducts();
-        closeModal();
+      let updatedProducts;
+      
+      if (editingProduct) {
+        // Update existing product
+        updatedProducts = products.map(product =>
+          product._id === editingProduct._id ? { ...product, ...cleanedData } : product
+        );
+      } else {
+        // Add new product
+        const newProduct = {
+          _id: `product-${Date.now()}`,
+          ...cleanedData,
+        } as Product;
+        updatedProducts = [...products, newProduct];
       }
+      
+      // Save to localStorage
+      localStorage.setItem('admin_products', JSON.stringify(updatedProducts));
+      setProducts(updatedProducts);
+      closeModal();
     } catch (error) {
       console.error('Error saving product:', error);
     }
@@ -85,13 +149,9 @@ export default function ProductsManagement() {
     if (!confirm('Are you sure you want to delete this product?')) return;
 
     try {
-      const response = await fetch(`/api/products?id=${id}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) {
-        await fetchProducts();
-      }
+      const updatedProducts = products.filter(product => product._id !== id);
+      localStorage.setItem('admin_products', JSON.stringify(updatedProducts));
+      setProducts(updatedProducts);
     } catch (error) {
       console.error('Error deleting product:', error);
     }

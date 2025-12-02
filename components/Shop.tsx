@@ -26,12 +26,21 @@ export default function Shop() {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('/api/products');
-      const data = await response.json();
+      // Load from localStorage (managed by admin)
+      const stored = localStorage.getItem('admin_products');
       
-      // Ensure we have an array
-      const productsArray = Array.isArray(data) ? data : (data?.data || []);
-      setProducts(productsArray);
+      if (stored) {
+        const productsArray = JSON.parse(stored);
+        // Filter for available products only
+        const availableProducts = productsArray.filter((p: Product) => p.isAvailable);
+        setProducts(availableProducts);
+      } else {
+        // Load from API as fallback
+        const response = await fetch('/api/products');
+        const data = await response.json();
+        const productsArray = Array.isArray(data) ? data : (data?.data || []);
+        setProducts(productsArray);
+      }
     } catch (error) {
       console.error('Error fetching products:', error);
       setProducts([]);

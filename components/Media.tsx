@@ -26,12 +26,19 @@ export default function Media() {
 
   const fetchMedia = async () => {
     try {
-      const response = await fetch('/api/media');
-      const data = await response.json();
+      // Load from localStorage (managed by admin)
+      const stored = localStorage.getItem('admin_media');
       
-      // Ensure we have an array
-      const mediaArray = Array.isArray(data) ? data : (data?.data || []);
-      setMediaItems(mediaArray);
+      if (stored) {
+        const mediaArray = JSON.parse(stored);
+        setMediaItems(mediaArray);
+      } else {
+        // Load from API as fallback
+        const response = await fetch('/api/media');
+        const data = await response.json();
+        const mediaArray = Array.isArray(data) ? data : (data?.data || []);
+        setMediaItems(mediaArray);
+      }
     } catch (error) {
       console.error('Error fetching media:', error);
       setMediaItems([]);
@@ -114,55 +121,47 @@ export default function Media() {
         ) : (
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredMedia.map((item) => (
-            <div
-              key={item._id}
-              className="bg-[#1C1612] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-[#F6B800]/10 hover:border-[#F6B800]/30 transform hover:-translate-y-2"
-            >
-              {/* Thumbnail/Player */}
-              <div className="relative bg-gradient-to-br from-[#3A2F28] to-[#1C1612] aspect-video flex items-center justify-center group cursor-pointer">
-                <button
-                  className="relative z-10 bg-[#F6B800] hover:bg-[#FFCA28] rounded-full p-5 transition-all group-hover:scale-110 shadow-lg"
-                  onClick={() => handlePlayPause(item)}
-                >
-                  {playingId === item._id ? (
-                    <Pause className="w-8 h-8 text-[#1C1612]" />
-                  ) : (
-                    <Play className="w-8 h-8 text-[#1C1612] ml-1" />
+              <div
+                key={item._id}
+                className="bg-[#1C1612] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-[#F6B800]/10 hover:border-[#F6B800]/30 transform hover:-translate-y-2"
+              >
+                {/* Thumbnail/Player */}
+                <div className="relative bg-gradient-to-br from-[#3A2F28] to-[#1C1612] aspect-video flex items-center justify-center group cursor-pointer">
+                  <button
+                    className="relative z-10 bg-[#F6B800] hover:bg-[#FFCA28] rounded-full p-5 transition-all group-hover:scale-110 shadow-lg"
+                    onClick={() => handlePlayPause(item)}
+                  >
+                    {playingId === item._id ? (
+                      <Pause className="w-8 h-8 text-[#1C1612]" />
+                    ) : (
+                      <Play className="w-8 h-8 text-[#1C1612] ml-1" />
+                    )}
+                  </button>
+
+                  {/* Duration */}
+                  {item.duration && (
+                    <div className="absolute bottom-4 right-4 bg-[#1C1612]/90 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                      <span className="text-sm font-bold text-[#F6B800]">
+                        {item.duration}
+                      </span>
+                    </div>
                   )}
-                </button>
+                </div>
 
-                {/* Duration */}
-                {item.duration && (
-                  <div className="absolute bottom-4 right-4 bg-[#1C1612]/90 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                    <span className="text-sm font-bold text-[#F6B800]">
-                      {item.duration}
-                    </span>
-                  </div>
-                )}
+                {/* Info */}
+                <div className="p-6 sm:p-8 text-center">
+                  <p className="text-xs font-bold uppercase tracking-widest text-[#F6B800] mb-3">
+                    {item.type}
+                  </p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#F5F0E8] mb-3">
+                    {item.title}
+                  </h3>
+                  {item.description && (
+                    <p className="text-[#B8AFA3] text-sm px-2">{item.description}</p>
+                  )}
+                </div>
               </div>
-
-              {/* Info */}
-              <div className="p-6 sm:p-8 text-center">
-                <p className="text-xs font-bold uppercase tracking-widest text-[#F6B800] mb-3">
-                  {item.type}
-                </p>
-                <h3 className="text-xl sm:text-2xl font-bold text-[#F5F0E8] mb-3">
-                  {item.title}
-                </h3>
-                {item.description && (
-                  <p className="text-[#B8AFA3] text-sm px-2">{item.description}</p>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {filteredMedia.length === 0 && (
-          <div className="text-center py-20 px-6">
-            <Music className="w-16 h-16 text-[#F6B800] mx-auto mb-6 opacity-50" />
-            <p className="text-lg sm:text-xl text-[#F5F0E8]">
-              No {activeTab !== 'all' ? activeTab : ''} media available yet.
-            </p>
+            ))}
           </div>
         )}
 

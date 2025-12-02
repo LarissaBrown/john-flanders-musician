@@ -41,14 +41,58 @@ export default function ShowsManagement() {
 
   const fetchShows = async () => {
     try {
-      const response = await fetch('/api/events');
-      const data = await response.json();
+      // Load from localStorage first
+      const stored = localStorage.getItem('admin_shows');
       
-      // Ensure we have an array
-      const showsArray = Array.isArray(data) ? data : (data?.data || []);
-      setShows(showsArray);
+      if (stored) {
+        const showsArray = JSON.parse(stored);
+        setShows(showsArray);
+      } else {
+        // Initialize with default seed data
+        const defaultShows = [
+          {
+            _id: 'seed-show-1',
+            title: 'Sunset Sessions',
+            venue: 'Red Rock Amphitheater',
+            location: 'Sedona, AZ',
+            date: '2025-06-15',
+            time: '7:00 PM',
+            description: 'An evening of acoustic melodies under the stars',
+            imageUrl: '',
+            ticketUrl: '',
+            featured: true,
+          },
+          {
+            _id: 'seed-show-2',
+            title: 'Desert Blues Night',
+            venue: 'Canyon View Lounge',
+            location: 'Moab, UT',
+            date: '2025-06-22',
+            time: '8:00 PM',
+            description: 'Blues and soul music with special guests',
+            imageUrl: '',
+            ticketUrl: '',
+            featured: false,
+          },
+          {
+            _id: 'seed-show-3',
+            title: 'Summer Jazz Festival',
+            venue: 'Grand Canyon Lodge',
+            location: 'Grand Canyon, AZ',
+            date: '2025-07-04',
+            time: '9:00 PM',
+            description: 'Celebrate summer with live jazz performances',
+            imageUrl: '',
+            ticketUrl: '',
+            featured: true,
+          },
+        ];
+        setShows(defaultShows);
+        localStorage.setItem('admin_shows', JSON.stringify(defaultShows));
+      }
     } catch (error) {
       console.error('Error fetching shows:', error);
+      setShows([]);
     } finally {
       setIsLoading(false);
     }
@@ -58,19 +102,26 @@ export default function ShowsManagement() {
     e.preventDefault();
     
     try {
-      const url = editingShow ? `/api/events?id=${editingShow._id}` : '/api/events';
-      const method = editingShow ? 'PUT' : 'POST';
-
-      const response = await fetch(url, {
-        method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        await fetchShows();
-        closeModal();
+      let updatedShows;
+      
+      if (editingShow) {
+        // Update existing show
+        updatedShows = shows.map(show =>
+          show._id === editingShow._id ? { ...show, ...formData } : show
+        );
+      } else {
+        // Add new show
+        const newShow = {
+          _id: `show-${Date.now()}`,
+          ...formData,
+        } as Show;
+        updatedShows = [...shows, newShow];
       }
+      
+      // Save to localStorage
+      localStorage.setItem('admin_shows', JSON.stringify(updatedShows));
+      setShows(updatedShows);
+      closeModal();
     } catch (error) {
       console.error('Error saving show:', error);
     }
@@ -80,13 +131,9 @@ export default function ShowsManagement() {
     if (!confirm('Are you sure you want to delete this show?')) return;
 
     try {
-      const response = await fetch(`/api/events?id=${id}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) {
-        await fetchShows();
-      }
+      const updatedShows = shows.filter(show => show._id !== id);
+      localStorage.setItem('admin_shows', JSON.stringify(updatedShows));
+      setShows(updatedShows);
     } catch (error) {
       console.error('Error deleting show:', error);
     }

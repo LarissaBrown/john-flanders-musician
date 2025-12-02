@@ -29,12 +29,22 @@ export default function Shows() {
 
   const fetchShows = async () => {
     try {
-      const response = await fetch('/api/events');
-      const data = await response.json();
+      // Load from localStorage (managed by admin)
+      const stored = localStorage.getItem('admin_shows');
       
-      // Ensure we have an array
-      const showsArray = Array.isArray(data) ? data : (data?.data || []);
-      setShows(showsArray);
+      if (stored) {
+        const showsArray = JSON.parse(stored);
+        // Filter for future shows only
+        const now = new Date();
+        const upcomingShows = showsArray.filter((show: Show) => new Date(show.date) >= now);
+        setShows(upcomingShows);
+      } else {
+        // Load from API as fallback
+        const response = await fetch('/api/shows');
+        const data = await response.json();
+        const showsArray = Array.isArray(data) ? data : [];
+        setShows(showsArray);
+      }
     } catch (error) {
       console.error('Error fetching shows:', error);
       setShows([]);

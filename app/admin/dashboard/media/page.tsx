@@ -34,14 +34,58 @@ export default function MediaManagement() {
 
   const fetchMedia = async () => {
     try {
-      const response = await fetch('/api/media');
-      const data = await response.json();
+      // Load from localStorage first
+      const stored = localStorage.getItem('admin_media');
       
-      // Ensure we have an array
-      const mediaArray = Array.isArray(data) ? data : (data?.data || []);
-      setMedia(mediaArray);
+      if (stored) {
+        const mediaArray = JSON.parse(stored);
+        setMedia(mediaArray);
+      } else {
+        // Initialize with default seed data
+        const defaultMedia = [
+          {
+            _id: 'latin-blues',
+            title: 'Latin Blues',
+            type: 'audio',
+            url: '/audio/LatinBlues.mp3',
+            description: 'From "The Go Between" - John Flanders & Double Helix',
+            thumbnailUrl: '/images/the-go-between-cover.jpg',
+            duration: '4:32',
+          },
+          {
+            _id: 'the-go-between',
+            title: 'The Go Between',
+            type: 'audio',
+            url: '/audio/TheGoBetween.mp3',
+            description: 'Title track from the latest album',
+            thumbnailUrl: '/images/the-go-between-cover.jpg',
+            duration: '3:50',
+          },
+          {
+            _id: 'architeuthis',
+            title: 'Architeuthis',
+            type: 'audio',
+            url: '/audio/Architeuthis.mp3',
+            description: 'From "In The Sky Tonight"',
+            thumbnailUrl: '/images/in-the-sky-tonight-cover.jpg',
+            duration: '5:10',
+          },
+          {
+            _id: 'hunkered-down',
+            title: 'Hunkered Down',
+            type: 'audio',
+            url: '/audio/06HunkeredDown.mp3',
+            description: 'From "Natural Selection"',
+            thumbnailUrl: '/images/natural-selection-cover.jpg',
+            duration: '4:15',
+          },
+        ];
+        setMedia(defaultMedia);
+        localStorage.setItem('admin_media', JSON.stringify(defaultMedia));
+      }
     } catch (error) {
       console.error('Error fetching media:', error);
+      setMedia([]);
     } finally {
       setIsLoading(false);
     }
@@ -51,19 +95,26 @@ export default function MediaManagement() {
     e.preventDefault();
     
     try {
-      const url = editingMedia ? `/api/media?id=${editingMedia._id}` : '/api/media';
-      const method = editingMedia ? 'PUT' : 'POST';
-
-      const response = await fetch(url, {
-        method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        await fetchMedia();
-        closeModal();
+      let updatedMedia;
+      
+      if (editingMedia) {
+        // Update existing media
+        updatedMedia = media.map(item =>
+          item._id === editingMedia._id ? { ...item, ...formData } : item
+        );
+      } else {
+        // Add new media
+        const newMedia = {
+          _id: `media-${Date.now()}`,
+          ...formData,
+        } as MediaItem;
+        updatedMedia = [...media, newMedia];
       }
+      
+      // Save to localStorage
+      localStorage.setItem('admin_media', JSON.stringify(updatedMedia));
+      setMedia(updatedMedia);
+      closeModal();
     } catch (error) {
       console.error('Error saving media:', error);
     }
@@ -73,13 +124,9 @@ export default function MediaManagement() {
     if (!confirm('Are you sure you want to delete this media?')) return;
 
     try {
-      const response = await fetch(`/api/media?id=${id}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) {
-        await fetchMedia();
-      }
+      const updatedMedia = media.filter(item => item._id !== id);
+      localStorage.setItem('admin_media', JSON.stringify(updatedMedia));
+      setMedia(updatedMedia);
     } catch (error) {
       console.error('Error deleting media:', error);
     }
