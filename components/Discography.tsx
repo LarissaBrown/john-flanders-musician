@@ -68,7 +68,6 @@ export default function Discography() {
     {
       artist: 'Jonni Lightfoot',
       album: 'BLU (2006)',
-      link: 'http://jonnilightfoot.net',
     },
     {
       artist: 'Greg Donovan',
