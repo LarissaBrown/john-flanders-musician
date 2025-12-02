@@ -35,7 +35,10 @@ export default function MediaManagement() {
     try {
       const response = await fetch('/api/media');
       const data = await response.json();
-      setMedia(data);
+      
+      // Ensure we have an array
+      const mediaArray = Array.isArray(data) ? data : (data?.data || []);
+      setMedia(mediaArray);
     } catch (error) {
       console.error('Error fetching media:', error);
     } finally {

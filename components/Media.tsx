@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, Music } from 'lucide-react';
 
 interface MediaItem {
-  id: string;
+  _id: string;
   title: string;
   type: 'audio' | 'video';
   url: string;
@@ -13,93 +13,32 @@ interface MediaItem {
   duration?: string;
 }
 
-// Media samples from John Flanders' various projects
-const mediaItems: MediaItem[] = [
-  // Album Tracks
-  {
-    id: 'latin-blues',
-    title: 'Latin Blues',
-    type: 'audio',
-    url: '/audio/LatinBlues.mp3',
-    description: 'From "The Go Between" - John Flanders & Double Helix',
-  },
-  {
-    id: 'the-go-between',
-    title: 'The Go Between',
-    type: 'audio',
-    url: '/audio/TheGoBetween.mp3',
-    description: 'Title track from the latest album',
-  },
-  {
-    id: 'architeuthis',
-    title: 'Architeuthis',
-    type: 'audio',
-    url: '/audio/Architeuthis.mp3',
-    description: 'From "In The Sky Tonight"',
-  },
-  // Band Samples
-  {
-    id: 'double-helix',
-    title: 'Double Helix',
-    type: 'audio',
-    url: '/audio/double-helix-sample.mp3',
-    description: 'High energy original jazz funk, swing, latin',
-  },
-  {
-    id: 'trio-corcovado',
-    title: 'Corcovado (Bossa Nova)',
-    type: 'audio',
-    url: '/audio/trio-corcovado.mp3',
-    description: 'John Flanders Trio - Classy acoustic jazz',
-  },
-  {
-    id: 'quartet-sample',
-    title: 'John Flanders Quartet',
-    type: 'audio',
-    url: '/audio/quartet-sample.mp3',
-    description: 'Jazz standards with sax, bass, guitar, and drums',
-  },
-  {
-    id: 'jazz-vocals',
-    title: 'Jazz with Male Vocals',
-    type: 'audio',
-    url: '/audio/jazz-vocals-sample.mp3',
-    description: 'From Sinatra to Elvis - Perfect for weddings',
-  },
-  {
-    id: 'latin-jazz-factory',
-    title: 'Latin Jazz Factory',
-    type: 'audio',
-    url: '/audio/latin-jazz-factory.mp3',
-    description: 'Hip latin jazz with horns - Mambo, bossa, afro-cuban',
-  },
-  {
-    id: 'sin-city-soul',
-    title: 'Sin City Soul',
-    type: 'audio',
-    url: '/audio/sin-city-soul.mp3',
-    description: 'Blues, funk, New Orleans grooves with female vocals',
-  },
-  {
-    id: 'raydius',
-    title: 'Raydius',
-    type: 'audio',
-    url: '/audio/raydius.mp3',
-    description: 'Semi-acoustic quintet with killer female vocals',
-  },
-  {
-    id: 'atf-band',
-    title: 'ATF Band',
-    type: 'audio',
-    url: '/audio/atf-band.mp3',
-    description: 'Lounge jazz rock - Joni Mitchell to Herbie Hancock',
-  },
-];
-
 export default function Media() {
   const [activeTab, setActiveTab] = useState<'all' | 'audio' | 'video'>('all');
   const [playingId, setPlayingId] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [mediaItems, setMediaItems] = useState<MediaItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchMedia();
+  }, []);
+
+  const fetchMedia = async () => {
+    try {
+      const response = await fetch('/api/media');
+      const data = await response.json();
+      
+      // Ensure we have an array
+      const mediaArray = Array.isArray(data) ? data : (data?.data || []);
+      setMediaItems(mediaArray);
+    } catch (error) {
+      console.error('Error fetching media:', error);
+      setMediaItems([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const filteredMedia = mediaItems.filter((item) => {
     if (activeTab === 'all') return true;
@@ -107,7 +46,7 @@ export default function Media() {
   });
 
   const handlePlayPause = (item: MediaItem) => {
-    if (playingId === item.id) {
+    if (playingId === item._id) {
       // Pause current audio
       audioRef.current?.pause();
       setPlayingId(null);
@@ -117,7 +56,7 @@ export default function Media() {
         audioRef.current.src = item.url;
         audioRef.current.play();
       }
-      setPlayingId(item.id);
+      setPlayingId(item._id);
     }
   };
 
@@ -160,10 +99,23 @@ export default function Media() {
         </div>
 
         {/* Media Grid */}
-        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {filteredMedia.map((item) => (
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#F6B800]"></div>
+            <p className="mt-4 text-[#F5F0E8]">Loading media...</p>
+          </div>
+        ) : filteredMedia.length === 0 ? (
+          <div className="text-center py-20 px-6">
+            <Music className="w-16 h-16 text-[#F6B800] mx-auto mb-6 opacity-50" />
+            <p className="text-lg sm:text-xl text-[#F5F0E8]">
+              No {activeTab !== 'all' ? activeTab : ''} media available yet.
+            </p>
+          </div>
+        ) : (
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {filteredMedia.map((item) => (
             <div
-              key={item.id}
+              key={item._id}
               className="bg-[#1C1612] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-[#F6B800]/10 hover:border-[#F6B800]/30 transform hover:-translate-y-2"
             >
               {/* Thumbnail/Player */}
@@ -172,7 +124,7 @@ export default function Media() {
                   className="relative z-10 bg-[#F6B800] hover:bg-[#FFCA28] rounded-full p-5 transition-all group-hover:scale-110 shadow-lg"
                   onClick={() => handlePlayPause(item)}
                 >
-                  {playingId === item.id ? (
+                  {playingId === item._id ? (
                     <Pause className="w-8 h-8 text-[#1C1612]" />
                   ) : (
                     <Play className="w-8 h-8 text-[#1C1612] ml-1" />

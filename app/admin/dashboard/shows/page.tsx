@@ -42,7 +42,10 @@ export default function ShowsManagement() {
     try {
       const response = await fetch('/api/events');
       const data = await response.json();
-      setShows(data);
+      
+      // Ensure we have an array
+      const showsArray = Array.isArray(data) ? data : (data?.data || []);
+      setShows(showsArray);
     } catch (error) {
       console.error('Error fetching shows:', error);
     } finally {

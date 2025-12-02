@@ -40,9 +40,13 @@ export default function ProductsManagement() {
     try {
       const response = await fetch('/api/products');
       const data = await response.json();
-      setProducts(data);
+      
+      // Ensure we have an array
+      const productsArray = Array.isArray(data) ? data : (data?.data || []);
+      setProducts(productsArray);
     } catch (error) {
       console.error('Error fetching products:', error);
+      setProducts([]);
     } finally {
       setIsLoading(false);
     }
