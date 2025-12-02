@@ -72,7 +72,6 @@ export default function Discography() {
     {
       artist: 'Greg Donovan',
       album: 'Various Works',
-      link: 'http://www.gregorydonovanmusic.com',
     },
     {
       artist: 'Andy Monaco',
