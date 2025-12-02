@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, Music } from 'lucide-react';
 
 interface MediaItem {
@@ -13,50 +13,120 @@ interface MediaItem {
   duration?: string;
 }
 
-// Sample data - will be replaced with API calls
+// Media samples from John Flanders' various projects
 const mediaItems: MediaItem[] = [
+  // Album Tracks
   {
-    id: '1',
-    title: 'Desert Wind',
+    id: 'latin-blues',
+    title: 'Latin Blues',
     type: 'audio',
-    url: '#',
-    description: 'An instrumental journey through the canyons',
-    duration: '4:32',
+    url: '/audio/LatinBlues.mp3',
+    description: 'From "The Go Between" - John Flanders & Double Helix',
   },
   {
-    id: '2',
-    title: 'Red Rock Blues',
-    type: 'video',
-    url: '#',
-    description: 'Live performance at Red Rock',
-    duration: '5:15',
-  },
-  {
-    id: '3',
-    title: 'Sunset Serenade',
+    id: 'the-go-between',
+    title: 'The Go Between',
     type: 'audio',
-    url: '#',
-    description: 'Acoustic guitar composition',
-    duration: '3:48',
+    url: '/audio/TheGoBetween.mp3',
+    description: 'Title track from the latest album',
   },
   {
-    id: '4',
-    title: 'Canyon Echo',
-    type: 'video',
-    url: '#',
-    description: 'Music video shot in Utah canyons',
-    duration: '6:20',
+    id: 'architeuthis',
+    title: 'Architeuthis',
+    type: 'audio',
+    url: '/audio/Architeuthis.mp3',
+    description: 'From "In The Sky Tonight"',
+  },
+  // Band Samples
+  {
+    id: 'double-helix',
+    title: 'Double Helix',
+    type: 'audio',
+    url: '/audio/double-helix-sample.mp3',
+    description: 'High energy original jazz funk, swing, latin',
+  },
+  {
+    id: 'trio-corcovado',
+    title: 'Corcovado (Bossa Nova)',
+    type: 'audio',
+    url: '/audio/trio-corcovado.mp3',
+    description: 'John Flanders Trio - Classy acoustic jazz',
+  },
+  {
+    id: 'quartet-sample',
+    title: 'John Flanders Quartet',
+    type: 'audio',
+    url: '/audio/quartet-sample.mp3',
+    description: 'Jazz standards with sax, bass, guitar, and drums',
+  },
+  {
+    id: 'jazz-vocals',
+    title: 'Jazz with Male Vocals',
+    type: 'audio',
+    url: '/audio/jazz-vocals-sample.mp3',
+    description: 'From Sinatra to Elvis - Perfect for weddings',
+  },
+  {
+    id: 'latin-jazz-factory',
+    title: 'Latin Jazz Factory',
+    type: 'audio',
+    url: '/audio/latin-jazz-factory.mp3',
+    description: 'Hip latin jazz with horns - Mambo, bossa, afro-cuban',
+  },
+  {
+    id: 'sin-city-soul',
+    title: 'Sin City Soul',
+    type: 'audio',
+    url: '/audio/sin-city-soul.mp3',
+    description: 'Blues, funk, New Orleans grooves with female vocals',
+  },
+  {
+    id: 'raydius',
+    title: 'Raydius',
+    type: 'audio',
+    url: '/audio/raydius.mp3',
+    description: 'Semi-acoustic quintet with killer female vocals',
+  },
+  {
+    id: 'atf-band',
+    title: 'ATF Band',
+    type: 'audio',
+    url: '/audio/atf-band.mp3',
+    description: 'Lounge jazz rock - Joni Mitchell to Herbie Hancock',
   },
 ];
 
 export default function Media() {
   const [activeTab, setActiveTab] = useState<'all' | 'audio' | 'video'>('all');
   const [playingId, setPlayingId] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const filteredMedia = mediaItems.filter((item) => {
     if (activeTab === 'all') return true;
     return item.type === activeTab;
   });
+
+  const handlePlayPause = (item: MediaItem) => {
+    if (playingId === item.id) {
+      // Pause current audio
+      audioRef.current?.pause();
+      setPlayingId(null);
+    } else {
+      // Play new audio
+      if (audioRef.current) {
+        audioRef.current.src = item.url;
+        audioRef.current.play();
+      }
+      setPlayingId(item.id);
+    }
+  };
+
+  // Cleanup audio when component unmounts
+  useEffect(() => {
+    return () => {
+      audioRef.current?.pause();
+    };
+  }, []);
 
   return (
     <section id="media" className="py-20 sm:py-24 lg:py-32 bg-[#2D241E] px-6 sm:px-8 lg:px-12">
@@ -100,9 +170,7 @@ export default function Media() {
               <div className="relative bg-gradient-to-br from-[#3A2F28] to-[#1C1612] aspect-video flex items-center justify-center group cursor-pointer">
                 <button
                   className="relative z-10 bg-[#F6B800] hover:bg-[#FFCA28] rounded-full p-5 transition-all group-hover:scale-110 shadow-lg"
-                  onClick={() =>
-                    setPlayingId(playingId === item.id ? null : item.id)
-                  }
+                  onClick={() => handlePlayPause(item)}
                 >
                   {playingId === item.id ? (
                     <Pause className="w-8 h-8 text-[#1C1612]" />
@@ -145,6 +213,13 @@ export default function Media() {
             </p>
           </div>
         )}
+
+        {/* Hidden audio element for playback */}
+        <audio
+          ref={audioRef}
+          onEnded={() => setPlayingId(null)}
+          className="hidden"
+        />
       </div>
     </section>
   );
