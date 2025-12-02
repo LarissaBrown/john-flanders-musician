@@ -43,16 +43,23 @@ export default function ImagesManagement() {
 
         // Add existing static images
         const existingImages = [
+          // Performance Photos
           'john_flanders_goldner_hirsch_inn.jpg',
           'john_flanders_brick_sax.jpg',
           'John_Flanders_SB_Trio.jpg',
           'john-flanders-trio-by-windows.jpeg',
           'john_flanders_tux.jpeg',
-          'double_helix_albumn_cover.jpg',
+          // Album Covers (all 5 now uploaded!)
+          'the-go-between-cover.jpg',
+          'natural-selection-cover.jpg',
           'in-the-sky-tonight-cover.jpg',
+          'a-prehensile-tale-cover.jpg',
+          'stranded-in-time-cover.jpg',
+          // Background Images
           'sunset-red-rocks.webp',
           'blue-sky-canyon.webp',
           'pink-red-rocks.webp',
+          // Icons
           'saxophone.png',
         ].map(filename => ({
           filename,

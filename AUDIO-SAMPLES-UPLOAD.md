@@ -28,7 +28,7 @@ Based on [johnflanders.com/recordings.html](http://www.johnflanders.com/recordin
 
 4. **Double Helix Sample**
    - Download from: Find the audio link/icon on Bandsamples.html
-   - Save as: `double-helix-sample.mp3`
+   - Save as: `06HunkeredDown.mp3`
    - Description: High energy original jazz funk, swing, latin
 
 5. **John Flanders Trio - Corcovado**
