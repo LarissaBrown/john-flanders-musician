@@ -108,7 +108,7 @@ export default function MediaManagement() {
         const newMedia = {
           _id: `media-${Date.now()}`,
           ...formData,
-        } as MediaItem;
+        } as Media;
         updatedMedia = [...media, newMedia];
       }
       
