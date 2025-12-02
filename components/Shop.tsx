@@ -1,67 +1,48 @@
 'use client';
 
-import { ShoppingCart } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ShoppingCart, Music } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
+import Image from 'next/image';
 
 interface Product {
-  id: string;
+  _id: string;
   name: string;
   price: number;
-  type: 'single' | 'album';
+  type: 'single' | 'album' | 'merch';
   imageUrl: string;
   description?: string;
+  stock?: number;
 }
-
-// John Flanders Albums
-const products: Product[] = [
-  {
-    id: '1',
-    name: 'The Go Between',
-    price: 14.99,
-    type: 'album',
-    imageUrl: '/images/double_helix_albumn_cover.jpg',
-    description: 'John Flanders & Double Helix - Latest release',
-  },
-  {
-    id: '2',
-    name: 'Natural Selection',
-    price: 14.99,
-    type: 'album',
-    imageUrl: '/images/double_helix_albumn_cover.jpg',
-    description: 'John Flanders & Double Helix - Audience favorite',
-  },
-  {
-    id: '3',
-    name: 'In The Sky Tonight',
-    price: 14.99,
-    type: 'album',
-    imageUrl: '/images/double_helix_albumn_cover.jpg',
-    description: 'John Flanders & Double Helix',
-  },
-  {
-    id: '4',
-    name: 'A Prehensile Tale',
-    price: 12.99,
-    type: 'album',
-    imageUrl: '/images/double_helix_albumn_cover.jpg',
-    description: 'John Flanders solo album',
-  },
-  {
-    id: '5',
-    name: 'Stranded in Time',
-    price: 12.99,
-    type: 'album',
-    imageUrl: '/images/double_helix_albumn_cover.jpg',
-    description: 'John Flanders solo album',
-  },
-];
 
 export default function Shop() {
   const { addItem } = useCart();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch('/api/products');
+      const data = await response.json();
+      
+      // Ensure we have an array
+      const productsArray = Array.isArray(data) ? data : (data?.data || []);
+      setProducts(productsArray);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      setProducts([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleAddToCart = (product: Product) => {
     addItem({
-      id: product.id,
+      id: product._id,
       name: product.name,
       price: product.price,
       quantity: 1,
@@ -82,21 +63,38 @@ export default function Shop() {
         </div>
 
         {/* Products Grid */}
-        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="bg-[#2D241E] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-[#F6B800]/10 hover:border-[#F6B800]/30 transform hover:-translate-y-2"
-            >
-              {/* Product Image Placeholder */}
-              <div className="aspect-square bg-gradient-to-br from-[#3A2F28] to-[#1C1612] flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-[#F6B800] text-6xl mb-2">
-                    {product.type === 'album' ? '💿' : '🎵'}
-                  </div>
-                  <p className="text-[#B8AFA3] text-xs uppercase tracking-wide">Album Cover</p>
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#F6B800]"></div>
+            <p className="mt-4 text-[#F5F0E8]">Loading products...</p>
+          </div>
+        ) : products.length === 0 ? (
+          <div className="text-center py-12">
+            <Music className="w-16 h-16 text-[#F6B800]/50 mx-auto mb-4" />
+            <p className="text-lg text-[#F5F0E8]">No products available at this time.</p>
+            <p className="text-sm text-[#B8AFA3] mt-2">Check back soon for new releases!</p>
+          </div>
+        ) : (
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {products.map((product) => (
+              <div
+                key={product._id}
+                className="bg-[#2D241E] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-[#F6B800]/10 hover:border-[#F6B800]/30 transform hover:-translate-y-2"
+              >
+                {/* Product Image */}
+                <div className="aspect-square bg-gradient-to-br from-[#3A2F28] to-[#1C1612] flex items-center justify-center relative overflow-hidden">
+                  {product.imageUrl ? (
+                    <Image
+                      src={product.imageUrl}
+                      alt={product.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                  ) : (
+                    <Music className="w-16 h-16 text-[#F6B800]/30" />
+                  )}
                 </div>
-              </div>
 
               {/* Product Info */}
               <div className="p-6 sm:p-8 text-center">
@@ -127,7 +125,8 @@ export default function Shop() {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        )}
 
         {/* Payment Methods */}
         <div className="mt-20 text-center">
