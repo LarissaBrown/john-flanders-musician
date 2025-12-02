@@ -42,11 +42,11 @@ export default function MediaManagement() {
         setMedia(mediaArray);
       } else {
         // Initialize with default seed data
-        const defaultMedia = [
+        const defaultMedia: Media[] = [
           {
             _id: 'latin-blues',
             title: 'Latin Blues',
-            type: 'audio',
+            type: 'audio' as const,
             url: '/audio/LatinBlues.mp3',
             description: 'From "The Go Between" - John Flanders & Double Helix',
             thumbnailUrl: '/images/the-go-between-cover.jpg',
@@ -55,7 +55,7 @@ export default function MediaManagement() {
           {
             _id: 'the-go-between',
             title: 'The Go Between',
-            type: 'audio',
+            type: 'audio' as const,
             url: '/audio/TheGoBetween.mp3',
             description: 'Title track from the latest album',
             thumbnailUrl: '/images/the-go-between-cover.jpg',
@@ -64,7 +64,7 @@ export default function MediaManagement() {
           {
             _id: 'architeuthis',
             title: 'Architeuthis',
-            type: 'audio',
+            type: 'audio' as const,
             url: '/audio/Architeuthis.mp3',
             description: 'From "In The Sky Tonight"',
             thumbnailUrl: '/images/in-the-sky-tonight-cover.jpg',
@@ -73,7 +73,7 @@ export default function MediaManagement() {
           {
             _id: 'hunkered-down',
             title: 'Hunkered Down',
-            type: 'audio',
+            type: 'audio' as const,
             url: '/audio/06HunkeredDown.mp3',
             description: 'From "Natural Selection"',
             thumbnailUrl: '/images/natural-selection-cover.jpg',
