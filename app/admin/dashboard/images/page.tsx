@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { Image as ImageIcon, Upload, X, Check, AlertCircle } from 'lucide-react';
+import { Image as ImageIcon, Upload, X, Check, AlertCircle, Trash2, Edit2, Save } from 'lucide-react';
 
 interface UploadedImage {
   url: string;
@@ -13,6 +13,8 @@ export default function ImagesManagement() {
   const [uploading, setUploading] = useState(false);
   const [uploadedImages, setUploadedImages] = useState<UploadedImage[]>([]);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [editingImage, setEditingImage] = useState<string | null>(null);
+  const [newFilename, setNewFilename] = useState('');
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -90,6 +92,90 @@ export default function ImagesManagement() {
       type: 'success',
       text: 'Image URL copied to clipboard!',
     });
+  };
+
+  const handleDelete = async (filename: string) => {
+    if (!confirm(`Are you sure you want to delete ${filename}?`)) return;
+
+    try {
+      const response = await fetch('/api/images/delete', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filename }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setUploadedImages(prev => prev.filter(img => img.filename !== filename));
+        setMessage({
+          type: 'success',
+          text: `Successfully deleted ${filename}`,
+        });
+      } else {
+        setMessage({
+          type: 'error',
+          text: result.error || 'Failed to delete image',
+        });
+      }
+    } catch (error) {
+      setMessage({
+        type: 'error',
+        text: 'Failed to delete image. Please try again.',
+      });
+    }
+  };
+
+  const startRename = (filename: string) => {
+    setEditingImage(filename);
+    setNewFilename(filename);
+  };
+
+  const cancelRename = () => {
+    setEditingImage(null);
+    setNewFilename('');
+  };
+
+  const handleRename = async (oldFilename: string) => {
+    if (!newFilename || newFilename === oldFilename) {
+      cancelRename();
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/images/rename', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ oldFilename, newFilename }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setUploadedImages(prev =>
+          prev.map(img =>
+            img.filename === oldFilename
+              ? { ...img, filename: newFilename, url: result.newUrl }
+              : img
+          )
+        );
+        setMessage({
+          type: 'success',
+          text: `Successfully renamed to ${newFilename}`,
+        });
+        cancelRename();
+      } else {
+        setMessage({
+          type: 'error',
+          text: result.error || 'Failed to rename image',
+        });
+      }
+    } catch (error) {
+      setMessage({
+        type: 'error',
+        text: 'Failed to rename image. Please try again.',
+      });
+    }
   };
 
   return (
@@ -197,14 +283,61 @@ export default function ImagesManagement() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-3">
-                  <p className="text-xs text-gray-600 truncate mb-2">{image.filename}</p>
-                  <button
-                    onClick={() => copyToClipboard(image.url)}
-                    className="w-full text-xs bg-gray-100 hover:bg-canyon-red hover:text-white px-3 py-2 rounded-lg transition-colors font-medium"
-                  >
-                    Copy URL
-                  </button>
+                <div className="p-3 space-y-2">
+                  {editingImage === image.filename ? (
+                    <div className="space-y-2">
+                      <input
+                        type="text"
+                        value={newFilename}
+                        onChange={(e) => setNewFilename(e.target.value)}
+                        className="w-full text-xs px-2 py-1 border border-gray-300 rounded focus:border-canyon-red focus:ring-1 focus:ring-canyon-red"
+                        placeholder="New filename"
+                      />
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => handleRename(image.filename)}
+                          className="flex-1 text-xs bg-green-500 hover:bg-green-600 text-white px-2 py-1.5 rounded transition-colors font-medium flex items-center justify-center gap-1"
+                        >
+                          <Save className="w-3 h-3" />
+                          Save
+                        </button>
+                        <button
+                          onClick={cancelRename}
+                          className="flex-1 text-xs bg-gray-300 hover:bg-gray-400 text-gray-700 px-2 py-1.5 rounded transition-colors font-medium"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <p className="text-xs text-gray-600 truncate">{image.filename}</p>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => copyToClipboard(image.url)}
+                          className="flex-1 text-xs bg-gray-100 hover:bg-canyon-red hover:text-white px-3 py-2 rounded-lg transition-colors font-medium"
+                        >
+                          Copy URL
+                        </button>
+                      </div>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => startRename(image.filename)}
+                          className="flex-1 text-xs bg-blue-50 hover:bg-blue-100 text-blue-600 px-2 py-1.5 rounded transition-colors font-medium flex items-center justify-center gap-1"
+                        >
+                          <Edit2 className="w-3 h-3" />
+                          Rename
+                        </button>
+                        <button
+                          onClick={() => handleDelete(image.filename)}
+                          className="flex-1 text-xs bg-red-50 hover:bg-red-100 text-red-600 px-2 py-1.5 rounded transition-colors font-medium flex items-center justify-center gap-1"
+                        >
+                          <Trash2 className="w-3 h-3" />
+                          Delete
+                        </button>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             ))}
