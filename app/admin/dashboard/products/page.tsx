@@ -15,6 +15,8 @@ interface Product {
   trackList?: string[];
   releaseDate?: string;
   available?: boolean;
+  isAvailable?: boolean;
+  stock?: number;
 }
 
 export default function ProductsManagement() {
@@ -47,12 +49,12 @@ export default function ProductsManagement() {
         setProducts(productsArray);
       } else {
         // Initialize with default seed data
-        const defaultProducts = [
+        const defaultProducts: Product[] = [
           {
             _id: '1',
             name: 'The Go Between',
             price: 14.99,
-            type: 'album',
+            type: 'album' as const,
             imageUrl: '/images/the-go-between-cover.jpg',
             description: 'John Flanders & Double Helix - Latest release',
             isAvailable: true,
@@ -62,7 +64,7 @@ export default function ProductsManagement() {
             _id: '2',
             name: 'Natural Selection',
             price: 14.99,
-            type: 'album',
+            type: 'album' as const,
             imageUrl: '/images/natural-selection-cover.jpg',
             description: 'John Flanders & Double Helix - Audience favorite',
             isAvailable: true,
@@ -72,7 +74,7 @@ export default function ProductsManagement() {
             _id: '3',
             name: 'In The Sky Tonight',
             price: 14.99,
-            type: 'album',
+            type: 'album' as const,
             imageUrl: '/images/in-the-sky-tonight-cover.jpg',
             description: 'John Flanders & Double Helix',
             isAvailable: true,
@@ -82,7 +84,7 @@ export default function ProductsManagement() {
             _id: '4',
             name: 'A Prehensile Tale',
             price: 12.99,
-            type: 'album',
+            type: 'album' as const,
             imageUrl: '/images/a-prehensile-tale-cover.jpg',
             description: 'John Flanders solo album',
             isAvailable: true,
@@ -92,7 +94,7 @@ export default function ProductsManagement() {
             _id: '5',
             name: 'Stranded in Time',
             price: 12.99,
-            type: 'album',
+            type: 'album' as const,
             imageUrl: '/images/stranded-in-time-cover.jpg',
             description: 'John Flanders solo album',
             isAvailable: true,
