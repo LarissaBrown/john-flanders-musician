@@ -20,21 +20,41 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // TODO: Implement API call to save contact form
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitMessage('Thank you! Your message has been received. I\'ll get back to you soon!');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        eventType: '',
-        eventDate: '',
-        message: '',
+    try {
+      // Send to API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
-      
+
+      const result = await response.json();
+
+      if (result.success && result.data) {
+        // Save to localStorage for admin dashboard
+        const existingMessages = JSON.parse(localStorage.getItem('admin_messages') || '[]');
+        const updatedMessages = [result.data, ...existingMessages];
+        localStorage.setItem('admin_messages', JSON.stringify(updatedMessages));
+
+        setSubmitMessage('Thank you! Your message has been received. I\'ll get back to you soon!');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          eventType: '',
+          eventDate: '',
+          message: '',
+        });
+      } else {
+        setSubmitMessage('Something went wrong. Please try again or email directly.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitMessage('Something went wrong. Please try again or email directly.');
+    } finally {
+      setIsSubmitting(false);
       setTimeout(() => setSubmitMessage(''), 5000);
-    }, 1000);
+    }
   };
 
   const handleChange = (

@@ -27,15 +27,25 @@ export default function MessagesManagement() {
 
   const fetchMessages = async () => {
     try {
-      const response = await fetch('/api/contact');
-      const data = await response.json();
-      // Sort by newest first
-      const sorted = data.sort((a: Contact, b: Contact) => 
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-      );
-      setMessages(sorted);
+      // Load from localStorage (will switch to MongoDB API later)
+      const stored = localStorage.getItem('admin_messages');
+      if (stored) {
+        const messagesArray: Contact[] = JSON.parse(stored);
+        // Sort by newest first
+        const sorted = messagesArray.sort((a: Contact, b: Contact) => 
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+        setMessages(sorted);
+      } else {
+        // Fallback to API (for future MongoDB integration)
+        const response = await fetch('/api/contact');
+        const data = await response.json();
+        const messagesArray = data?.data || [];
+        setMessages(messagesArray);
+      }
     } catch (error) {
       console.error('Error fetching messages:', error);
+      setMessages([]);
     } finally {
       setIsLoading(false);
     }
@@ -45,16 +55,17 @@ export default function MessagesManagement() {
     if (!confirm('Are you sure you want to delete this message?')) return;
 
     try {
-      const response = await fetch(`/api/contact?id=${id}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) {
-        await fetchMessages();
-        if (selectedMessage?._id === id) {
-          setSelectedMessage(null);
-        }
+      // Delete from localStorage
+      const updatedMessages = messages.filter((m) => m._id !== id);
+      setMessages(updatedMessages);
+      localStorage.setItem('admin_messages', JSON.stringify(updatedMessages));
+      
+      if (selectedMessage?._id === id) {
+        setSelectedMessage(null);
       }
+
+      // Also call API for future MongoDB integration
+      await fetch(`/api/contact?id=${id}`, { method: 'DELETE' });
     } catch (error) {
       console.error('Error deleting message:', error);
     }
