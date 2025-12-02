@@ -1,7 +1,8 @@
 'use client';
+import Link from 'next/link';
 
 import { useState, useCallback, useEffect } from 'react';
-import { Image as ImageIcon, Upload, X, Check, AlertCircle, Trash2, Edit2, Save } from 'lucide-react';
+import { Image as ImageIcon, Upload, X, Check, AlertCircle, Trash2, Edit2, Save, ArrowLeft } from 'lucide-react';
 
 interface UploadedImage {
   url: string;

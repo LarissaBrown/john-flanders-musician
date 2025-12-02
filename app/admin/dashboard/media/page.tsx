@@ -1,7 +1,8 @@
 'use client';
+import Link from 'next/link';
 
 import { useEffect, useState } from 'react';
-import { Plus, Edit, Trash2, Music, Video, Play } from 'lucide-react';
+import { Plus, Edit, Trash2, Music, Video, Play, ArrowLeft } from 'lucide-react';
 
 interface Media {
   _id: string;
@@ -116,6 +117,15 @@ export default function MediaManagement() {
 
   return (
     <div>
+      {/* Back to Dashboard Button */}
+      <Link
+        href="/admin/dashboard"
+        className="inline-flex items-center gap-2 text-gray-600 hover:text-canyon-red transition-colors mb-6"
+      >
+        <ArrowLeft className="w-5 h-5" />
+        <span className="font-medium">Back to Dashboard</span>
+      </Link>
+
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>

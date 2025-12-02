@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Plus, Edit, Trash2, Calendar, MapPin, ExternalLink } from 'lucide-react';
+import { Plus, Edit, Trash2, Calendar, MapPin, ExternalLink, ArrowLeft } from 'lucide-react';
 import { format } from 'date-fns';
+import Link from 'next/link';
 
 interface Show {
   _id: string;
@@ -132,6 +133,15 @@ export default function ShowsManagement() {
 
   return (
     <div>
+      {/* Back to Dashboard Button */}
+      <Link
+        href="/admin/dashboard"
+        className="inline-flex items-center gap-2 text-gray-600 hover:text-canyon-red transition-colors mb-6"
+      >
+        <ArrowLeft className="w-5 h-5" />
+        <span className="font-medium">Back to Dashboard</span>
+      </Link>
+
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>

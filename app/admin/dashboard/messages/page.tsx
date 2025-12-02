@@ -1,7 +1,8 @@
 'use client';
+import Link from 'next/link';
 
 import { useEffect, useState } from 'react';
-import { Mail, Calendar, User, Phone, MessageSquare, Trash2 } from 'lucide-react';
+import { Mail, Calendar, User, Phone, MessageSquare, Trash2, ArrowLeft } from 'lucide-react';
 import { format } from 'date-fns';
 
 interface Contact {
@@ -64,8 +65,18 @@ export default function MessagesManagement() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-      {/* Messages List */}
+    <div>
+      {/* Back to Dashboard Button */}
+      <Link
+        href="/admin/dashboard"
+        className="inline-flex items-center gap-2 text-gray-600 hover:text-canyon-red transition-colors mb-6"
+      >
+        <ArrowLeft className="w-5 h-5" />
+        <span className="font-medium">Back to Dashboard</span>
+      </Link>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+        {/* Messages List */}
       <div className="lg:col-span-1 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         <div className="p-6 border-b border-gray-200 bg-gray-50">
           <h3 className="text-lg font-semibold text-rich-brown">
@@ -234,6 +245,7 @@ export default function MessagesManagement() {
             </p>
           </div>
         )}
+      </div>
       </div>
     </div>
   );
