@@ -58,3 +58,7 @@ The Discography component expects:
 
 Once all five images are uploaded with the correct filenames, they will automatically display in the Discography section.
 
+
+
+
+
