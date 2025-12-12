@@ -24,11 +24,11 @@ export default function Navbar() {
 
   const navLinks = [
     { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
+    { href: '#media', label: 'Media' },
     { href: '#shows', label: 'Shows' },
     { href: '#shop', label: 'Shop' },
+    { href: '#about', label: 'About' },
     { href: '#discography', label: 'Discography' },
-    { href: '#media', label: 'Media' },
     { href: '#photos', label: 'Photos' },
     { href: '#contact', label: 'Contact' },
   ];

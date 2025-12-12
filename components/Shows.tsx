@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Calendar, MapPin, Clock } from 'lucide-react';
-import { format } from 'date-fns';
+import { useState, useEffect, useRef } from 'react';
+import { Calendar, MapPin, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
+import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, addMonths, subMonths, getDay } from 'date-fns';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -22,10 +22,48 @@ interface Show {
 export default function Shows() {
   const [shows, setShows] = useState<Show[]>([]);
   const [loading, setLoading] = useState(true);
+  const [currentMonth, setCurrentMonth] = useState(new Date());
+  const showRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   useEffect(() => {
     fetchShows();
   }, []);
+
+  // Get shows for a specific date
+  const getShowsForDate = (date: Date) => {
+    return shows.filter(show => isSameDay(new Date(show.date), date));
+  };
+
+  // Check if a date has shows
+  const hasShowOnDate = (date: Date) => {
+    return shows.some(show => isSameDay(new Date(show.date), date));
+  };
+
+  // Scroll to show card when date is clicked
+  const scrollToShow = (showId: string) => {
+    const element = showRefs.current[showId];
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Add a highlight animation
+      element.classList.add('ring-4', 'ring-primary', 'ring-opacity-75');
+      setTimeout(() => {
+        element.classList.remove('ring-4', 'ring-primary', 'ring-opacity-75');
+      }, 2000);
+    }
+  };
+
+  // Generate calendar days
+  const generateCalendarDays = () => {
+    const start = startOfMonth(currentMonth);
+    const end = endOfMonth(currentMonth);
+    const days = eachDayOfInterval({ start, end });
+    
+    // Add padding for days before the first of the month
+    const startDayOfWeek = getDay(start);
+    const paddingDays = Array(startDayOfWeek).fill(null);
+    
+    return [...paddingDays, ...days];
+  };
 
   const fetchShows = async () => {
     try {
@@ -102,6 +140,103 @@ export default function Shows() {
           </p>
         </div>
 
+        {/* Calendar View */}
+        {!loading && shows.length > 0 && (
+          <div className="mb-16 sm:mb-20">
+            <div className="bg-surface-dark rounded-2xl shadow-xl border border-primary/20 p-6 sm:p-8 max-w-3xl mx-auto">
+              {/* Calendar Header */}
+              <div className="flex items-center justify-between mb-6">
+                <button
+                  onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}
+                  className="p-2 hover:bg-primary/20 rounded-lg transition-colors text-cream hover:text-primary"
+                  aria-label="Previous month"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <h3 className="text-xl sm:text-2xl font-bold text-cream uppercase tracking-wide">
+                  {format(currentMonth, 'MMMM yyyy')}
+                </h3>
+                <button
+                  onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
+                  className="p-2 hover:bg-primary/20 rounded-lg transition-colors text-cream hover:text-primary"
+                  aria-label="Next month"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </div>
+
+              {/* Day Headers */}
+              <div className="grid grid-cols-7 gap-1 mb-2">
+                {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
+                  <div key={day} className="text-center text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider py-2">
+                    {day}
+                  </div>
+                ))}
+              </div>
+
+              {/* Calendar Grid */}
+              <div className="grid grid-cols-7 gap-1">
+                {generateCalendarDays().map((day, index) => {
+                  if (!day) {
+                    return <div key={`empty-${index}`} className="aspect-square" />;
+                  }
+                  
+                  const showsOnDay = getShowsForDate(day);
+                  const hasShow = showsOnDay.length > 0;
+                  const isCurrentMonth = isSameMonth(day, currentMonth);
+                  const isToday = isSameDay(day, new Date());
+                  
+                  return (
+                    <div
+                      key={day.toISOString()}
+                      className={`aspect-square flex flex-col items-center justify-center rounded-lg relative transition-all ${
+                        !isCurrentMonth ? 'opacity-30' : ''
+                      } ${isToday ? 'ring-2 ring-gold' : ''}`}
+                    >
+                      {/* Only show the plain date when there's no show */}
+                      {!hasShow && (
+                        <span className="text-sm sm:text-base text-text-muted-light">
+                          {format(day, 'd')}
+                        </span>
+                      )}
+                      
+                      {hasShow && (
+                        <button
+                          onClick={() => scrollToShow(showsOnDay[0]._id)}
+                          className="w-full h-full rounded-lg bg-primary/20 hover:bg-primary/40 border-2 border-primary hover:border-accent transition-all cursor-pointer group flex flex-col items-center justify-center"
+                          title={showsOnDay.map(s => s.title).join(', ')}
+                        >
+                          <span className="text-sm sm:text-base text-cream font-bold group-hover:text-accent transition-colors">
+                            {format(day, 'd')}
+                          </span>
+                          <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-accent rounded-full mt-0.5 group-hover:scale-125 transition-transform" />
+                          {showsOnDay.length > 1 && (
+                            <span className="absolute -top-1 -right-1 bg-gold text-background-dark text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                              {showsOnDay.length}
+                            </span>
+                          )}
+                        </button>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Legend */}
+              <div className="flex items-center justify-center gap-6 mt-6 pt-4 border-t border-primary/20">
+                <div className="flex items-center gap-2 text-sm text-text-muted-light">
+                  <span className="w-3 h-3 bg-primary/20 border-2 border-primary rounded" />
+                  <span>Show Date</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-text-muted-light">
+                  <span className="w-3 h-3 ring-2 ring-gold rounded" />
+                  <span>Today</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Shows Grid */}
         {loading ? (
           <div className="text-center py-12">
@@ -119,6 +254,8 @@ export default function Shows() {
             {shows.map((show) => (
               <div
                 key={show._id}
+                id={`show-${show._id}`}
+                ref={(el) => { showRefs.current[show._id] = el; }}
                 className="bg-surface-dark rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-primary/20 hover:border-primary/40 transform hover:-translate-y-2"
               >
                 {/* Show Image */}
